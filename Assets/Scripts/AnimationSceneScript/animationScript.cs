@@ -55,7 +55,7 @@ public class animationScript : MonoBehaviour
             animator.SetBool("punch", false);
         }
 
-        if (Input.GetKey("e"))
+        if (Input.GetKey("space"))
         {
             animator.SetBool("jump", true);
         }
@@ -63,6 +63,16 @@ public class animationScript : MonoBehaviour
         else
         {
             animator.SetBool("jump", false);
+        }
+
+        if (Input.GetKey("q"))
+        {
+            animator.SetBool("block", true);
+        }
+
+        else
+        {
+            animator.SetBool("block", false);
         }
     }
 }
