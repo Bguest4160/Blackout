@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class SceneLoader : MonoBehaviour
 {
@@ -8,5 +10,14 @@ public class SceneLoader : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quit!");
+    }
+
+    public void MainSceneLoader()
+    {
+        SceneManager.LoadScene("Scene 1");
+    }
+    public void CharacterSceneLoader()
+    {
+        SceneManager.LoadScene("CharacterCreationScene");
     }
 }
