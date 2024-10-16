@@ -22,26 +22,38 @@ public class animationScript : MonoBehaviour
             animator.SetBool("isRunningF", true);
         }
 
-        else if (Input.GetKey("s"))
+        else
+        {
+            animator.SetBool("isRunningF", false);
+        }
+
+        if (Input.GetKey("s"))
         {
             animator.SetBool("isRunningB", true);
         }
 
-        else if (Input.GetKey("a"))
+        else
+        {
+            animator.SetBool("isRunningB", false);
+        }
+
+        if (Input.GetKey("a"))
         {
             animator.SetBool("isRunningL", true);
         }
 
-        else if (Input.GetKey("d"))
+        else
+        {
+            animator.SetBool("isRunningL", false);
+        }
+
+        if (Input.GetKey("d"))
         {
             animator.SetBool("isRunningR", true);
         }
 
         else
         {
-            animator.SetBool("isRunningF", false);
-            animator.SetBool("isRunningB", false);
-            animator.SetBool("isRunningL", false);
             animator.SetBool("isRunningR", false);
         }
 
