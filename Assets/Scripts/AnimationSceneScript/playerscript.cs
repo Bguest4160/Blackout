@@ -18,7 +18,7 @@ public class playerscript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKey("w"))
+        if (Input.GetKey("w")) 
         {
             rb.transform.position += transform.forward * movSpeed * Time.deltaTime;
         }
