@@ -37,6 +37,7 @@ public class PlayerPickupThrow : MonoBehaviour
         {
             
             objectGrabable.Throw();
+            objectGrabable.Throw();
             objectGrabable = null;
             
         }

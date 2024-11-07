@@ -31,11 +31,18 @@ public class ObjectGrabable : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+
         if (objectGrabPointTransform != null)
         {
             float lerpSpeed = 15f;
             Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
             objectRigidbody.MovePosition(newPosition);
         }
+        else
+        {
+            objectRigidbody.AddForce(Physics.gravity * (3 / 2), ForceMode.Acceleration);
+        } 
+      
     }
 }
