@@ -16,7 +16,7 @@ public class MovementScript : MonoBehaviour
 
     public float jumpHeight = 6f;
     float velocityY;
-    bool isGrounded;
+    public bool isGrounded;
 
     float cameraCap;
     Vector2 currentMouseDelta;
