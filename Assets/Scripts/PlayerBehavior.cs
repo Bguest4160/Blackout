@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBehavior : MonoBehaviour
-{
-    public static float cubeCooldown = 5f;
-    public static float lastHealthEventTime = 0f;
+public class PlayerBehavior : MonoBehaviour {
+    private static bool initCooldownUsed = false;
+    private static float cubeCooldown = 0.5f;
+    private static float lastHealthEventTime = 0f;
 
-    void Start()
-    {
+    [SerializeField] Healthbar _healthbar;
+
+    void Start() {
         
     }
 
@@ -22,35 +23,37 @@ public class PlayerBehavior : MonoBehaviour
             PlayerHeal(30);
             Debug.Log("Health: " + GameManager.gameManager._playerHealth.Health);
         }
-
-        // Debug.Log(CooldownCheck(cubeCooldown));
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit) {
-        if (CooldownCheck(cubeCooldown)) {
-            if (hit.gameObject.name == "Damage Cube") {
-                PlayerTakeDamage(10);
+        if (hit.gameObject.name == "Damage Cube") {
+            if (CooldownCheck(cubeCooldown)) {
+                PlayerTakeDamage(50);
                 Debug.Log("Health: " + GameManager.gameManager._playerHealth.Health);
             }
         }
     }
 
     bool CooldownCheck(float cooldown) {
-        if (Time.time - lastHealthEventTime >= cooldown || Time.time = 0f) {
+        if (Time.time - cooldown <= 0 && initCooldownUsed == false) {
+            initCooldownUsed = true;
             return true;
         }
-        return false;
+        
+        return (Time.time - lastHealthEventTime >= cooldown);
     }
 
     private void PlayerTakeDamage(int damage) {
         GameManager.gameManager._playerHealth.Damage(damage);
         lastHealthEventTime = Time.time;
         Debug.Log("lastHealthEventTime: " + PlayerBehavior.lastHealthEventTime);
+        _healthbar.SetHealth(GameManager.gameManager._playerHealth.Health);
     }
 
     private void PlayerHeal(int healing) {
         GameManager.gameManager._playerHealth.Heal(healing);
         lastHealthEventTime = Time.time;
         Debug.Log("lastHealthEventTime: " + PlayerBehavior.lastHealthEventTime);
+        _healthbar.SetHealth(GameManager.gameManager._playerHealth.Health);
     }
 }
