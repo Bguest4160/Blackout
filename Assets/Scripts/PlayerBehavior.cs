@@ -1,59 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerBehavior : MonoBehaviour {
-    private static bool initCooldownUsed = false;
-    private static float cubeCooldown = 0.5f;
-    private static float lastHealthEventTime = 0f;
-
-    [SerializeField] Healthbar _healthbar;
-
+    // Fields
+    private static bool _initCooldownUsed = false;
+    private static float _cubeCooldown = 0.5f;
+    private static float _lastHealthEventTime = 0f;
+   
+    public GameObject frontHealthSliderObject;
+    public GameObject backhealthSliderObject;
+    public GameObject backHealthSliderFillObject;
+    public UnitBar PlayerHealth;
+    
+    // Methods
     void Start() {
-        
+        PlayerHealth = new UnitBar(1000, 1000, frontHealthSliderObject, backhealthSliderObject, backHealthSliderFillObject);
     }
 
     void Update()
     {
         if (Input.GetKeyDown("g")) {
             PlayerTakeDamage(50);
-            Debug.Log("Health: " + GameManager.gameManager._playerHealth.Health);
+            Debug.Log("Health: " + PlayerHealth.Value);
         }
         if (Input.GetKeyDown("h")) {
             PlayerHeal(30);
-            Debug.Log("Health: " + GameManager.gameManager._playerHealth.Health);
+            Debug.Log("Health: " + PlayerHealth.Value);
         }
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit) {
         if (hit.gameObject.name == "Damage Cube") {
-            if (CooldownCheck(cubeCooldown)) {
+            if (CooldownCheck(_cubeCooldown)) {
                 PlayerTakeDamage(50);
-                Debug.Log("Health: " + GameManager.gameManager._playerHealth.Health);
+                Debug.Log("Health: " + PlayerHealth.Value);
             }
         }
     }
 
     bool CooldownCheck(float cooldown) {
-        if (Time.time - cooldown <= 0 && initCooldownUsed == false) {
-            initCooldownUsed = true;
+        if (Time.time - cooldown <= 0 && _initCooldownUsed == false) {
+            _initCooldownUsed = true;
             return true;
         }
         
-        return (Time.time - lastHealthEventTime >= cooldown);
+        return (Time.time - _lastHealthEventTime >= cooldown);
     }
 
-    private void PlayerTakeDamage(int damage) {
-        GameManager.gameManager._playerHealth.Damage(damage);
-        lastHealthEventTime = Time.time;
-        Debug.Log("lastHealthEventTime: " + PlayerBehavior.lastHealthEventTime);
-        _healthbar.SetHealth(GameManager.gameManager._playerHealth.Health);
+    private void PlayerTakeDamage(int amount) {
+        PlayerHealth.Subtract(amount);
+        _lastHealthEventTime = Time.time;
+        Debug.Log("lastHealthEventTime: " + _lastHealthEventTime);
     }
 
-    private void PlayerHeal(int healing) {
-        GameManager.gameManager._playerHealth.Heal(healing);
-        lastHealthEventTime = Time.time;
-        Debug.Log("lastHealthEventTime: " + PlayerBehavior.lastHealthEventTime);
-        _healthbar.SetHealth(GameManager.gameManager._playerHealth.Health);
+    private void PlayerHeal(int amount) {
+        PlayerHealth.Add(amount);
+        _lastHealthEventTime = Time.time;
+        Debug.Log("lastHealthEventTime: " + _lastHealthEventTime);
     }
 }
