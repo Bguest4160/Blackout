@@ -8,12 +8,12 @@ public class UnitBar
    // Fields
    private int _currentValue;
    private int _currentMaxValue;
-   public float chipSpeed;
+   public float chipSpeed = 10f;
    private float _lerpTimer;
    
    private Slider _bar;
    private Slider _backBar;
-   private Color _backBarColor;
+   private Image _backBarImage;
 
    // Properties
    public int Value {
@@ -51,7 +51,7 @@ public class UnitBar
         
         _bar = barParent.GetComponent<Slider>();
         _backBar = backBarParent.GetComponent<Slider>();
-        _backBarColor = backBarFillParent.GetComponent<Color>();
+        _backBarImage = backBarFillParent.GetComponent<Image>();
         
         _bar.value = value;
         _bar.maxValue = maxValue;
@@ -64,20 +64,30 @@ public class UnitBar
     public void Subtract(int amount) {
         _currentValue = Mathf.Clamp(_currentValue - amount, 0, _currentMaxValue);
         _bar.value = _currentValue;
-        _backBarColor = Color.red;
-        
-        _lerpTimer += Time.deltaTime;
-        float percentComplete = _lerpTimer / chipSpeed;
-        _backBar.value = Mathf.Lerp(_backBar.value, _currentValue, percentComplete);
     }
 
     public void Add(int amount) {
-        _currentValue = Mathf.Clamp(_currentValue + amount, 0, _currentMaxValue);
-        _bar.value = _currentValue;
-        _backBarColor = Color.green;
-        
-        _lerpTimer += Time.deltaTime;
-        float percentComplete = _lerpTimer / chipSpeed;
-        _backBar.value = Mathf.Lerp(_backBar.value, _currentValue, percentComplete);
+        if (_currentValue > 0) {
+            _currentValue = Mathf.Clamp(_currentValue + amount, 0, _currentMaxValue);
+            _bar.value = _currentValue;
+            // _backBarImage.color = Color.green;
+            //
+            // _lerpTimer += Time.deltaTime;
+            // float percentComplete = _lerpTimer / chipSpeed;
+            // _backBar.value = Mathf.Lerp(_backBar.value, _currentValue, percentComplete);
+        }
+    }
+
+    public void ChipHealth() {
+        if (_backBar.value > _bar.value) {
+            Debug.Log("Back health tweening...");
+            _backBarImage.color = Color.yellow;
+            _lerpTimer += Time.deltaTime;
+            float percentComplete = _lerpTimer / chipSpeed;
+            _backBar.value = Mathf.Lerp(_backBar.value, _currentValue, percentComplete);
+        }
+        else {
+            Debug.Log("Back health tween complete!");
+        }
     }
 }

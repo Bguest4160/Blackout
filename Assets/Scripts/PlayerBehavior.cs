@@ -10,25 +10,27 @@ public class PlayerBehavior : MonoBehaviour {
     private static float _lastHealthEventTime = 0f;
    
     public GameObject frontHealthSliderObject;
-    public GameObject backhealthSliderObject;
+    public GameObject backHealthSliderObject;
     public GameObject backHealthSliderFillObject;
     public UnitBar PlayerHealth;
     
     // Methods
     void Start() {
-        PlayerHealth = new UnitBar(1000, 1000, frontHealthSliderObject, backhealthSliderObject, backHealthSliderFillObject);
+        PlayerHealth = new UnitBar(1000, 1000, frontHealthSliderObject, backHealthSliderObject, backHealthSliderFillObject);
     }
 
     void Update()
     {
         if (Input.GetKeyDown("g")) {
-            PlayerTakeDamage(50);
+            PlayerTakeDamage(200);
             Debug.Log("Health: " + PlayerHealth.Value);
         }
         if (Input.GetKeyDown("h")) {
             PlayerHeal(30);
             Debug.Log("Health: " + PlayerHealth.Value);
         }
+        
+        PlayerHealth.ChipHealth();
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit) {
