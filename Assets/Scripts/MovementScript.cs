@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovementScript : MonoBehaviour
 {
     [SerializeField] Transform playerCamera;
+    [SerializeField] Transform otherCamera;
     [SerializeField] [Range(0.0f, 0.5f)] float mouseSmoothTime = 0.03f;
     [SerializeField] bool cursorLock = true;
     [SerializeField] float mouseSensitivity = 3.5f;
@@ -19,6 +20,7 @@ public class MovementScript : MonoBehaviour
     public bool isGrounded;
 
     float cameraCap;
+    float cameraCap2;
     Vector2 currentMouseDelta;
     Vector2 currentMouseDeltaVelocity;
 
@@ -52,9 +54,11 @@ public class MovementScript : MonoBehaviour
 
         cameraCap -= currentMouseDelta.y * mouseSensitivity;
 
-        cameraCap = Mathf.Clamp(cameraCap, -90.0f, 90.0f);
+        cameraCap = Mathf.Clamp(cameraCap, -80.0f, 70.0f);
+        cameraCap2 = Mathf.Clamp(cameraCap, -80.0f, 80.0f);
 
         playerCamera.localEulerAngles = Vector3.right * cameraCap;
+        otherCamera.localEulerAngles = Vector3.right * cameraCap2;
 
         transform.Rotate(Vector3.up * currentMouseDelta.x * mouseSensitivity);
     }

@@ -143,7 +143,9 @@ public class BlendTreeAnimationScript : MonoBehaviour
 
         
         landsoon = Physics.CheckSphere(landingcheck.position, 0.6f, ground);
+        isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, ground);
 
+        animator.SetBool("onGround", isGrounded);
 
 
 

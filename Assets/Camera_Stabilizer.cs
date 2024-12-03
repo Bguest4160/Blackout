@@ -4,9 +4,8 @@ public class Camera_Stabilizer : MonoBehaviour
 {
     public Transform camera;
     public Transform character;
-    Vector3 desiredPos;
     public Vector3 offset;
-    
+    Vector3 desiredPos;
 
 
     void Start()
@@ -19,6 +18,6 @@ public class Camera_Stabilizer : MonoBehaviour
     {
         desiredPos = character.position + offset;
         camera.position = desiredPos;
-        camera.rotation = Quaternion.LookRotation(character.position);
+        camera.rotation = character.rotation;
     }
 }
