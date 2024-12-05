@@ -23,11 +23,9 @@ public class PlayerBehavior : MonoBehaviour {
     {
         if (Input.GetKeyDown("g")) {
             PlayerTakeDamage(200);
-            Debug.Log("Health: " + PlayerHealth.Value);
         }
         if (Input.GetKeyDown("h")) {
-            PlayerHeal(30);
-            Debug.Log("Health: " + PlayerHealth.Value);
+            PlayerHeal(100);
         }
         
         PlayerHealth.ChipHealth();
@@ -54,12 +52,12 @@ public class PlayerBehavior : MonoBehaviour {
     private void PlayerTakeDamage(int amount) {
         PlayerHealth.Subtract(amount);
         _lastHealthEventTime = Time.time;
-        Debug.Log("lastHealthEventTime: " + _lastHealthEventTime);
+        // Debug.Log("lastHealthEventTime: " + _lastHealthEventTime);
     }
 
     private void PlayerHeal(int amount) {
         PlayerHealth.Add(amount);
         _lastHealthEventTime = Time.time;
-        Debug.Log("lastHealthEventTime: " + _lastHealthEventTime);
+        // Debug.Log("lastHealthEventTime: " + _lastHealthEventTime);
     }
 }
