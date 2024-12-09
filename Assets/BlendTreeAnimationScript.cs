@@ -115,7 +115,7 @@ public class BlendTreeAnimationScript : MonoBehaviour
 
         //Jump
 
-        Debug.Log(landsoon);
+        //Debug.Log(landsoon);
         animator.SetBool("landSoon", landsoon);
 
         if (Input.GetKey("space"))
@@ -143,7 +143,8 @@ public class BlendTreeAnimationScript : MonoBehaviour
 
         
         landsoon = Physics.CheckSphere(landingcheck.position, 0.6f, ground);
-        
+
+        //animator.SetBool("onGround", isGrounded);
 
 
 
@@ -158,6 +159,7 @@ public class BlendTreeAnimationScript : MonoBehaviour
             animator.SetBool("block", false);
         }
 
+
         //punch
         if (Input.GetMouseButton(0))
         {
@@ -169,6 +171,27 @@ public class BlendTreeAnimationScript : MonoBehaviour
             animator.SetBool("punch", false);
         }
 
+        if (Input.GetMouseButton(0) || Input.GetKey("q"))
+        {
+            animator.SetBool("Jump or block", true);
+        }
 
+        else
+        {
+            animator.SetBool("Jump or block", false);
+        }
+
+    }
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.name == "floor")
+        {
+            animator.SetBool("onGround", true);
+        }
+
+        else
+        {
+            animator.SetBool("onGround", false);
+        }
     }
 }

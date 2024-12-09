@@ -2,19 +2,22 @@ using UnityEngine;
 
 public class Camera_Stabilizer : MonoBehaviour
 {
-    public Camera camera;
+    public Transform camera;
     public Transform character;
+    public Vector3 offset;
+    Vector3 desiredPos;
 
 
     void Start()
     {
-        camera.transform.position = character.position;
-        camera.transform.rotation = character.rotation;
+        desiredPos = character.position + offset;
+        camera.position = desiredPos;
     }
 
     void Update()
     {
-        camera.transform.position = character.position;
-        camera.transform.rotation = character.rotation;
+        desiredPos = character.position + offset;
+        camera.position = desiredPos;
+        camera.rotation = character.rotation;
     }
 }
