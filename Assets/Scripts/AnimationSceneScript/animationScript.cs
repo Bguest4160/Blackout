@@ -57,7 +57,7 @@ public class animationScript : MonoBehaviour
             animator.SetBool("isRunningR", false);
         }
 
-        if (Input.GetKey("e"))
+        if (Input.GetMouseButton(0))
         {
             animator.SetBool("punch", true);
         }
