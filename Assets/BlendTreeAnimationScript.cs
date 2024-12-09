@@ -143,9 +143,8 @@ public class BlendTreeAnimationScript : MonoBehaviour
 
         
         landsoon = Physics.CheckSphere(landingcheck.position, 0.6f, ground);
-        onController
 
-        animator.SetBool("onGround", isGrounded);
+        //animator.SetBool("onGround", isGrounded);
 
 
 
@@ -182,5 +181,17 @@ public class BlendTreeAnimationScript : MonoBehaviour
             animator.SetBool("Jump or block", false);
         }
 
+    }
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.name == "floor")
+        {
+            animator.SetBool("onGround", true);
+        }
+
+        else
+        {
+            animator.SetBool("onGround", false);
+        }
     }
 }

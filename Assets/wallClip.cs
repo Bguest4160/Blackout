@@ -22,6 +22,6 @@ public class wallClip : MonoBehaviour
 
     private void OnTriggerEnter(Collider ground)
     {
-        Debug.Log("yay");
+        //Debug.Log("yay");
     }
 }
