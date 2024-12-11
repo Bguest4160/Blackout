@@ -84,7 +84,7 @@ public class UnitBar
             
             if (_backBar != null) {
                 _backBar.value = _currentValue;
-                _backBarImage.color = new Color(0.560784f, 1f, 0.427450f);
+                _backBarImage.color = new Color(0.541176f, 0.835294f, 0.541176f);
             }
             else {
                 _bar.value = _currentValue;

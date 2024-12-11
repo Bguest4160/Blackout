@@ -184,7 +184,7 @@ public class BlendTreeAnimationScript : MonoBehaviour
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.name == "floor")
+        if (hit.gameObject.layer == 3)
         {
             animator.SetBool("onGround", true);
         }
