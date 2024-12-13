@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class PlayerBehavior : MonoBehaviour {
+public class DummyBehavior : MonoBehaviour {
     // Fields
     private static bool _initCooldownUsed = false;
     private static float _cubeCooldown = 0.2f;
@@ -12,30 +12,30 @@ public class PlayerBehavior : MonoBehaviour {
     public GameObject frontHealthSliderObject;
     public GameObject backHealthSliderObject;
     public GameObject backHealthSliderFillObject;
-    public UnitBar PlayerHealth;
+    public UnitBar DummyHealth;
     
     // Methods
     void Start() {
-        PlayerHealth = new UnitBar(1000, 1000, frontHealthSliderObject, backHealthSliderObject, backHealthSliderFillObject);
+        DummyHealth = new UnitBar(1000, 1000, frontHealthSliderObject, backHealthSliderObject, backHealthSliderFillObject);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown("g")) {
+        if (Input.GetKeyDown("t")) {
             PlayerTakeDamage(200);
         }
-        if (Input.GetKeyDown("h")) {
+        if (Input.GetKeyDown("y")) {
             PlayerHeal(100);
         }
         
-        PlayerHealth.ChipHealth();
+        DummyHealth.ChipHealth();
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit) {
         if (hit.gameObject.name == "Damage Cube") {
             if (CooldownCheck(_cubeCooldown)) {
                 PlayerTakeDamage(20);
-                Debug.Log("Health: " + PlayerHealth.Value);
+                Debug.Log("Health: " + DummyHealth.Value);
             }
         }
     }
@@ -50,16 +50,16 @@ public class PlayerBehavior : MonoBehaviour {
     }
 
     private void PlayerTakeDamage(int amount) {
-        if (PlayerHealth.Value > 0) {
-            PlayerHealth.Subtract(amount);
+        if (DummyHealth.Value > 0) {
+            DummyHealth.Subtract(amount);
             _lastHealthEventTime = Time.time;
             // Debug.Log("lastHealthEventTime: " + _lastHealthEventTime);
         }
     }
 
     private void PlayerHeal(int amount) {
-        if (PlayerHealth.Value > 0 && PlayerHealth.Value < PlayerHealth.MaxValue) {
-            PlayerHealth.Add(amount);
+        if (DummyHealth.Value > 0 && DummyHealth.Value < DummyHealth.MaxValue) {
+            DummyHealth.Add(amount);
             _lastHealthEventTime = Time.time;
             // Debug.Log("lastHealthEventTime: " + _lastHealthEventTime);
         }
