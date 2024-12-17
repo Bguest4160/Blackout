@@ -13,10 +13,16 @@ public class PlayerBehavior : MonoBehaviour {
     public GameObject backHealthSliderObject;
     public GameObject backHealthSliderFillObject;
     public UnitBar PlayerHealth;
+
+    GameObject _rightFist;
+    GameObject _leftFist;
     
     // Methods
     void Start() {
         PlayerHealth = new UnitBar(1000, 1000, frontHealthSliderObject, backHealthSliderObject, backHealthSliderFillObject);
+        
+        Collider _rightFistCollider = _rightFist.GetComponent<Collider>();
+        Collider _leftFistCollider = _leftFist.GetComponent<Collider>();
     }
 
     void Update()

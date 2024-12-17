@@ -6,8 +6,8 @@ using UnityEngine.Serialization;
 public class DummyBehavior : MonoBehaviour {
     // Fields
     private static bool _initCooldownUsed = false;
-    private static float _cubeCooldown = 0.2f;
     private static float _lastHealthEventTime = 0f;
+    private static float _damageCooldown = 2f;
    
     public GameObject frontHealthSliderObject;
     public GameObject backHealthSliderObject;
@@ -22,7 +22,7 @@ public class DummyBehavior : MonoBehaviour {
     void Update()
     {
         if (Input.GetKeyDown("t")) {
-            PlayerTakeDamage(200);
+            DummyTakeDamage(200);
         }
         if (Input.GetKeyDown("y")) {
             PlayerHeal(100);
@@ -31,15 +31,13 @@ public class DummyBehavior : MonoBehaviour {
         DummyHealth.ChipHealth();
     }
 
-    void OnControllerColliderHit(ControllerColliderHit hit) {
-        if (hit.gameObject.name == "Damage Cube") {
-            if (CooldownCheck(_cubeCooldown)) {
-                PlayerTakeDamage(20);
-                Debug.Log("Health: " + DummyHealth.Value);
+    void OnTriggerEnter(Collider other) {
+        if (CooldownCheck(_damageCooldown)) {
+            if (other.gameObject.CompareTag("IsDamageTrigger")) {
+                DummyTakeDamage(200);
             }
         }
     }
-
     bool CooldownCheck(float cooldown) {
         if (Time.time - cooldown <= 0 && _initCooldownUsed == false) {
             _initCooldownUsed = true;
@@ -49,7 +47,7 @@ public class DummyBehavior : MonoBehaviour {
         return (Time.time - _lastHealthEventTime >= cooldown);
     }
 
-    private void PlayerTakeDamage(int amount) {
+    private void DummyTakeDamage(int amount) {
         if (DummyHealth.Value > 0) {
             DummyHealth.Subtract(amount);
             _lastHealthEventTime = Time.time;
