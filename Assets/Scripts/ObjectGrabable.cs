@@ -8,6 +8,7 @@ public class ObjectGrabable : MonoBehaviour
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
     public Transform playerTransform;
+    public Transform playerCamera;
     
     private void Awake()
     {
@@ -25,7 +26,7 @@ public class ObjectGrabable : MonoBehaviour
     {
         this.objectGrabPointTransform = null;
         objectRigidbody.useGravity = true;
-        objectRigidbody.AddForce(playerTransform.forward * throwForce, ForceMode.VelocityChange);
+        objectRigidbody.AddForce(playerCamera.forward * throwForce, ForceMode.VelocityChange);
     }
 
 
