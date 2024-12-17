@@ -90,4 +90,8 @@ public class MovementScript : MonoBehaviour
             velocityY = -8f;
         }
     }
+    public void ChangeStats()
+    {
+        jumpHeight = 50;
+    }
 }
