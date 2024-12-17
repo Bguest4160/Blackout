@@ -18,6 +18,7 @@ public class MovementScript : MonoBehaviour
     public float jumpHeight = 6f;
     float velocityY;
     public bool isGrounded;
+    bool isWaiting;
 
     float cameraCap;
     float cameraCap2;
@@ -93,5 +94,11 @@ public class MovementScript : MonoBehaviour
     public void ChangeStats()
     {
         jumpHeight = 50;
+        Invoke("ResetStats", 5f);
+    }
+
+    public void ResetStats()
+    {
+        jumpHeight = 6;
     }
 }

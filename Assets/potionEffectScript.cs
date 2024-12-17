@@ -19,6 +19,7 @@ public class potionEffectScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        
         Collider[] colliders = Physics.OverlapSphere(transform.position, 3f,players);
 
         foreach (Collider c in colliders)

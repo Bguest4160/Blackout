@@ -9,6 +9,7 @@ public class PlayerPickupThrow : MonoBehaviour
     [SerializeField] private LayerMask pickUpLayerMask;
     [SerializeField] private Transform objectGrabPointTranform;
     private ObjectGrabable objectGrabable;
+    public bool activateCollider = false;
   
     private void Update()
     {
@@ -39,6 +40,7 @@ public class PlayerPickupThrow : MonoBehaviour
             objectGrabable.Throw();
             objectGrabable.Throw();
             objectGrabable = null;
+            activateCollider = true;
             
         }
     }
