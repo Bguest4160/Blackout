@@ -8,21 +8,31 @@ public class PlayerBehavior : MonoBehaviour {
     private static bool _initCooldownUsed = false;
     private static float _cubeCooldown = 0.2f;
     private static float _lastHealthEventTime = 0f;
+    private static bool _hitboxActive = false;
    
-    public GameObject frontHealthSliderObject;
-    public GameObject backHealthSliderObject;
-    public GameObject backHealthSliderFillObject;
+    public GameObject frontHealthSlider;
+    public GameObject backHealthSlider;
+    public GameObject backHealthSliderFill;
     public UnitBar PlayerHealth;
-
-    GameObject _rightFist;
-    GameObject _leftFist;
+    
+    [Space(15)] 
+    
+    public GameObject rightFistHitbox;
+    public GameObject leftFistHitbox;
+    
+    private Renderer rightHitboxRenderer;
+    private Renderer leftHitboxRenderer;
+    private Collider rightFistCollider;
+    private Collider leftFistCollider;
     
     // Methods
     void Start() {
-        PlayerHealth = new UnitBar(1000, 1000, frontHealthSliderObject, backHealthSliderObject, backHealthSliderFillObject);
+        PlayerHealth = new UnitBar(1000, 1000, frontHealthSlider, backHealthSlider, backHealthSliderFill);
         
-        Collider _rightFistCollider = _rightFist.GetComponent<Collider>();
-        Collider _leftFistCollider = _leftFist.GetComponent<Collider>();
+        rightHitboxRenderer = rightFistHitbox.GetComponent<Renderer>();
+        leftHitboxRenderer = leftFistHitbox.GetComponent<Renderer>();
+        rightFistCollider= rightFistHitbox.GetComponent<Collider>();
+        leftFistCollider = leftFistHitbox.GetComponent<Collider>();
     }
 
     void Update()
@@ -33,8 +43,12 @@ public class PlayerBehavior : MonoBehaviour {
         if (Input.GetKeyDown("h")) {
             PlayerHeal(100);
         }
+        if (Input.GetKeyDown("k")) {
+            _hitboxActive = !_hitboxActive;
+        }
         
         PlayerHealth.ChipHealth();
+        HitBoxController();
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit) {
@@ -43,6 +57,21 @@ public class PlayerBehavior : MonoBehaviour {
                 PlayerTakeDamage(20);
                 Debug.Log("Health: " + PlayerHealth.Value);
             }
+        }
+    }
+
+    void HitBoxController() {
+        if (_hitboxActive) {
+            rightFistCollider.enabled = true;
+            leftFistCollider.enabled = true;
+            rightHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0.352941f);
+            leftHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0.352941f);
+        }
+        else {
+            rightFistCollider.enabled = false;
+            leftFistCollider.enabled = false;
+            rightHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0);
+            leftHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0);
         }
     }
 

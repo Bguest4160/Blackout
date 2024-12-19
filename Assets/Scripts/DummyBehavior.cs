@@ -9,14 +9,14 @@ public class DummyBehavior : MonoBehaviour {
     private static float _lastHealthEventTime = 0f;
     private static float _damageCooldown = 2f;
    
-    public GameObject frontHealthSliderObject;
-    public GameObject backHealthSliderObject;
-    public GameObject backHealthSliderFillObject;
+    public GameObject frontHealthSlider;
+    public GameObject backHealthSlider;
+    public GameObject backHealthSliderFill;
     public UnitBar DummyHealth;
     
     // Methods
     void Start() {
-        DummyHealth = new UnitBar(1000, 1000, frontHealthSliderObject, backHealthSliderObject, backHealthSliderFillObject);
+        DummyHealth = new UnitBar(1000, 1000, frontHealthSlider, backHealthSlider, backHealthSliderFill);
     }
 
     void Update()
@@ -34,7 +34,7 @@ public class DummyBehavior : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
         if (CooldownCheck(_damageCooldown)) {
             if (other.gameObject.CompareTag("IsDamageTrigger")) {
-                DummyTakeDamage(200);
+                DummyTakeDamage(100);
             }
         }
     }
