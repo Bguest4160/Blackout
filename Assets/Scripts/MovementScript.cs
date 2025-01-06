@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class MovementScript : MonoBehaviour
+public class MovementScript : NetworkBehaviour 
 {
     [SerializeField] Transform playerCamera;
     [SerializeField] Transform otherCamera;
@@ -38,6 +39,12 @@ public class MovementScript : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = true;
         }
+
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        if (!IsOwner) Destroy(this);
     }
 
     void Update()
