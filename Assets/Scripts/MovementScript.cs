@@ -28,7 +28,7 @@ public class MovementScript : NetworkBehaviour
     CharacterController controller;
     Vector2 currentDir;
     Vector2 currentDirVelocity;
-    Vector3 velocity;
+    //Vector3 velocity;
 
     void Start()
     {
