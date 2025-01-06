@@ -2509,6 +2509,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 74078499623404267, guid: 9790383d97594f049aecba8cf470e3b7, type: 3}
   m_PrefabInstance: {fileID: 211025331}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &1458526306 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 74078499623404260, guid: 9790383d97594f049aecba8cf470e3b7, type: 3}
+  m_PrefabInstance: {fileID: 211025331}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1535772012
 GameObject:
   m_ObjectHideFlags: 0
@@ -3393,7 +3398,7 @@ Transform:
   m_GameObject: {fileID: 2016548848}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.663, y: 1.123, z: 1.2391894}
+  m_LocalPosition: {x: -5.663, y: 0.23, z: 1.2391894}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3459,6 +3464,9 @@ MonoBehaviour:
     m_Bits: 64
   particleEffect: {fileID: 1458526301}
   potion: {fileID: 2016548848}
+  ParticleSystem: {fileID: 1458526306}
+  potionMesh: {fileID: 2016548850}
+  potionCollider: {fileID: 2016548849}
 --- !u!1 &2019175009
 GameObject:
   m_ObjectHideFlags: 0
