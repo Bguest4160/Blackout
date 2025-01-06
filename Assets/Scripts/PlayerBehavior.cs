@@ -19,6 +19,7 @@ public class PlayerBehavior : MonoBehaviour {
     
     public GameObject rightFistHitbox;
     public GameObject leftFistHitbox;
+    public Animator playerAnimator;
     
     private Renderer rightHitboxRenderer;
     private Renderer leftHitboxRenderer;
@@ -44,11 +45,19 @@ public class PlayerBehavior : MonoBehaviour {
             PlayerHeal(100);
         }
         if (Input.GetKeyDown("k")) {
-            _hitboxActive = !_hitboxActive;
+            // _hitboxActive = !_hitboxActive;
+            HitBoxController();
+        }
+        if (playerAnimator.GetBool("punch")) {
+            _hitboxActive = true;
+            HitBoxController();
+        }
+        else {
+            _hitboxActive = false;
+            HitBoxController();
         }
         
         PlayerHealth.ChipHealth();
-        HitBoxController();
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit) {

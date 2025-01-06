@@ -33,11 +33,13 @@ public class DummyBehavior : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
         if (CooldownCheck(_damageCooldown)) {
-            if (other.gameObject.CompareTag("IsDamageTrigger")) {
+            if (other.enabled && other.gameObject.CompareTag("IsDamageTrigger")) {
+                Debug.Log("gangnam");
                 DummyTakeDamage(100);
             }
         }
     }
+    
     bool CooldownCheck(float cooldown) {
         if (Time.time - cooldown <= 0 && _initCooldownUsed == false) {
             _initCooldownUsed = true;
