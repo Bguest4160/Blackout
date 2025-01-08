@@ -21,10 +21,10 @@ public class DummyBehavior : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown("t")) {
+        if (Input.GetKeyDown(KeyCode.T)) {
             DummyTakeDamage(200);
         }
-        if (Input.GetKeyDown("y")) {
+        if (Input.GetKeyDown(KeyCode.Y)) {
             PlayerHeal(100);
         }
         

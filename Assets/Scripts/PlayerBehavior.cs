@@ -8,7 +8,7 @@ public class PlayerBehavior : MonoBehaviour {
     private static bool _initCooldownUsed = false;
     private static float _cubeCooldown = 0.2f;
     private static float _lastHealthEventTime = 0f;
-    private static bool _hitboxActive = false;
+    private static bool _punchHitboxActive = false;
    
     public GameObject frontHealthSlider;
     public GameObject backHealthSlider;
@@ -19,7 +19,7 @@ public class PlayerBehavior : MonoBehaviour {
     
     public GameObject rightFistHitbox;
     public GameObject leftFistHitbox;
-    public Animator playerAnimator;
+    private Animator playerAnimator;
     
     private Renderer rightHitboxRenderer;
     private Renderer leftHitboxRenderer;
@@ -30,6 +30,8 @@ public class PlayerBehavior : MonoBehaviour {
     void Start() {
         PlayerHealth = new UnitBar(1000, 1000, frontHealthSlider, backHealthSlider, backHealthSliderFill);
         
+        playerAnimator = GetComponent<Animator>();
+        
         rightHitboxRenderer = rightFistHitbox.GetComponent<Renderer>();
         leftHitboxRenderer = leftFistHitbox.GetComponent<Renderer>();
         rightFistCollider= rightFistHitbox.GetComponent<Collider>();
@@ -38,22 +40,18 @@ public class PlayerBehavior : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown("g")) {
+        if (Input.GetKeyDown(KeyCode.G)) {
             PlayerTakeDamage(200);
         }
-        if (Input.GetKeyDown("h")) {
+        if (Input.GetKeyDown(KeyCode.H)) {
             PlayerHeal(100);
         }
-        if (Input.GetKeyDown("k")) {
-            // _hitboxActive = !_hitboxActive;
-            HitBoxController();
-        }
-        if (playerAnimator.GetBool("punch")) {
-            _hitboxActive = true;
-            HitBoxController();
+        if (Input.GetKeyDown(KeyCode.Mouse0)) {
+            _punchHitboxActive = true;
+            Invoke("HitBoxController", 3f);
         }
         else {
-            _hitboxActive = false;
+            _punchHitboxActive = false;
             HitBoxController();
         }
         
@@ -70,7 +68,7 @@ public class PlayerBehavior : MonoBehaviour {
     }
 
     void HitBoxController() {
-        if (_hitboxActive) {
+        if (_punchHitboxActive) {
             rightFistCollider.enabled = true;
             leftFistCollider.enabled = true;
             rightHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0.352941f);
@@ -91,6 +89,10 @@ public class PlayerBehavior : MonoBehaviour {
         }
         
         return (Time.time - _lastHealthEventTime >= cooldown);
+    }
+
+    bool IsAnimationPlaying(string animationName) {
+        return playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationName);
     }
 
     private void PlayerTakeDamage(int amount) {
