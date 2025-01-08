@@ -19,6 +19,7 @@ public class MovementScript : NetworkBehaviour
     public float jumpHeight = 6f;
     float velocityY;
     public bool isGrounded;
+    bool isWaiting;
 
     float cameraCap;
     float cameraCap2;
@@ -99,6 +100,12 @@ public class MovementScript : NetworkBehaviour
     }
     public void ChangeStats()
     {
-        jumpHeight = 50;
+        Speed = 50f;
+        Invoke("ResetStats", 5f);
+    }
+
+    public void ResetStats()
+    {
+        Speed = 6f;
     }
 }

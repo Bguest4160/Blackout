@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 
-public class potionEffectScript : MonoBehaviour
+public class ObjectExplode : MonoBehaviour
 {
-    [SerializeField] LayerMask players;
     [SerializeField] GameObject particleEffect;
-    [SerializeField] GameObject potion;
+    [SerializeField] GameObject anyObject;
     public ParticleSystem ParticleSystem;
     bool collided = false;
-    public MeshRenderer potionMesh;
-    public CapsuleCollider potionCollider;
+    public MeshRenderer objectMesh;
+    public BoxCollider objectCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -21,15 +20,15 @@ public class potionEffectScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
+    {
         if (ParticleSystem.isPlaying == true && collided == true)
         {
-            potionMesh.enabled = false;
-            potionCollider.enabled = false;
+            objectMesh.enabled = false;
+            objectCollider.enabled = false;
         }
         if (ParticleSystem.isPlaying == false && collided == true)
         {
-            potion.SetActive(false);
+            anyObject.SetActive(false);
         }
     }
 
@@ -39,16 +38,6 @@ public class potionEffectScript : MonoBehaviour
         if (GameManager.activateCollider == true)
         {
             particleEffect.SetActive(true);
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 3f, players);
-            //particleEffect.SetActive(false);
-
-            foreach (Collider c in colliders)
-            {
-                if (c.GetComponent<MovementScript>())
-                {
-                    c.GetComponent<MovementScript>().ChangeStats();
-                }
-            }
             collided = true;
         }
     }
