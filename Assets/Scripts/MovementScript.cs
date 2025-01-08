@@ -93,12 +93,12 @@ public class MovementScript : MonoBehaviour
     }
     public void ChangeStats()
     {
-        jumpHeight = 50;
+        Speed = 50f;
         Invoke("ResetStats", 5f);
     }
 
     public void ResetStats()
     {
-        jumpHeight = 6;
+        Speed = 6f;
     }
 }
