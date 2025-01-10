@@ -46,14 +46,9 @@ public class PlayerBehavior : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.H)) {
             PlayerHeal(100);
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0)) {
-            _punchHitboxActive = true;
-            Invoke("HitBoxController", 3f);
-        }
-        else {
-            _punchHitboxActive = false;
-            HitBoxController();
-        }
+        // if (Input.GetKeyDown(KeyCode.Mouse0)) {
+        //     StartCoroutine(PunchController());
+        // }
         
         PlayerHealth.ChipHealth();
     }
@@ -66,36 +61,56 @@ public class PlayerBehavior : MonoBehaviour {
             }
         }
     }
-
-    void HitBoxController() {
-        if (_punchHitboxActive) {
-            rightFistCollider.enabled = true;
-            leftFistCollider.enabled = true;
-            rightHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0.352941f);
-            leftHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0.352941f);
+    
+    public void PunchController(string hand) {
+        if (hand == "Left") {
+            Debug.Log("Left punch triggered");
         }
-        else {
-            rightFistCollider.enabled = false;
-            leftFistCollider.enabled = false;
-            rightHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0);
-            leftHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0);
+        if (hand == "Right") {
+            Debug.Log("Right punch triggered");
         }
     }
+
+    // IEnumerator PunchController() {
+    //     bool leftPunch = true;
+    //     
+    //     while (Input.GetKey(KeyCode.Mouse0)) {
+    //         if (leftPunch) {
+    //             yield return new WaitForSeconds(0.45f);
+    //     
+    //             leftFistCollider.enabled = true;
+    //             leftHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0.352941f);
+    //
+    //             yield return new WaitForSeconds(0.4f);
+    //
+    //             leftFistCollider.enabled = false;
+    //             leftHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0);
+    //             leftPunch = false;
+    //         }
+    //         else {
+    //             yield return new WaitForSeconds(0.45f);
+    //     
+    //             rightFistCollider.enabled = true;
+    //             rightHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0.352941f);
+    //
+    //             yield return new WaitForSeconds(0.4f);
+    //     
+    //             rightFistCollider.enabled = false;
+    //             rightHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0);
+    //             leftPunch = true;
+    //         }
+    //     }
+    // }
 
     bool CooldownCheck(float cooldown) {
         if (Time.time - cooldown <= 0 && _initCooldownUsed == false) {
             _initCooldownUsed = true;
             return true;
         }
-        
         return (Time.time - _lastHealthEventTime >= cooldown);
     }
 
-    bool IsAnimationPlaying(string animationName) {
-        return playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationName);
-    }
-
-    private void PlayerTakeDamage(int amount) {
+    void PlayerTakeDamage(int amount) {
         if (PlayerHealth.Value > 0) {
             PlayerHealth.Subtract(amount);
             _lastHealthEventTime = Time.time;
@@ -103,7 +118,7 @@ public class PlayerBehavior : MonoBehaviour {
         }
     }
 
-    private void PlayerHeal(int amount) {
+    void PlayerHeal(int amount) {
         if (PlayerHealth.Value > 0 && PlayerHealth.Value < PlayerHealth.MaxValue) {
             PlayerHealth.Add(amount);
             _lastHealthEventTime = Time.time;

@@ -2140,7 +2140,6 @@ MonoBehaviour:
   backHealthSliderFill: {fileID: 1105949849}
   rightFistHitbox: {fileID: 1418737155}
   leftFistHitbox: {fileID: 2012655838}
-  playerAnimator: {fileID: 1289412293}
 --- !u!114 &1289412286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2216,11 +2215,6 @@ CharacterController:
 --- !u!4 &1289412292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1438546959266459337, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
-  m_PrefabInstance: {fileID: 1275836104}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1289412293 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4540229000190281644, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
   m_PrefabInstance: {fileID: 1275836104}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1292386006
