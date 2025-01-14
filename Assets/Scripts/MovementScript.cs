@@ -98,14 +98,52 @@ public class MovementScript : NetworkBehaviour
             velocityY = -8f;
         }
     }
-    public void ChangeStats()
+    public void ChangeSpeedStats()
     {
         Speed = 50f;
-        Invoke("ResetStats", 5f);
+        Invoke("ResetSpeedStats", 5f);
     }
 
-    public void ResetStats()
+    public void ChangeJumpStats()
+    {
+        jumpHeight = 50f;
+        Invoke("ResetJumpStats", 5f);
+    }
+
+    public void ResetSpeedStats()
     {
         Speed = 6f;
+    }
+
+    public void ResetJumpStats()
+    {
+        jumpHeight = 6f;
+    }
+
+    public void ChangeBigStats()
+    {
+        transform.localScale = new Vector3(2f, 2f, 2f);
+        Invoke("ResetBigStats", 10f);
+    }
+
+    public void ResetBigStats()
+    {
+        transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    public void ChangeSmallStats()
+    {
+        transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        Invoke("ResetSmallStats", 10f);
+    }
+
+    public void ResetSmallStats()
+    {
+        transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+  
+    public void ChangeHealStats()
+    {
+        
     }
 }

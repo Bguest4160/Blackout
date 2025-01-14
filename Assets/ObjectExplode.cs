@@ -5,31 +5,20 @@ using System.Threading;
 
 public class ObjectExplode : MonoBehaviour
 {
-    [SerializeField] GameObject particleEffect;
-    [SerializeField] GameObject anyObject;
-    public ParticleSystem ParticleSystem;
-    bool collided = false;
-    public MeshRenderer objectMesh;
-    public BoxCollider objectCollider;
+    [SerializeField] GameObject object1;
+    public GameObject particle;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        particleEffect.SetActive(false);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (ParticleSystem.isPlaying == true && collided == true)
-        {
-            objectMesh.enabled = false;
-            objectCollider.enabled = false;
-        }
-        if (ParticleSystem.isPlaying == false && collided == true)
-        {
-            anyObject.SetActive(false);
-        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -37,8 +26,16 @@ public class ObjectExplode : MonoBehaviour
         Debug.Log(GameManager.activateCollider);
         if (GameManager.activateCollider == true)
         {
-            particleEffect.SetActive(true);
-            collided = true;
+            //particleEffect.SetActive(true);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 3f);
+            //particleEffect.SetActive(false);
+
+            Instantiate(particle, transform.position, Quaternion.Euler(90, 0, 0));
+            object1.SetActive(false);
+            ParticleSystem parts = particle.GetComponent<ParticleSystem>();
+            float totalDuration = parts.duration + parts.startLifetime;
+            Destroy(particle, totalDuration);
+
         }
     }
 }
