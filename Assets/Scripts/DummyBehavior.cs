@@ -7,7 +7,7 @@ public class DummyBehavior : MonoBehaviour {
     // Fields
     private static bool _initCooldownUsed = false;
     private static float _lastHealthEventTime = 0f;
-    private static float _damageCooldown = 2f;
+    private static float _damageCooldown = 0.5f;
    
     public GameObject frontHealthSlider;
     public GameObject backHealthSlider;
@@ -34,8 +34,7 @@ public class DummyBehavior : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
         if (CooldownCheck(_damageCooldown)) {
             if (other.enabled && other.gameObject.CompareTag("IsDamageTrigger")) {
-                Debug.Log("gangnam");
-                DummyTakeDamage(100);
+                DummyTakeDamage(250);
             }
         }
     }
@@ -53,7 +52,11 @@ public class DummyBehavior : MonoBehaviour {
         if (DummyHealth.Value > 0) {
             DummyHealth.Subtract(amount);
             _lastHealthEventTime = Time.time;
-            // Debug.Log("lastHealthEventTime: " + _lastHealthEventTime);
+
+            if (DummyHealth.Value <= 0) {
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                GetComponent<Rigidbody>().AddForce(Vector3.up * 13, ForceMode.Impulse);
+            }
         }
     }
 
@@ -61,7 +64,6 @@ public class DummyBehavior : MonoBehaviour {
         if (DummyHealth.Value > 0 && DummyHealth.Value < DummyHealth.MaxValue) {
             DummyHealth.Add(amount);
             _lastHealthEventTime = Time.time;
-            // Debug.Log("lastHealthEventTime: " + _lastHealthEventTime);
         }
     }
 }

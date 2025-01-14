@@ -8,7 +8,7 @@ public class PlayerBehavior : MonoBehaviour {
     private static bool _initCooldownUsed = false;
     private static float _cubeCooldown = 0.2f;
     private static float _lastHealthEventTime = 0f;
-    private static bool _punchHitboxActive = false;
+    private static bool _hitboxViewerActive = false;
    
     public GameObject frontHealthSlider;
     public GameObject backHealthSlider;
@@ -46,9 +46,18 @@ public class PlayerBehavior : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.H)) {
             PlayerHeal(100);
         }
-        // if (Input.GetKeyDown(KeyCode.Mouse0)) {
-        //     StartCoroutine(PunchController());
-        // }
+        if (Input.GetKeyDown(KeyCode.K)) {
+            _hitboxViewerActive = !_hitboxViewerActive;
+
+            if (_hitboxViewerActive) {
+                leftHitboxRenderer.material.color = new Color(0.8f, 0.8f, 0.8f, 0.352941f);
+                rightHitboxRenderer.material.color = new Color(0.8f, 0.8f, 0.8f, 0.352941f);
+            }
+            else {
+                leftHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0);
+                rightHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0);
+            }
+        }
         
         PlayerHealth.ChipHealth();
     }
@@ -62,45 +71,29 @@ public class PlayerBehavior : MonoBehaviour {
         }
     }
     
-    public void PunchController(string hand) {
-        if (hand == "Left") {
-            Debug.Log("Left punch triggered");
+    IEnumerator RightHandPunch() {
+        rightFistCollider.enabled = true;
+        if (_hitboxViewerActive) {
+            rightHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0.352941f);
         }
-        if (hand == "Right") {
-            Debug.Log("Right punch triggered");
+        yield return new WaitForSeconds(0.2f);
+        rightFistCollider.enabled = false;
+        if (_hitboxViewerActive) {
+            rightHitboxRenderer.material.color = new Color(0.8f, 0.8f, 0.8f, 0.352941f);
         }
     }
 
-    // IEnumerator PunchController() {
-    //     bool leftPunch = true;
-    //     
-    //     while (Input.GetKey(KeyCode.Mouse0)) {
-    //         if (leftPunch) {
-    //             yield return new WaitForSeconds(0.45f);
-    //     
-    //             leftFistCollider.enabled = true;
-    //             leftHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0.352941f);
-    //
-    //             yield return new WaitForSeconds(0.4f);
-    //
-    //             leftFistCollider.enabled = false;
-    //             leftHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0);
-    //             leftPunch = false;
-    //         }
-    //         else {
-    //             yield return new WaitForSeconds(0.45f);
-    //     
-    //             rightFistCollider.enabled = true;
-    //             rightHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0.352941f);
-    //
-    //             yield return new WaitForSeconds(0.4f);
-    //     
-    //             rightFistCollider.enabled = false;
-    //             rightHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0);
-    //             leftPunch = true;
-    //         }
-    //     }
-    // }
+    IEnumerator LeftHandPunch() {
+        leftFistCollider.enabled = true;
+        if (_hitboxViewerActive) {
+            leftHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0.352941f);
+        }
+        yield return new WaitForSeconds(0.2f);
+        leftFistCollider.enabled = false;
+        if (_hitboxViewerActive) {
+            leftHitboxRenderer.material.color = new Color(0.8f, 0.8f, 0.8f, 0.352941f);
+        }
+    }
 
     bool CooldownCheck(float cooldown) {
         if (Time.time - cooldown <= 0 && _initCooldownUsed == false) {
@@ -110,7 +103,7 @@ public class PlayerBehavior : MonoBehaviour {
         return (Time.time - _lastHealthEventTime >= cooldown);
     }
 
-    void PlayerTakeDamage(int amount) {
+    public void PlayerTakeDamage(int amount) {
         if (PlayerHealth.Value > 0) {
             PlayerHealth.Subtract(amount);
             _lastHealthEventTime = Time.time;
@@ -118,7 +111,7 @@ public class PlayerBehavior : MonoBehaviour {
         }
     }
 
-    void PlayerHeal(int amount) {
+    public void PlayerHeal(int amount) {
         if (PlayerHealth.Value > 0 && PlayerHealth.Value < PlayerHealth.MaxValue) {
             PlayerHealth.Add(amount);
             _lastHealthEventTime = Time.time;
