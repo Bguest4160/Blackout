@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CharacterCreationScreen.unity
     guid: 5a4ea8c1455124a60b21b91cf8e936e7
+  - enabled: 1
+    path: Assets/Scenes/Beckett stole this scene.unity
+    guid: b3fe10447c82c4035bf7259e2cb53d2f
   m_configObjects: {}

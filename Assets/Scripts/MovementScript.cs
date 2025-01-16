@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class MovementScript : MonoBehaviour
+public class MovementScript : NetworkBehaviour 
 {
     [SerializeField] Transform playerCamera;
     [SerializeField] Transform otherCamera;
@@ -18,6 +19,7 @@ public class MovementScript : MonoBehaviour
     public float jumpHeight = 6f;
     float velocityY;
     public bool isGrounded;
+    bool isWaiting;
 
     float cameraCap;
     float cameraCap2;
@@ -38,6 +40,12 @@ public class MovementScript : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = true;
         }
+
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        if (!IsOwner) Destroy(this);
     }
 
     void Update()
@@ -89,5 +97,53 @@ public class MovementScript : MonoBehaviour
         {
             velocityY = -8f;
         }
+    }
+    public void ChangeSpeedStats()
+    {
+        Speed = 50f;
+        Invoke("ResetSpeedStats", 5f);
+    }
+
+    public void ChangeJumpStats()
+    {
+        jumpHeight = 50f;
+        Invoke("ResetJumpStats", 5f);
+    }
+
+    public void ResetSpeedStats()
+    {
+        Speed = 6f;
+    }
+
+    public void ResetJumpStats()
+    {
+        jumpHeight = 6f;
+    }
+
+    public void ChangeBigStats()
+    {
+        transform.localScale = new Vector3(2f, 2f, 2f);
+        Invoke("ResetBigStats", 10f);
+    }
+
+    public void ResetBigStats()
+    {
+        transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    public void ChangeSmallStats()
+    {
+        transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        Invoke("ResetSmallStats", 10f);
+    }
+
+    public void ResetSmallStats()
+    {
+        transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+  
+    public void ChangeHealStats()
+    {
+        
     }
 }
