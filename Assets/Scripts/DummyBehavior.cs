@@ -34,7 +34,7 @@ public class DummyBehavior : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
         if (CooldownCheck(_damageCooldown)) {
             if (other.enabled && other.gameObject.CompareTag("IsDamageTrigger")) {
-                DummyTakeDamage(250);
+                DummyTakeDamage(200);
             }
         }
     }
@@ -55,6 +55,7 @@ public class DummyBehavior : MonoBehaviour {
 
             if (DummyHealth.Value <= 0) {
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                GetComponent<Rigidbody>().AddForce(Vector3.back * 20, ForceMode.Impulse);
                 GetComponent<Rigidbody>().AddForce(Vector3.up * 13, ForceMode.Impulse);
             }
         }
