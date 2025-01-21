@@ -49,6 +49,7 @@ public class MovementScript : NetworkBehaviour
 
     void Update()
     {
+        if (!IsOwner) return;
         UpdateMouse();
         UpdateMove();
     }
