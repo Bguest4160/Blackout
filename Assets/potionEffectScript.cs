@@ -6,31 +6,21 @@ using System.Threading;
 public class potionEffectScript : MonoBehaviour
 {
     [SerializeField] LayerMask players;
-    [SerializeField] GameObject particleEffect;
     [SerializeField] GameObject potion;
-    public ParticleSystem ParticleSystem;
-    bool collided = false;
-    public MeshRenderer potionMesh;
-    public CapsuleCollider potionCollider;
+    public string potName;
+    public GameObject particle;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        particleEffect.SetActive(false);
+
     }
 
     // Update is called once per frame
     void Update()
     { 
-        if (ParticleSystem.isPlaying == true && collided == true)
-        {
-            potionMesh.enabled = false;
-            potionCollider.enabled = false;
-        }
-        if (ParticleSystem.isPlaying == false && collided == true)
-        {
-            potion.SetActive(false);
-        }
+       
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -38,18 +28,44 @@ public class potionEffectScript : MonoBehaviour
         Debug.Log(GameManager.activateCollider);
         if (GameManager.activateCollider == true)
         {
-            particleEffect.SetActive(true);
+            //particleEffect.SetActive(true);
             Collider[] colliders = Physics.OverlapSphere(transform.position, 3f, players);
             //particleEffect.SetActive(false);
+
+            Instantiate(particle, transform.position, Quaternion.Euler(90,0,0));
+            potion.SetActive(false);
+            ParticleSystem parts = particle.GetComponent<ParticleSystem>();
+            float totalDuration = parts.duration + parts.startLifetime;
+            Destroy(particle, totalDuration);
 
             foreach (Collider c in colliders)
             {
                 if (c.GetComponent<MovementScript>())
                 {
-                    c.GetComponent<MovementScript>().ChangeStats();
+                    if (potName.Equals("speed"))
+                    {
+                        c.GetComponent<MovementScript>().ChangeSpeedStats();
+                    }
+                    else if (potName.Equals("heal"))
+                    {
+                        c.GetComponent<MovementScript>().ChangeHealStats();
+                    }
+
+                    else if (potName.Equals("Jump"))
+                    {
+                        c.GetComponent<MovementScript>().ChangeJumpStats();
+                    }
+
+                    else if (potName.Equals("Big"))
+                    {
+                        c.GetComponent<MovementScript>().ChangeBigStats();
+                    }
+                    else if (potName.Equals("Small"))
+                    {
+                        c.GetComponent<MovementScript>().ChangeSmallStats();
+                    }
                 }
             }
-            collided = true;
         }
     }
 }
