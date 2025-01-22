@@ -79,16 +79,14 @@ public class UnitBar
         _delayTimer = 0f;
         _lerpTimer = 0f;
         
-        if (_currentValue > 0) {
-            _currentValue = Mathf.Clamp(_currentValue + amount, 0, _currentMaxValue);
+        _currentValue = Mathf.Clamp(_currentValue + amount, 0, _currentMaxValue);
             
-            if (_backBar != null) {
-                _backBar.value = _currentValue;
-                _backBarImage.color = new Color(0.560784f, 1f, 0.427450f);
-            }
-            else {
-                _bar.value = _currentValue;
-            }
+        if (_backBar != null) {
+            _backBar.value = _currentValue;
+            _backBarImage.color = new Color(0.541176f, 0.835294f, 0.541176f);
+        }
+        else {
+            _bar.value = _currentValue;
         }
     }
 
