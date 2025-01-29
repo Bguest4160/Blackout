@@ -1891,9 +1891,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592ce67fa1bd242a1a23bad5f881a540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontHealthSliderObject: {fileID: 504572792}
-  backHealthSliderObject: {fileID: 1779725362}
-  backHealthSliderFillObject: {fileID: 1631497244}
+  frontHealthSlider: {fileID: 504572792}
+  backHealthSlider: {fileID: 1779725362}
+  backHealthSliderFill: {fileID: 1631497244}
+  rightFistHitbox: {fileID: 0}
+  leftFistHitbox: {fileID: 0}
 --- !u!114 &1088481333
 MonoBehaviour:
   m_ObjectHideFlags: 0
