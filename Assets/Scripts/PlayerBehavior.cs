@@ -6,7 +6,8 @@ using UnityEngine.Serialization;
 public class PlayerBehavior : MonoBehaviour {
     // Fields
     private static bool _initCooldownUsed = false;
-    private static float _cubeCooldown = 0.2f;
+    private static float _cubeDamageCooldown = 0.2f;
+    private static float _damageCooldown = 0.5f;
     private static float _lastHealthEventTime = 0f;
     private static bool _hitboxViewerActive = false;
    
@@ -64,9 +65,17 @@ public class PlayerBehavior : MonoBehaviour {
 
     void OnControllerColliderHit(ControllerColliderHit hit) {
         if (hit.gameObject.name == "Damage Cube") {
-            if (CooldownCheck(_cubeCooldown)) {
+            if (CooldownCheck(_cubeDamageCooldown)) {
                 PlayerTakeDamage(20);
                 Debug.Log("Health: " + PlayerHealth.Value);
+            }
+        }
+    }
+    
+    void OnTriggerEnter(Collider other) {
+        if (CooldownCheck(_damageCooldown)) {
+            if (other.gameObject.CompareTag("IsDamageTrigger")) {
+                PlayerTakeDamage(100);
             }
         }
     }

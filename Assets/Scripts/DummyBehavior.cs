@@ -31,10 +31,14 @@ public class DummyBehavior : MonoBehaviour {
         DummyHealth.ChipHealth();
     }
 
+    void OnCollisionEnter(Collision collision) { 
+        Debug.Log(collision.gameObject.name);
+    }
+
     void OnTriggerEnter(Collider other) {
         if (CooldownCheck(_damageCooldown)) {
-            if (other.enabled && other.gameObject.CompareTag("IsDamageTrigger")) {
-                DummyTakeDamage(200);
+            if (other.gameObject.CompareTag("IsDamageTrigger")) {
+                DummyTakeDamage(100);
             }
         }
     }

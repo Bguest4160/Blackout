@@ -43,8 +43,9 @@ public class PlayerPickupThrow : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             
+               objectGrabable.Throw();
             objectGrabable.Throw();
-            objectGrabable.Throw();
+            
             objectGrabable = null;
             GameManager.activateCollider = true;
             
