@@ -31,8 +31,13 @@ public class DummyBehavior : MonoBehaviour {
         DummyHealth.ChipHealth();
     }
 
-    void OnCollisionEnter(Collision collision) { 
-        Debug.Log(collision.gameObject.name);
+    void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.TryGetComponent(out ObjectGrabable projectile)) {
+            int velocityBonus = (int)(Mathf.Round(collision.relativeVelocity.magnitude) * 0.1);
+        
+            DummyTakeDamage((int)projectile.GetDamageForce() + velocityBonus);
+            Debug.Log("Dummy damage taken: " + ((int)projectile.GetDamageForce() + velocityBonus));
+        }
     }
 
     void OnTriggerEnter(Collider other) {

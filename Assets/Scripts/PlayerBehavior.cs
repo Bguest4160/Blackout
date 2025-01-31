@@ -20,7 +20,6 @@ public class PlayerBehavior : MonoBehaviour {
     
     public GameObject rightFistHitbox;
     public GameObject leftFistHitbox;
-    private Animator playerAnimator;
     
     private Renderer rightHitboxRenderer;
     private Renderer leftHitboxRenderer;
@@ -31,8 +30,6 @@ public class PlayerBehavior : MonoBehaviour {
     void Start() {
         PlayerHealth = new UnitBar(1000, 1000, frontHealthSlider, backHealthSlider, backHealthSliderFill);
         
-        playerAnimator = GetComponent<Animator>();
-        
         rightHitboxRenderer = rightFistHitbox.GetComponent<Renderer>();
         leftHitboxRenderer = leftFistHitbox.GetComponent<Renderer>();
         rightFistCollider= rightFistHitbox.GetComponent<Collider>();
@@ -41,6 +38,9 @@ public class PlayerBehavior : MonoBehaviour {
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.V)) {
+            Debug.Log("Health: " + PlayerHealth.Value);
+        }
         if (Input.GetKeyDown(KeyCode.G)) {
             PlayerTakeDamage(200);
         }
@@ -67,10 +67,11 @@ public class PlayerBehavior : MonoBehaviour {
         if (hit.gameObject.name == "Damage Cube") {
             if (CooldownCheck(_cubeDamageCooldown)) {
                 PlayerTakeDamage(20);
-                Debug.Log("Health: " + PlayerHealth.Value);
             }
         }
     }
+    
+    
     
     void OnTriggerEnter(Collider other) {
         if (CooldownCheck(_damageCooldown)) {

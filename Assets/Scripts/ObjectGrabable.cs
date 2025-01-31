@@ -5,16 +5,24 @@ using UnityEngine;
 public class ObjectGrabable : MonoBehaviour
 {
     public float throwForce = 10f;
-    private Rigidbody objectRigidbody;
-    private Transform objectGrabPointTransform;
+    public float damageForce = 75f;
+    
+    [Space(15)] 
+    
     public Transform playerTransform;
     public Transform playerCamera;
+    private Rigidbody objectRigidbody;
+    private Transform objectGrabPointTransform;
     
     private void Awake()
     {
         objectRigidbody = GetComponent<Rigidbody>();
-    }   
+    }
 
+
+    public float GetDamageForce() {
+        return damageForce;
+    }
 
     public void Grab(Transform objectGrabPointTransform)
     {

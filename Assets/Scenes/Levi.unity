@@ -435,6 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 1289412292}
   playerCamera: {fileID: 2132468432}
 --- !u!54 &325577770
@@ -912,6 +913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 1289412292}
   playerCamera: {fileID: 2132468432}
 --- !u!54 &498687069
@@ -1111,6 +1113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 1289412292}
   playerCamera: {fileID: 2132468432}
 --- !u!54 &765142768
@@ -1291,6 +1294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 1289412292}
   playerCamera: {fileID: 2132468432}
 --- !u!54 &867895329
@@ -2073,6 +2077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 1289412292}
   playerCamera: {fileID: 2132468432}
 --- !u!54 &1175139778
@@ -3072,6 +3077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 1289412292}
   playerCamera: {fileID: 2132468432}
 --- !u!54 &1344940993
