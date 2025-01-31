@@ -12,7 +12,7 @@ public class PlayerPickupThrow : MonoBehaviour
 
     void Start()
     {
-        GameManager.activateCollider = false;
+        
     }
 
 
@@ -33,6 +33,7 @@ public class PlayerPickupThrow : MonoBehaviour
                     {
                         
                         objectGrabable.Grab(objectGrabPointTranform);
+                        Debug.Log("holding");
                        
                     }
                     
@@ -46,14 +47,10 @@ public class PlayerPickupThrow : MonoBehaviour
             objectGrabable.Throw();
             objectGrabable.Throw();
             objectGrabable = null;
-            GameManager.activateCollider = true;
+
             
         }
     }
 
  
-}
-public class GameManager : MonoBehaviour
-{
-    public static bool activateCollider;
 }
