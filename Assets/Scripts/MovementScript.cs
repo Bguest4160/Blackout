@@ -93,7 +93,6 @@ public class MovementScript : NetworkBehaviour
         {
             velocityY = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
-
         if (isGrounded! && controller.velocity.y < -1f)
         {
             velocityY = -8f;

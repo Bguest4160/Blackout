@@ -9,6 +9,9 @@ public class ObjectGrabable : MonoBehaviour
     private Transform objectGrabPointTransform;
     public Transform playerTransform;
     public Transform playerCamera;
+    public bool held = false;
+    public bool activateCollider;
+   
     
     private void Awake()
     {
@@ -20,6 +23,7 @@ public class ObjectGrabable : MonoBehaviour
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
+        held = true;
     }
 
     public void Throw()
@@ -27,6 +31,11 @@ public class ObjectGrabable : MonoBehaviour
         this.objectGrabPointTransform = null;
         objectRigidbody.useGravity = true;
         objectRigidbody.AddForce(playerCamera.forward * throwForce, ForceMode.VelocityChange);
+        if (held == true)
+        {
+            activateCollider = true;
+        }
+        held = false;
     }
 
 
@@ -46,4 +55,15 @@ public class ObjectGrabable : MonoBehaviour
         } 
       
     }
+
+    public bool GetactivateCollier()
+    {
+        return activateCollider;
+    }
+
+    public void SetActivateCollider(bool o)
+    {
+        activateCollider = o;
+    }
 }
+
