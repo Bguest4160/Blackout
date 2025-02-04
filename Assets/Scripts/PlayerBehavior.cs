@@ -20,11 +20,21 @@ public class PlayerBehavior : MonoBehaviour {
     
     public GameObject rightFistHitbox;
     public GameObject leftFistHitbox;
+    public GameObject headBlockHitbox;
+    public GameObject upperBodyBlockHitbox;
+    public GameObject bodyBlockHitbox;
     
     private Renderer rightHitboxRenderer;
     private Renderer leftHitboxRenderer;
     private Collider rightFistCollider;
     private Collider leftFistCollider;
+
+    private Renderer headBlockRenderer;
+    private Renderer upperBodyBlockRenderer;
+    private Renderer bodyBlockRenderer;
+    private Collider headBlockCollider;
+    private Collider upperBodyBlockCollider;
+    private Collider bodyBlockCollider;
     
     // Methods
     void Start() {
@@ -34,6 +44,13 @@ public class PlayerBehavior : MonoBehaviour {
         leftHitboxRenderer = leftFistHitbox.GetComponent<Renderer>();
         rightFistCollider= rightFistHitbox.GetComponent<Collider>();
         leftFistCollider = leftFistHitbox.GetComponent<Collider>();
+        
+        headBlockRenderer = headBlockHitbox.GetComponent<Renderer>();
+        upperBodyBlockRenderer = upperBodyBlockHitbox.GetComponent<Renderer>();
+        bodyBlockRenderer = bodyBlockHitbox.GetComponent<Renderer>();
+        headBlockCollider = headBlockHitbox.GetComponent<Collider>();
+        upperBodyBlockCollider = upperBodyBlockHitbox.GetComponent<Collider>();
+        bodyBlockCollider = bodyBlockHitbox.GetComponent<Collider>();
     }
 
     void Update()
@@ -59,19 +76,25 @@ public class PlayerBehavior : MonoBehaviour {
                 rightHitboxRenderer.material.color = new Color(1f, 0.027450f, 0f, 0);
             }
         }
+        if (Input.GetKeyUp(KeyCode.Q)) {
+            // StartCoroutine(BlockDown, 1);
+            // START WITH DELAY
+        }
         
         PlayerHealth.ChipHealth();
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit) {
+        if (hit.gameObject.TryGetComponent(out ObjectGrabable projectile)) {
+            PlayerTakeDamage((int)projectile.GetDamageForce());
+        }
+        
         if (hit.gameObject.name == "Damage Cube") {
             if (CooldownCheck(_cubeDamageCooldown)) {
                 PlayerTakeDamage(20);
             }
         }
     }
-    
-    
     
     void OnTriggerEnter(Collider other) {
         if (CooldownCheck(_damageCooldown)) {
@@ -103,6 +126,27 @@ public class PlayerBehavior : MonoBehaviour {
         if (_hitboxViewerActive) {
             leftHitboxRenderer.material.color = new Color(0.8f, 0.8f, 0.8f, 0.352941f);
         }
+    }
+
+    void BlockUp() {
+        headBlockCollider.enabled = true;
+        upperBodyBlockCollider.enabled = true;
+        bodyBlockCollider.enabled = true;
+        if (_hitboxViewerActive) {
+            headBlockRenderer.material.color = new Color(0.8f, 0.8f, 0.8f, 0.352941f);
+            upperBodyBlockRenderer.material.color = new Color(0.8f, 0.8f, 0.8f, 0.352941f);
+            bodyBlockRenderer.material.color = new Color(0.8f, 0.8f, 0.8f, 0.352941f);
+        }
+    }
+
+    void BlockDown() {
+        headBlockCollider.enabled = false;
+        upperBodyBlockCollider.enabled = false;
+        bodyBlockCollider.enabled = false;
+        
+        headBlockRenderer.material.color = new Color(0.8f, 0.8f, 0.8f, 0);
+        upperBodyBlockRenderer.material.color = new Color(0.8f, 0.8f, 0.8f, 0);
+        bodyBlockRenderer.material.color = new Color(0.8f, 0.8f, 0.8f, 0);
     }
 
     bool CooldownCheck(float cooldown) {

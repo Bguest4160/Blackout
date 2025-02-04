@@ -33,10 +33,7 @@ public class DummyBehavior : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.TryGetComponent(out ObjectGrabable projectile)) {
-            int velocityBonus = (int)(Mathf.Round(collision.relativeVelocity.magnitude) * 0.1);
-        
-            DummyTakeDamage((int)projectile.GetDamageForce() + velocityBonus);
-            Debug.Log("Dummy damage taken: " + ((int)projectile.GetDamageForce() + velocityBonus));
+            DummyTakeDamage((int)projectile.GetDamageForce());
         }
     }
 
