@@ -8,6 +8,7 @@ public class SceneLoader : MonoBehaviour
 {
     public GameObject canvasObject1;
     public GameObject canvasObject2;
+    public GameObject scene;
     public void QuitGame()
     {
         Application.Quit();
@@ -21,7 +22,7 @@ public class SceneLoader : MonoBehaviour
 
     public void MainSceneLoader()
     {
-        SceneManager.LoadScene("Scene 1");
+        SceneManager.LoadScene("Actual merge scene");
     }
 
     public void Back()
