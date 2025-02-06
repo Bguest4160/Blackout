@@ -1124,6 +1124,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &47658904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1190,6 +1192,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &51182487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1229,6 +1233,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &52265886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1293,8 +1299,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
-  playerCamera: {fileID: 0}
+  playerTransform: {fileID: 1832357430}
+  playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &59611223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1654,6 +1662,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!54 &74443543
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4829,6 +4839,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &236868089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5106,6 +5118,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &249202500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5145,6 +5159,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &251141075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6813,6 +6829,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
+  held: 0
+  activateCollider: 0
 --- !u!114 &318720162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8034,6 +8052,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
+  held: 0
+  activateCollider: 0
 --- !u!114 &362344434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8604,6 +8624,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!54 &387328259
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9429,6 +9451,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &418132519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10175,6 +10199,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &450745415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10403,6 +10429,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!54 &491035381
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11644,6 +11672,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &565113485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12088,6 +12118,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!1 &594201056
 GameObject:
   m_ObjectHideFlags: 0
@@ -12777,6 +12809,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!54 &601753393
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13467,8 +13501,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
-  playerCamera: {fileID: 0}
+  playerTransform: {fileID: 1832357430}
+  playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &650603898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14011,6 +14047,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &692244046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14153,6 +14191,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &710420335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15091,6 +15131,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &747113104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16086,6 +16128,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!54 &786932918
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16527,6 +16571,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!1001 &802735721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16984,6 +17030,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!54 &814738909
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18353,6 +18401,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &888321376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20031,6 +20081,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &966794479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22458,6 +22510,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1073111975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23500,6 +23554,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1128691832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23935,6 +23991,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1146349844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24926,6 +24984,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1158983137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26286,6 +26346,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1232327612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27268,6 +27330,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1253931937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28202,6 +28266,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1318198457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29179,6 +29245,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1352010517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29824,6 +29892,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1386167807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30196,6 +30266,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1408842826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31297,6 +31369,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1446673632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33571,6 +33645,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1635611500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33608,8 +33684,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
-  playerCamera: {fileID: 0}
+  playerTransform: {fileID: 1832357430}
+  playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1639308328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34130,6 +34208,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1657245238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36779,6 +36859,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1741319646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37838,6 +37920,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1789992108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39202,6 +39286,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 63
   objectGrabPointTranform: {fileID: 561131857}
+  holding: 0
 --- !u!114 &1832357436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39382,6 +39467,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1834632921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41107,6 +41194,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1904309032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41887,6 +41976,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1934139642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41953,6 +42044,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1941089491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42259,6 +42352,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!1001 &1947128142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43432,6 +43527,8 @@ MonoBehaviour:
   throwForce: 20
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &1998274534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44581,6 +44678,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &2052013854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44930,6 +45029,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &2070564251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45771,6 +45872,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!114 &2109876009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46279,7 +46382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae976b936ea246e181cd76dcea5a4e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  object1: {fileID: 6774958664627602181, guid: ab03826bd5d04481282dcf674e397048, type: 3}
+  object1: {fileID: 2141931923}
   particle: {fileID: 8526563518670966980, guid: 578a94ccf9cfd463d9d35cd6f7dd8a1a, type: 3}
 --- !u!114 &2141931926
 MonoBehaviour:
@@ -46296,6 +46399,8 @@ MonoBehaviour:
   throwForce: 10
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
+  held: 0
+  activateCollider: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

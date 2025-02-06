@@ -27,13 +27,15 @@ public class potionEffectScript : MonoBehaviour
     {
         if (objectGrabable.GetactivateCollier() == true)
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 3f, players);
+            Debug.Log("NONSENSE");
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 1f, players);
 
-            Instantiate(particle, transform.position, Quaternion.Euler(90,0,0));
+            var instance = Instantiate(particle, transform.position, Quaternion.Euler(90,0,0));
             potion.SetActive(false);
             ParticleSystem parts = particle.GetComponent<ParticleSystem>();
             float totalDuration = parts.duration + parts.startLifetime;
-            Destroy(particle, totalDuration);
+            Destroy(instance, totalDuration);
+
 
             foreach (Collider c in colliders)
             {
