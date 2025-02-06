@@ -1299,13 +1299,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-<<<<<<< HEAD
-  playerTransform: {fileID: 0}
-  playerCamera: {fileID: 0}
-=======
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
->>>>>>> 42429f69291f8288f875afa8cdc6a2cf97baa80d
   held: 0
   activateCollider: 0
 --- !u!114 &59611223
@@ -13506,13 +13501,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-<<<<<<< HEAD
-  playerTransform: {fileID: 0}
-  playerCamera: {fileID: 0}
-=======
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
->>>>>>> 42429f69291f8288f875afa8cdc6a2cf97baa80d
   held: 0
   activateCollider: 0
 --- !u!114 &650603898
@@ -33694,13 +33684,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-<<<<<<< HEAD
-  playerTransform: {fileID: 0}
-  playerCamera: {fileID: 0}
-=======
   playerTransform: {fileID: 1832357430}
   playerCamera: {fileID: 173602555}
->>>>>>> 42429f69291f8288f875afa8cdc6a2cf97baa80d
   held: 0
   activateCollider: 0
 --- !u!114 &1639308328
