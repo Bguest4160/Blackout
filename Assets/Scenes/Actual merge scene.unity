@@ -1299,8 +1299,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+<<<<<<< HEAD
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
+=======
+  playerTransform: {fileID: 1832357430}
+  playerCamera: {fileID: 173602555}
+>>>>>>> 42429f69291f8288f875afa8cdc6a2cf97baa80d
   held: 0
   activateCollider: 0
 --- !u!114 &59611223
@@ -13501,8 +13506,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+<<<<<<< HEAD
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
+=======
+  playerTransform: {fileID: 1832357430}
+  playerCamera: {fileID: 173602555}
+>>>>>>> 42429f69291f8288f875afa8cdc6a2cf97baa80d
   held: 0
   activateCollider: 0
 --- !u!114 &650603898
@@ -33684,8 +33694,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+<<<<<<< HEAD
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
+=======
+  playerTransform: {fileID: 1832357430}
+  playerCamera: {fileID: 173602555}
+>>>>>>> 42429f69291f8288f875afa8cdc6a2cf97baa80d
   held: 0
   activateCollider: 0
 --- !u!114 &1639308328
@@ -39286,6 +39301,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 63
   objectGrabPointTranform: {fileID: 561131857}
+  holding: 0
 --- !u!114 &1832357436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46381,7 +46397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae976b936ea246e181cd76dcea5a4e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  object1: {fileID: 6774958664627602181, guid: ab03826bd5d04481282dcf674e397048, type: 3}
+  object1: {fileID: 2141931923}
   particle: {fileID: 8526563518670966980, guid: 578a94ccf9cfd463d9d35cd6f7dd8a1a, type: 3}
 --- !u!114 &2141931926
 MonoBehaviour:

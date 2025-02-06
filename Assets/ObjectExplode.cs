@@ -26,13 +26,12 @@ public class ObjectExplode : MonoBehaviour
     {
         if (objectGrabable.GetactivateCollier() == true)
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 3f);
 
-            Instantiate(particle, transform.position, Quaternion.Euler(90, 0, 0));
+            var instance = Instantiate(particle, transform.position, Quaternion.Euler(90, 0, 0));
             object1.SetActive(false);
             ParticleSystem parts = particle.GetComponent<ParticleSystem>();
             float totalDuration = parts.duration + parts.startLifetime;
-            Destroy(particle, totalDuration);
+            Destroy(instance, totalDuration);
 
         }
         objectGrabable.SetActivateCollider(false);

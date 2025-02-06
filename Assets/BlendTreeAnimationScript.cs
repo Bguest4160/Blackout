@@ -17,11 +17,15 @@ public class BlendTreeAnimationScript : MonoBehaviour
     [SerializeField] LayerMask ground;
     CharacterController controller;
     [SerializeField] Transform landingcheck;
+    PlayerPickupThrow playerPickupThrow;
+    
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
+        playerPickupThrow = GetComponent<PlayerPickupThrow>();
     }
 
     // Update is called once per frame
@@ -163,7 +167,10 @@ public class BlendTreeAnimationScript : MonoBehaviour
         //punch
         if (Input.GetMouseButton(0))
         {
-            animator.SetBool("punch", true);
+            if (playerPickupThrow.GetHolding() == false)
+            {
+                animator.SetBool("punch", true);
+            } 
         }
 
         else

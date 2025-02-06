@@ -9,6 +9,7 @@ public class PlayerPickupThrow : MonoBehaviour
     [SerializeField] private LayerMask pickUpLayerMask;
     [SerializeField] private Transform objectGrabPointTranform;
     private ObjectGrabable objectGrabable;
+    public bool holding = false;
 
     void Start()
     {
@@ -33,7 +34,7 @@ public class PlayerPickupThrow : MonoBehaviour
                     {
                         
                         objectGrabable.Grab(objectGrabPointTranform);
-                        Debug.Log("holding");
+                        holding = true;
                        
                     }
                     
@@ -47,9 +48,20 @@ public class PlayerPickupThrow : MonoBehaviour
             objectGrabable.Throw();
             objectGrabable.Throw();
             objectGrabable = null;
+            holding = false;
 
             
         }
+    }
+
+    public bool GetHolding()
+    {
+        return holding;
+    }
+
+    public void SetHolding(bool o)
+    {
+        holding = o;
     }
 
  
