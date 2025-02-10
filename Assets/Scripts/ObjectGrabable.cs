@@ -16,6 +16,8 @@ public class ObjectGrabable : MonoBehaviour
     private void Awake()
     {
         objectRigidbody = GetComponent<Rigidbody>();
+        objectRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+
     }   
 
 
@@ -24,6 +26,7 @@ public class ObjectGrabable : MonoBehaviour
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
         held = true;
+        objectRigidbody.constraints = RigidbodyConstraints.None;
     }
 
     public void Throw()
