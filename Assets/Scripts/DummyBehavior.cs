@@ -7,7 +7,6 @@ public class DummyBehavior : MonoBehaviour {
     // Fields
     private static bool _initCooldownUsed = false;
     private static float _lastHealthEventTime = 0f;
-    private static float _damageCooldown = 0.5f;
    
     public GameObject frontHealthSlider;
     public GameObject backHealthSlider;
@@ -35,13 +34,8 @@ public class DummyBehavior : MonoBehaviour {
         if (collision.gameObject.TryGetComponent(out ObjectGrabable projectile)) {
             DummyTakeDamage((int)projectile.GetDamageForce());
         }
-    }
-
-    void OnTriggerEnter(Collider other) {
-        if (CooldownCheck(_damageCooldown)) {
-            if (other.gameObject.CompareTag("IsDamageTrigger")) {
-                DummyTakeDamage(100);
-            }
+        else if (collision.gameObject.CompareTag("IsMeleeHitbox")) {
+            DummyTakeDamage(100);
         }
     }
     
