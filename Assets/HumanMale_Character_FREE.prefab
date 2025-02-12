@@ -5191,8 +5191,8 @@ GameObject:
   - component: {fileID: 8054005253294417836}
   - component: {fileID: 8316158312775969518}
   - component: {fileID: 8354857507534925942}
-  - component: {fileID: 3002908801038081381}
   - component: {fileID: 1874368174325848218}
+  - component: {fileID: 3002908801038081381}
   - component: {fileID: 3663237912094684082}
   - component: {fileID: 7789932053322062204}
   - component: {fileID: 9195440583502942239}
@@ -5272,26 +5272,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.92, z: 0}
---- !u!114 &3002908801038081381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6824644236675303073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc87b69ae357f4a98a7f0944dbd738e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acceleration: 2
-  deceleration: 2
-  velocityBar: -0.05
-  groundCheck: {fileID: 1455118774585835794}
-  ground:
-    serializedVersion: 2
-    m_Bits: 8
-  landingcheck: {fileID: 5184341705132677869}
 --- !u!114 &1874368174325848218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5313,6 +5293,26 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &3002908801038081381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6824644236675303073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc87b69ae357f4a98a7f0944dbd738e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceleration: 2
+  deceleration: 2
+  velocityBar: -0.05
+  groundCheck: {fileID: 1455118774585835794}
+  ground:
+    serializedVersion: 2
+    m_Bits: 8
+  landingcheck: {fileID: 5184341705132677869}
 --- !u!114 &3663237912094684082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5326,7 +5326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 2022890502297427219}
-  otherCamera: {fileID: 3646925666612645902}
+  camHolder: {fileID: 0}
   mouseSmoothTime: 0.03
   cursorLock: 1
   mouseSensitivity: 3.5
@@ -5351,9 +5351,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592ce67fa1bd242a1a23bad5f881a540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontHealthSliderObject: {fileID: 0}
-  backHealthSliderObject: {fileID: 0}
-  backHealthSliderFillObject: {fileID: 0}
+  frontHealthSlider: {fileID: 0}
+  backHealthSlider: {fileID: 0}
+  backHealthSliderFill: {fileID: 0}
+  rightFistHitbox: {fileID: 0}
+  leftFistHitbox: {fileID: 0}
 --- !u!114 &9195440583502942239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5371,6 +5373,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 63
   objectGrabPointTranform: {fileID: 7279574431437860751}
+  holding: 0
 --- !u!114 &2249752966490532179
 MonoBehaviour:
   m_ObjectHideFlags: 0
