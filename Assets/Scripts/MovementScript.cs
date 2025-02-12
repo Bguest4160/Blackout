@@ -53,6 +53,7 @@ public class MovementScript : NetworkBehaviour
         //if (!IsOwner) return;
         UpdateMouse();
         UpdateMove();
+
     }
 
     void UpdateMouse()
@@ -97,6 +98,11 @@ public class MovementScript : NetworkBehaviour
         {
             velocityY = -8f;
         }
+    }
+
+    void UpdateCamera()
+    {
+
     }
     public void ChangeSpeedStats()
     {
