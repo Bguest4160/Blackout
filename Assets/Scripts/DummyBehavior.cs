@@ -24,7 +24,7 @@ public class DummyBehavior : MonoBehaviour {
             DummyTakeDamage(200);
         }
         if (Input.GetKeyDown(KeyCode.Y)) {
-            PlayerHeal(100);
+            DummyHeal(100);
         }
         
         DummyHealth.ChipHealth();
@@ -61,7 +61,7 @@ public class DummyBehavior : MonoBehaviour {
         }
     }
 
-    private void PlayerHeal(int amount) {
+    private void DummyHeal(int amount) {
         if (DummyHealth.Value > 0 && DummyHealth.Value < DummyHealth.MaxValue) {
             DummyHealth.Add(amount);
             _lastHealthEventTime = Time.time;

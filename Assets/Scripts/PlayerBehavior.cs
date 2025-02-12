@@ -8,6 +8,8 @@ public class PlayerBehavior : MonoBehaviour {
     // Fields
     private static bool _initCooldownUsed = false;
     private static float _cubeDamageCooldown = 0.2f;
+    private static float _projectileDamageCooldown = 0.1f;
+    
     private static float _lastHealthEventTime = 0f;
     private static bool _hitboxViewerActive = false;
     private static bool _blocking = false;
@@ -72,14 +74,12 @@ public class PlayerBehavior : MonoBehaviour {
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit) {
-        if (hit.gameObject.TryGetComponent(out ObjectGrabable projectile)) {
+        if (hit.gameObject.TryGetComponent(out ObjectGrabable projectile) && CooldownCheck(_projectileDamageCooldown)) {
             PlayerTakeDamage((int)projectile.GetDamageForce());
         }
         
-        if (hit.gameObject.name == "Damage Cube") {
-            if (CooldownCheck(_cubeDamageCooldown)) {
-                PlayerTakeDamage(20);
-            }
+        if (hit.gameObject.name == "Damage Cube" && CooldownCheck(_cubeDamageCooldown)) { 
+            PlayerTakeDamage(20);
         }
     }
     
