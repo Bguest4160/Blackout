@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class BlendTreeAnimationScript : MonoBehaviour
+public class BlendTreeAnimationScript : NetworkBehaviour
 {
     Animator animator;
     float velocityZ = 0.0f;
@@ -31,6 +32,7 @@ public class BlendTreeAnimationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsOwner) return;
         bool forwardPressed = Input.GetKey("w");
         bool leftPressed = Input.GetKey("a");
         bool rightPressed = Input.GetKey("d");
