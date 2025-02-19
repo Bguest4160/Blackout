@@ -8,13 +8,12 @@ public class SceneLoader : MonoBehaviour
 {
     public GameObject canvasObject1;
     public GameObject canvasObject2;
-    public GameObject scene;
     public void QuitGame()
     {
         Application.Quit();
         Debug.Log("Quit!");
     }
-    public void CharacterCustom()
+    public void ServerLoader()
     {
         canvasObject1.SetActive(false);
         canvasObject2.SetActive(true);
