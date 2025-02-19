@@ -10,16 +10,24 @@ public class BlockHandler : MonoBehaviour {
     }
     
     void OnCollisionEnter(Collision other) {
-        Debug.Log("Block hitbox touched. dont touch in my block hitbox pls");
+        Debug.Log("Block hitbox entered");
         
         if (other.gameObject.TryGetComponent(out ObjectGrabable projectile)) {
-            _playerBehavior.PlayerTakeDamage((int)(projectile.GetDamageForce() * 0.5));
+            _playerBehavior.blockingModifier = 0.5f;
         }
         else if (other.gameObject.CompareTag("IsMeleeHitbox")) {
-            _playerBehavior.PlayerTakeDamage(50);
+            _playerBehavior.blockingModifier = 0.5f;
         }
     }
-    
-    // need to send some message (probably just create and change a variable in PlayerBehavior) to signify when an active block hitbox has been hit and reduce damage based on that.
-    // also consider the block hitboxes don't have rigidbodies so it will likely hit the player as well, triggering both BlockHandler and PlayerBehavior's OnCollisionEnter methods
+
+    void OnCollisionExit(Collision other) {
+        Debug.Log("Block hitbox exited");
+        
+        if (other.gameObject.TryGetComponent(out ObjectGrabable projectile)) {
+            _playerBehavior.blockingModifier = 0.1f;
+        }
+        else if (other.gameObject.CompareTag("IsMeleeHitbox")) {
+            _playerBehavior.blockingModifier = 0.1f;
+        }
+    }
 }

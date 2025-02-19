@@ -9,10 +9,10 @@ public class PlayerBehavior : MonoBehaviour {
     private static bool _initCooldownUsed = false;
     private static float _cubeDamageCooldown = 0.2f;
     private static float _projectileDamageCooldown = 0.1f;
+    public float blockingModifier = 1f;
     
     private static float _lastHealthEventTime = 0f;
     private static bool _hitboxViewerActive = false;
-    private static bool _blocking = false;
 
     public static Color Transparent = new Color(0.8f, 0.8f, 0.8f, 0);
     public static Color PassiveHitbox = new Color(0.8f, 0.8f, 0.8f, 0.352941f);
@@ -75,10 +75,12 @@ public class PlayerBehavior : MonoBehaviour {
 
     void OnControllerColliderHit(ControllerColliderHit hit) {
         if (hit.gameObject.TryGetComponent(out ObjectGrabable projectile) && CooldownCheck(_projectileDamageCooldown)) {
-            PlayerTakeDamage((int)projectile.GetDamageForce());
+            PlayerTakeDamage((int)(projectile.GetDamageForce() * blockingModifier));
         }
-        
-        if (hit.gameObject.name == "Damage Cube" && CooldownCheck(_cubeDamageCooldown)) { 
+        else if (hit.gameObject.CompareTag("IsMeleeHitbox")) {
+            PlayerTakeDamage((int)(100 * blockingModifier));
+        }
+        else if (hit.gameObject.name == "Damage Cube" && CooldownCheck(_cubeDamageCooldown)) { 
             PlayerTakeDamage(20);
         }
     }
@@ -110,7 +112,6 @@ public class PlayerBehavior : MonoBehaviour {
     void BlockUp() {
         foreach (GameObject hitbox in GameObject.FindGameObjectsWithTag("IsBlockingHitbox")) {
             hitbox.GetComponent<Collider>().enabled = true;
-            _blocking = true;
             if (_hitboxViewerActive) {
                 hitbox.GetComponent<Renderer>().material.color = PassiveHitbox;
             }
@@ -120,7 +121,6 @@ public class PlayerBehavior : MonoBehaviour {
     void BlockDown() {
         foreach (GameObject hitbox in GameObject.FindGameObjectsWithTag("IsBlockingHitbox")) {
             hitbox.GetComponent<Collider>().enabled = false;
-            _blocking = false;
             if (_hitboxViewerActive) {
                 hitbox.GetComponent<Renderer>().material.color = Transparent;
             }
@@ -139,7 +139,13 @@ public class PlayerBehavior : MonoBehaviour {
         if (PlayerHealth.Value > 0) {
             PlayerHealth.Subtract(amount);
             _lastHealthEventTime = Time.time;
-            // Debug.Log("lastHealthEventTime: " + _lastHealthEventTime);
+        }
+    }
+    
+    public void PlayerTakeDamage(int amount, float multiplier) {
+        if (PlayerHealth.Value > 0) {
+            PlayerHealth.Subtract((int)(amount * multiplier));
+            _lastHealthEventTime = Time.time;
         }
     }
 
@@ -147,7 +153,13 @@ public class PlayerBehavior : MonoBehaviour {
         if (PlayerHealth.Value > 0 && PlayerHealth.Value < PlayerHealth.MaxValue) {
             PlayerHealth.Add(amount);
             _lastHealthEventTime = Time.time;
-            // Debug.Log("lastHealthEventTime: " + _lastHealthEventTime);
+        }
+    }
+    
+    public void PlayerHeal(int amount, float multiplier) {
+        if (PlayerHealth.Value > 0 && PlayerHealth.Value < PlayerHealth.MaxValue) {
+            PlayerHealth.Add((int)(amount * multiplier));
+            _lastHealthEventTime = Time.time;
         }
     }
 }
