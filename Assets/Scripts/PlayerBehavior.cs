@@ -7,9 +7,8 @@ using UnityEngine.Serialization;
 public class PlayerBehavior : MonoBehaviour {
     // Fields
     private static bool _initCooldownUsed = false;
-    private static float _cubeDamageCooldown = 0.2f;
-    private static float _projectileDamageCooldown = 0.1f;
-    public float blockingModifier = 1f;
+    public float CubeDamageCooldown = 0.8f;
+    public float ProjectileDamageCooldown = 0.1f;
     
     private static float _lastHealthEventTime = 0f;
     private static bool _hitboxViewerActive = false;
@@ -17,7 +16,9 @@ public class PlayerBehavior : MonoBehaviour {
     public static Color Transparent = new Color(0.8f, 0.8f, 0.8f, 0);
     public static Color PassiveHitbox = new Color(0.8f, 0.8f, 0.8f, 0.352941f);
     public static Color ActiveHitbox = new Color(1f, 0.027450f, 0f, 0.352941f);
-   
+    
+    [Space(15)]
+    
     public GameObject frontHealthSlider;
     public GameObject backHealthSlider;
     public GameObject backHealthSliderFill;
@@ -73,15 +74,17 @@ public class PlayerBehavior : MonoBehaviour {
         PlayerHealth.ChipHealth();
     }
 
+    // DAMAGE SOURCES
+    // Remember to update BlockHandler version for any changes
     void OnControllerColliderHit(ControllerColliderHit hit) {
-        if (hit.gameObject.TryGetComponent(out ObjectGrabable projectile) && CooldownCheck(_projectileDamageCooldown)) {
-            PlayerTakeDamage((int)(projectile.GetDamageForce() * blockingModifier));
+        if (hit.gameObject.TryGetComponent(out ObjectGrabable projectile) && CooldownCheck(ProjectileDamageCooldown)) {
+            PlayerTakeDamage((int)projectile.GetDamageForce());
         }
         else if (hit.gameObject.CompareTag("IsMeleeHitbox")) {
-            PlayerTakeDamage((int)(100 * blockingModifier));
+            PlayerTakeDamage(100);
         }
-        else if (hit.gameObject.name == "Damage Cube" && CooldownCheck(_cubeDamageCooldown)) { 
-            PlayerTakeDamage(20);
+        else if (hit.gameObject.name == "Damage Cube" && CooldownCheck(CubeDamageCooldown)) { 
+            PlayerTakeDamage(100);
         }
     }
     
@@ -127,7 +130,7 @@ public class PlayerBehavior : MonoBehaviour {
         }
     }
 
-    bool CooldownCheck(float cooldown) {
+    public bool CooldownCheck(float cooldown) {
         if (Time.time - cooldown <= 0 && _initCooldownUsed == false) {
             _initCooldownUsed = true;
             return true;
@@ -139,13 +142,7 @@ public class PlayerBehavior : MonoBehaviour {
         if (PlayerHealth.Value > 0) {
             PlayerHealth.Subtract(amount);
             _lastHealthEventTime = Time.time;
-        }
-    }
-    
-    public void PlayerTakeDamage(int amount, float multiplier) {
-        if (PlayerHealth.Value > 0) {
-            PlayerHealth.Subtract((int)(amount * multiplier));
-            _lastHealthEventTime = Time.time;
+            Debug.Log("Damaged " + amount);
         }
     }
 
@@ -153,13 +150,7 @@ public class PlayerBehavior : MonoBehaviour {
         if (PlayerHealth.Value > 0 && PlayerHealth.Value < PlayerHealth.MaxValue) {
             PlayerHealth.Add(amount);
             _lastHealthEventTime = Time.time;
-        }
-    }
-    
-    public void PlayerHeal(int amount, float multiplier) {
-        if (PlayerHealth.Value > 0 && PlayerHealth.Value < PlayerHealth.MaxValue) {
-            PlayerHealth.Add((int)(amount * multiplier));
-            _lastHealthEventTime = Time.time;
+            // Debug.Log("Healed " + amount);
         }
     }
 }
