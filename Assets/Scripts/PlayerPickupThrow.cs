@@ -30,15 +30,14 @@ public class PlayerPickupThrow : NetworkBehaviour
                 float pickUpDistance = 3f;
                 if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
                 {
-                    
+
                     if (raycastHit.transform.TryGetComponent(out objectGrabable))
                     {
-                        
+                        objectGrabable.SetPlayerCamera(playerCameraTransform); // Set the camera transform here
                         objectGrabable.Grab(objectGrabPointTranform);
                         holding = true;
-                       
                     }
-                    
+
                 }
             }
         }

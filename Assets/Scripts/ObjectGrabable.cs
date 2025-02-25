@@ -8,7 +8,6 @@ public class ObjectGrabable : NetworkBehaviour
     public float throwForce = 10f;
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
-    public Transform playerTransform;
     public Transform playerCamera;
     public bool held = false;
     public bool activateCollider;
@@ -19,8 +18,13 @@ public class ObjectGrabable : NetworkBehaviour
         objectRigidbody = GetComponent<Rigidbody>();
         objectRigidbody.constraints = RigidbodyConstraints.FreezeAll;
 
-    }   
+    }
 
+
+    public void SetPlayerCamera(Transform cameraTransform)
+    {
+        playerCamera = cameraTransform;
+    }
 
     public void Grab(Transform objectGrabPointTransform)
     {
