@@ -443,6 +443,8 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 1289412292}
   playerCamera: {fileID: 2132468432}
+  held: 0
+  activateCollider: 0
 --- !u!54 &325577770
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -921,6 +923,8 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 1289412292}
   playerCamera: {fileID: 2132468432}
+  held: 0
+  activateCollider: 0
 --- !u!54 &498687069
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1267,6 +1271,8 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 1289412292}
   playerCamera: {fileID: 2132468432}
+  held: 0
+  activateCollider: 0
 --- !u!54 &765142768
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1448,6 +1454,8 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 1289412292}
   playerCamera: {fileID: 2132468432}
+  held: 0
+  activateCollider: 0
 --- !u!54 &867895329
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1714,7 +1722,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8275d534dd3fa4a59a631e98eed122ba, type: 2}
+  - {fileID: 2100000, guid: d85249fe172384a989c969b002c9f2e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2338,6 +2346,8 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 1289412292}
   playerCamera: {fileID: 2132468432}
+  held: 0
+  activateCollider: 0
 --- !u!54 &1175139778
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2813,7 +2823,7 @@ PrefabInstance:
     - target: {fileID: 3868127983488515532, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41c9f27591da04552b6e5e5cdb04f9f0, type: 2}
+      objectReference: {fileID: 2100000, guid: 4135f1b2e1e6b483aa387414e5013c17, type: 2}
     - target: {fileID: 3958228104600771630, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -3158,9 +3168,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1782702501690864755, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1289412285}
-    - targetCorrespondingSourceObject: {fileID: 1782702501690864755, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1289412294}
     - targetCorrespondingSourceObject: {fileID: 7542120572266241273, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1918482269}
@@ -3211,7 +3218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 2132468432}
-  otherCamera: {fileID: 1292386007}
+  camHolder: {fileID: 0}
   mouseSmoothTime: 0.03
   cursorLock: 1
   mouseSensitivity: 3.5
@@ -3365,6 +3372,8 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 1289412292}
   playerCamera: {fileID: 2132468432}
+  held: 0
+  activateCollider: 0
 --- !u!54 &1344940993
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3972,7 +3981,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8275d534dd3fa4a59a631e98eed122ba, type: 2}
+  - {fileID: 2100000, guid: d85249fe172384a989c969b002c9f2e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4128,7 +4137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8275d534dd3fa4a59a631e98eed122ba, type: 2}
+  - {fileID: 2100000, guid: d85249fe172384a989c969b002c9f2e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

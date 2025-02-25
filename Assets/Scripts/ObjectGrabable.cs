@@ -13,21 +13,16 @@ public class ObjectGrabable : MonoBehaviour
     public Transform playerCamera;
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
-    public Transform playerTransform;
-    public Transform playerCamera;
     public bool held = false;
     public bool activateCollider;
-   
+
     
     private void Awake()
     {
         objectRigidbody = GetComponent<Rigidbody>();
-    }
         objectRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-
-    }   
-
-
+    }
+    
     public float GetDamageForce() {
         return damageForce;
     }
