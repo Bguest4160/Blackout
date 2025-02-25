@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class BlockHandler : MonoBehaviour {
+public class BlockHandler : NetworkBehaviour {
     private PlayerBehavior _playerBehavior;
 
     void Start() {

@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
+using Unity.Netcode;
 
-public class PlayerBehavior : MonoBehaviour {
+public class PlayerBehavior : NetworkBehaviour {
     // Fields
     private static bool _initCooldownUsed = false;
     public float CubeDamageCooldown = 0.8f;
@@ -29,23 +27,25 @@ public class PlayerBehavior : MonoBehaviour {
     public GameObject rightFistHitbox;
     public GameObject leftFistHitbox;
     
-    private Renderer rightHitboxRenderer;
-    private Renderer leftHitboxRenderer;
-    private Collider rightFistCollider;
-    private Collider leftFistCollider;
+    public Renderer rightHitboxRenderer;
+    public Renderer leftHitboxRenderer;
+    public Collider rightFistCollider;
+    public Collider leftFistCollider;
     
     // Methods
     void Start() {
         PlayerHealth = new UnitBar(1000, 1000, frontHealthSlider, backHealthSlider, backHealthSliderFill);
         
-        rightHitboxRenderer = rightFistHitbox.GetComponent<Renderer>();
-        leftHitboxRenderer = leftFistHitbox.GetComponent<Renderer>();
-        rightFistCollider= rightFistHitbox.GetComponent<Collider>();
-        leftFistCollider = leftFistHitbox.GetComponent<Collider>();
+        // rightHitboxRenderer = rightFistHitbox.GetComponent<Renderer>();
+        // leftHitboxRenderer = leftFistHitbox.GetComponent<Renderer>();
+        // rightFistCollider= rightFistHitbox.GetComponent<Collider>();
+        // leftFistCollider = leftFistHitbox.GetComponent<Collider>();
     }
 
-    void Update()
-    {
+    void Update() {
+        if (!IsOwner) return;
+        if (!IsLocalPlayer) return;
+        
         if (Input.GetKeyDown(KeyCode.V)) {
             Debug.Log("Health: " + PlayerHealth.Value);
         }
@@ -59,10 +59,12 @@ public class PlayerBehavior : MonoBehaviour {
             _hitboxViewerActive = !_hitboxViewerActive;
 
             if (_hitboxViewerActive) {
+                Debug.Log("Hitbox viewer active");
                 leftHitboxRenderer.material.color = PassiveHitbox;
                 rightHitboxRenderer.material.color = PassiveHitbox;
             }
             else {
+                Debug.Log("Hitbox viewer inactive");
                 leftHitboxRenderer.material.color = Transparent;
                 rightHitboxRenderer.material.color = Transparent;
             }
@@ -71,7 +73,7 @@ public class PlayerBehavior : MonoBehaviour {
             Invoke("BlockDown", 0.5f);
         }
         
-        PlayerHealth.ChipHealth();
+        // PlayerHealth.ChipHealth();
     }
 
     // DAMAGE SOURCES
@@ -90,6 +92,7 @@ public class PlayerBehavior : MonoBehaviour {
     
     IEnumerator RightHandPunch() {
         rightFistCollider.enabled = true;
+        Debug.Log("RightHandPunch");
         if (_hitboxViewerActive) {
             rightHitboxRenderer.material.color = ActiveHitbox;
         }
@@ -150,7 +153,7 @@ public class PlayerBehavior : MonoBehaviour {
         if (PlayerHealth.Value > 0 && PlayerHealth.Value < PlayerHealth.MaxValue) {
             PlayerHealth.Add(amount);
             _lastHealthEventTime = Time.time;
-            // Debug.Log("Healed " + amount);
+            Debug.Log("Healed " + amount);
         }
     }
 }
