@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerPickupThrow : MonoBehaviour
+public class PlayerPickupThrow : NetworkBehaviour
 {
     [SerializeField] private Transform playerCameraTransform;
     [SerializeField] private LayerMask pickUpLayerMask;
@@ -29,15 +30,14 @@ public class PlayerPickupThrow : MonoBehaviour
                 float pickUpDistance = 3f;
                 if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
                 {
-                    
+
                     if (raycastHit.transform.TryGetComponent(out objectGrabable))
                     {
-                        
+                        objectGrabable.SetPlayerCamera(playerCameraTransform); // Set the camera transform here
                         objectGrabable.Grab(objectGrabPointTranform);
                         holding = true;
-                       
                     }
-                    
+
                 }
             }
         }

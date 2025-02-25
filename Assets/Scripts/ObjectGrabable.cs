@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class ObjectGrabable : MonoBehaviour
+public class ObjectGrabable : NetworkBehaviour
 {
     public float throwForce = 10f;
     public float damageForce = 75f;
@@ -13,6 +14,7 @@ public class ObjectGrabable : MonoBehaviour
     public Transform playerCamera;
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
+    public Transform playerCamera;
     public bool held = false;
     public bool activateCollider;
 
@@ -25,6 +27,14 @@ public class ObjectGrabable : MonoBehaviour
     
     public float GetDamageForce() {
         return damageForce;
+    }
+
+    }
+
+
+    public void SetPlayerCamera(Transform cameraTransform)
+    {
+        playerCamera = cameraTransform;
     }
 
     public void Grab(Transform objectGrabPointTransform)
