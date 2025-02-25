@@ -347,7 +347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &253158858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578,6 +578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasObject1: {fileID: 1016041741}
   canvasObject2: {fileID: 253158857}
+  scene: {fileID: 0}
 --- !u!1 &530049650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,8 +1610,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a84b64586a63421ca05575608a0f095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasObject1: {fileID: 0}
+  canvasObject1: {fileID: 253158857}
   canvasObject2: {fileID: 0}
+  scene: {fileID: 0}
 --- !u!1 &1456033735
 GameObject:
   m_ObjectHideFlags: 0

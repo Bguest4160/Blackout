@@ -9,12 +9,12 @@ public class potionEffectScript : MonoBehaviour
     [SerializeField] GameObject potion;
     public string potName;
     public GameObject particle;
-    
+    ObjectGrabable objectGrabable;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        objectGrabable = GetComponent<ObjectGrabable>();
     }
 
     // Update is called once per frame
@@ -25,18 +25,17 @@ public class potionEffectScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(GameManager.activateCollider);
-        if (GameManager.activateCollider == true)
+        if (objectGrabable.GetactivateCollier() == true)
         {
-            //particleEffect.SetActive(true);
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 3f, players);
-            //particleEffect.SetActive(false);
+            Debug.Log("NONSENSE");
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 1f, players);
 
-            Instantiate(particle, transform.position, Quaternion.Euler(90,0,0));
+            var instance = Instantiate(particle, transform.position, Quaternion.Euler(90,0,0));
             potion.SetActive(false);
             ParticleSystem parts = particle.GetComponent<ParticleSystem>();
             float totalDuration = parts.duration + parts.startLifetime;
-            Destroy(particle, totalDuration);
+            Destroy(instance, totalDuration);
+
 
             foreach (Collider c in colliders)
             {
@@ -67,5 +66,7 @@ public class potionEffectScript : MonoBehaviour
                 }
             }
         }
+        objectGrabable.SetActivateCollider(false);
+        
     }
 }

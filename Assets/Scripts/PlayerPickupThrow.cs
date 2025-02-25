@@ -9,10 +9,11 @@ public class PlayerPickupThrow : MonoBehaviour
     [SerializeField] private LayerMask pickUpLayerMask;
     [SerializeField] private Transform objectGrabPointTranform;
     private ObjectGrabable objectGrabable;
+    public bool holding = false;
 
     void Start()
     {
-        GameManager.activateCollider = false;
+        
     }
 
 
@@ -33,6 +34,7 @@ public class PlayerPickupThrow : MonoBehaviour
                     {
                         
                         objectGrabable.Grab(objectGrabPointTranform);
+                        holding = true;
                        
                     }
                     
@@ -47,14 +49,21 @@ public class PlayerPickupThrow : MonoBehaviour
             objectGrabable.Throw();
             
             objectGrabable = null;
-            GameManager.activateCollider = true;
+            holding = false;
+
             
         }
     }
 
+    public bool GetHolding()
+    {
+        return holding;
+    }
+
+    public void SetHolding(bool o)
+    {
+        holding = o;
+    }
+
  
-}
-public class GameManager : MonoBehaviour
-{
-    public static bool activateCollider;
 }

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class BlendTreeAnimationScript : MonoBehaviour
+public class BlendTreeAnimationScript : NetworkBehaviour
 {
     Animator animator;
     float velocityZ = 0.0f;
@@ -17,16 +18,21 @@ public class BlendTreeAnimationScript : MonoBehaviour
     [SerializeField] LayerMask ground;
     CharacterController controller;
     [SerializeField] Transform landingcheck;
+    PlayerPickupThrow playerPickupThrow;
+    
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
+        playerPickupThrow = GetComponent<PlayerPickupThrow>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!IsOwner) return;
         bool forwardPressed = Input.GetKey("w");
         bool leftPressed = Input.GetKey("a");
         bool rightPressed = Input.GetKey("d");
@@ -163,7 +169,10 @@ public class BlendTreeAnimationScript : MonoBehaviour
         //punch
         if (Input.GetMouseButton(0))
         {
-            animator.SetBool("punch", true);
+            if (playerPickupThrow.GetHolding() == false)
+            {
+                animator.SetBool("punch", true);
+            } 
         }
 
         else

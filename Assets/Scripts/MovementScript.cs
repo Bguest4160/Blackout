@@ -6,7 +6,7 @@ using UnityEngine;
 public class MovementScript : NetworkBehaviour 
 {
     [SerializeField] Transform playerCamera;
-    [SerializeField] Transform otherCamera;
+    [SerializeField] Transform camHolder;
     [SerializeField] [Range(0.0f, 0.5f)] float mouseSmoothTime = 0.03f;
     [SerializeField] bool cursorLock = true;
     [SerializeField] float mouseSensitivity = 3.5f;
@@ -19,7 +19,7 @@ public class MovementScript : NetworkBehaviour
     public float jumpHeight = 6f;
     float velocityY;
     public bool isGrounded;
-    bool isWaiting;
+    bool hitWall;
 
     float cameraCap;
     float cameraCap2;
@@ -29,7 +29,7 @@ public class MovementScript : NetworkBehaviour
     CharacterController controller;
     Vector2 currentDir;
     Vector2 currentDirVelocity;
-    Vector3 velocity;
+    //Vector3 velocity;
 
     void Start()
     {
@@ -41,17 +41,24 @@ public class MovementScript : NetworkBehaviour
             Cursor.visible = true;
         }
 
-    }
-
-    public override void OnNetworkSpawn()
-    {
-        if (!IsOwner) Destroy(this);
+        if (IsLocalPlayer)
+        {
+            playerCamera.gameObject.SetActive(true);
+        }
+        else
+        {
+            playerCamera.gameObject.SetActive(false);
+        }
     }
 
     void Update()
     {
+        if (!IsOwner) return;
+        if (!IsLocalPlayer) return;
         UpdateMouse();
         UpdateMove();
+        //UpdateCamera();
+
     }
 
     void UpdateMouse()
@@ -66,7 +73,8 @@ public class MovementScript : NetworkBehaviour
         cameraCap2 = Mathf.Clamp(cameraCap, -80.0f, 80.0f);
 
         playerCamera.localEulerAngles = Vector3.right * cameraCap;
-        otherCamera.localEulerAngles = Vector3.right * cameraCap2;
+        //if using update camera setting change to cam holder
+        //otherCamera.localEulerAngles = Vector3.right * cameraCap2;
 
         transform.Rotate(Vector3.up * currentMouseDelta.x * mouseSensitivity);
     }
@@ -92,12 +100,24 @@ public class MovementScript : NetworkBehaviour
         {
             velocityY = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
-
         if (isGrounded! && controller.velocity.y < -1f)
         {
             velocityY = -8f;
         }
     }
+
+    /*void UpdateCamera()
+    {
+        playerCamera.position = camHolder.position;
+        playerCamera.rotation = camHolder.rotation;
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }*/
+
     public void ChangeSpeedStats()
     {
         Speed = 50f;

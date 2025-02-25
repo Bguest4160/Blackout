@@ -7,12 +7,13 @@ public class ObjectExplode : MonoBehaviour
 {
     [SerializeField] GameObject object1;
     public GameObject particle;
+    ObjectGrabable objectGrabable;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        objectGrabable = GetComponent<ObjectGrabable>();
     }
 
     // Update is called once per frame
@@ -23,19 +24,16 @@ public class ObjectExplode : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(GameManager.activateCollider);
-        if (GameManager.activateCollider == true)
+        if (objectGrabable.GetactivateCollier() == true)
         {
-            //particleEffect.SetActive(true);
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 3f);
-            //particleEffect.SetActive(false);
 
-            Instantiate(particle, transform.position, Quaternion.Euler(90, 0, 0));
+            var instance = Instantiate(particle, transform.position, Quaternion.Euler(90, 0, 0));
             object1.SetActive(false);
             ParticleSystem parts = particle.GetComponent<ParticleSystem>();
             float totalDuration = parts.duration + parts.startLifetime;
-            Destroy(particle, totalDuration);
+            Destroy(instance, totalDuration);
 
         }
+        objectGrabable.SetActivateCollider(false);
     }
 }

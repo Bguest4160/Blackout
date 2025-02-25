@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/AnimationDevScene.unity
     guid: c0acad1fb088b415f9ca8403e954994b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CharacterCreationScreen.unity
     guid: 5a4ea8c1455124a60b21b91cf8e936e7
   - enabled: 1
     path: Assets/Scenes/Beckett stole this scene.unity
     guid: b3fe10447c82c4035bf7259e2cb53d2f
+  - enabled: 1
+    path: Assets/Scenes/Actual merge scene.unity
+    guid: 00f04ba3301de4514a8fe61c3dbbc628
   m_configObjects: {}
