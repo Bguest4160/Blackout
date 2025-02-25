@@ -28,7 +28,7 @@ public class potionEffectScript : MonoBehaviour
         if (objectGrabable.GetactivateCollier() == true)
         {
             Debug.Log("NONSENSE");
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 1f, players);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 3f, players);
 
             var instance = Instantiate(particle, transform.position, Quaternion.Euler(90,0,0));
             potion.SetActive(false);

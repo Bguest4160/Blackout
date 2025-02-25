@@ -122,7 +122,7 @@ public class MovementScript : NetworkBehaviour
     {
         Speed = 50f;
         Invoke("ResetSpeedStats", 5f);
-        soundManager.PlaySound(SoundType.IMPACT, 1);
+        soundManager.PlaySound(SoundType.IMPACT);
     }
 
     public void ChangeJumpStats()

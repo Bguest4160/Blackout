@@ -1107,7 +1107,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -1175,7 +1174,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -1216,7 +1214,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -1284,7 +1281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -1645,7 +1641,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -2959,7 +2954,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -3721,7 +3715,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -4229,7 +4222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -4947,7 +4939,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -5597,7 +5588,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -5953,7 +5943,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -5994,7 +5983,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -6379,7 +6367,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -7887,7 +7874,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -9269,7 +9255,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -9894,7 +9879,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -10822,7 +10806,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -11525,7 +11508,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -11620,7 +11602,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -12009,7 +11990,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -13604,7 +13584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -14050,7 +14029,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -14841,7 +14819,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -15556,7 +15533,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -15633,7 +15609,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -16321,7 +16296,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -16576,7 +16550,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -16626,7 +16599,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -17745,7 +17717,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -18907,7 +18878,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -19403,7 +19373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -19831,7 +19800,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -21524,7 +21492,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -22703,7 +22670,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -23383,7 +23349,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -23451,7 +23416,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -25227,6 +25191,153 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5309999540461345533, guid: 9fee49bce9ad91542a24253c70f16cb9, type: 3}
   m_PrefabInstance: {fileID: 1013279782}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1018936839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1018936842}
+  - component: {fileID: 1018936841}
+  - component: {fileID: 1018936840}
+  m_Layer: 0
+  m_Name: sound manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1018936840
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018936839}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1018936841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018936839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e2a1d14518ac4c56a71a46340e3a233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundlist:
+  - {fileID: 8300000, guid: 250b6771b89d0974a87d0afda52d83e1, type: 3}
+  - {fileID: 8300000, guid: 40cda279da2faea43ad6582184440a70, type: 3}
+  - {fileID: 8300000, guid: aa48101fd9bd24b82af88afb182a9bf5, type: 3}
+  - {fileID: 8300000, guid: d11230aada070a148ad9cac9ac59514d, type: 3}
+  - {fileID: 8300000, guid: 1dc904b120aea44b58e588234674f5d7, type: 3}
+--- !u!4 &1018936842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018936839}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -85.94651, y: -13.000694, z: -53.19156}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1023425726
 GameObject:
   m_ObjectHideFlags: 0
@@ -25338,7 +25449,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -25837,7 +25947,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -26399,7 +26508,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -27466,7 +27574,7 @@ GameObject:
   - component: {fileID: 1120992664}
   - component: {fileID: 1120992663}
   - component: {fileID: 1120992662}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27685,7 +27793,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -28232,7 +28339,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -29378,7 +29484,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -30233,7 +30338,7 @@ GameObject:
   - component: {fileID: 1190860089}
   - component: {fileID: 1190860088}
   - component: {fileID: 1190860087}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31171,7 +31276,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -31266,7 +31370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -31337,7 +31440,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -32386,7 +32488,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -33795,7 +33896,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -35045,7 +35145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -35644,7 +35743,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -36106,7 +36204,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -36639,7 +36736,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -37321,7 +37417,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -37943,7 +38038,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -40095,7 +40189,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -40281,7 +40374,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -41065,7 +41157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -41183,7 +41274,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -41224,7 +41314,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -41319,7 +41408,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -41976,7 +42064,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -42124,7 +42211,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -42377,7 +42463,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -45568,7 +45653,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -46793,7 +46877,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -47634,7 +47717,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -49603,7 +49685,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -50495,7 +50576,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -50563,7 +50643,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -50871,7 +50950,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -52205,7 +52283,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -52241,7 +52318,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -53039,7 +53115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -53337,7 +53412,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -53696,7 +53770,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -53991,7 +54064,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -54710,7 +54782,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -55340,7 +55411,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -56079,7 +56149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
   activateCollider: 0
@@ -56144,3 +56213,4 @@ SceneRoots:
   - {fileID: 1745497295}
   - {fileID: 743522950}
   - {fileID: 1836300171}
+  - {fileID: 1018936842}
