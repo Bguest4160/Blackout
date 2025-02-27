@@ -1107,6 +1107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -1175,6 +1176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -1216,6 +1218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -1284,6 +1287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -1645,6 +1649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -2959,6 +2964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -3721,6 +3727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -4229,6 +4236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -4947,6 +4955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -5597,6 +5606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -5953,6 +5963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -5994,6 +6005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -6379,6 +6391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -7887,6 +7900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -9269,6 +9283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -9894,6 +9909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -10822,6 +10838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -11525,6 +11542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -11620,6 +11638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -12009,6 +12028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -13091,6 +13111,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7c4994a3755c2734aa3021de1e5b42fd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2109876007}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7c4994a3755c2734aa3021de1e5b42fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2109876012}
   m_SourcePrefab: {fileID: 100100000, guid: 7c4994a3755c2734aa3021de1e5b42fd, type: 3}
 --- !u!1 &541617309
 GameObject:
@@ -13604,6 +13627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -14050,6 +14074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -14841,6 +14866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -15556,6 +15582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -15633,6 +15660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -16321,6 +16349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -16576,6 +16605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -16626,6 +16656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -17745,6 +17776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -18907,6 +18939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -19403,6 +19436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -19831,6 +19865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -21524,6 +21559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -22703,6 +22739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -23383,6 +23420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -23451,6 +23489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -25338,6 +25377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -25837,6 +25877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -26399,6 +26440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -27685,6 +27727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -28232,6 +28275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -29378,6 +29422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -31171,6 +31216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -31266,6 +31312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -31337,6 +31384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -32386,6 +32434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -32723,9 +32772,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1835369280}
-  m_Father: {fileID: 1264771751}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -4.577}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -32773,7 +32821,7 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
-  m_FillRect: {fileID: 1835369280}
+  m_FillRect: {fileID: 0}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
@@ -33883,6 +33931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -35133,6 +35182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -35578,9 +35628,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2011068282}
-  m_Father: {fileID: 1264771751}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -4.577}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -35628,7 +35677,7 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
-  m_FillRect: {fileID: 2011068282}
+  m_FillRect: {fileID: 0}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
@@ -35820,6 +35869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -36282,6 +36332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -36815,6 +36866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -37497,6 +37549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -38119,6 +38172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -39318,7 +39372,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1264771751}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -4.577}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -40346,6 +40400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -40532,6 +40587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -40778,8 +40834,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1061206490}
-  - {fileID: 962135667}
-  - {fileID: 1264771751}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -41318,6 +41372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -41436,6 +41491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -41477,6 +41533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -41572,6 +41629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -42229,6 +42287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -42377,6 +42436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -42630,6 +42690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -45821,6 +45882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -47046,6 +47108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -47887,6 +47950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -49856,6 +49920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -50748,6 +50813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -50816,6 +50882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -51124,6 +51191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -52458,6 +52526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -52494,6 +52563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -53292,6 +53362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -53590,6 +53661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -53949,6 +54021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -54244,6 +54317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -54963,6 +55037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -55593,6 +55668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -55611,6 +55687,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   object1: {fileID: 2109876005}
   particle: {fileID: 8526563518670966980, guid: 578a94ccf9cfd463d9d35cd6f7dd8a1a, type: 3}
+--- !u!114 &2109876012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109876005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2030045122
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1001 &2112592864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56332,6 +56429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -56397,3 +56495,6 @@ SceneRoots:
   - {fileID: 1745497295}
   - {fileID: 743522950}
   - {fileID: 1836300171}
+  - {fileID: 1259475670}
+  - {fileID: 1367393211}
+  - {fileID: 1517257451}

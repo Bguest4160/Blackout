@@ -14,7 +14,6 @@ public class ObjectGrabable : NetworkBehaviour
     public Transform playerCamera;
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
-    public Transform playerCamera;
     public bool held = false;
     public bool activateCollider;
 
@@ -28,9 +27,6 @@ public class ObjectGrabable : NetworkBehaviour
     public float GetDamageForce() {
         return damageForce;
     }
-
-    }
-
 
     public void SetPlayerCamera(Transform cameraTransform)
     {

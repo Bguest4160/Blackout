@@ -2919,6 +2919,7 @@ GameObject:
   - component: {fileID: 8455604976825904261}
   - component: {fileID: 6302327744464707903}
   - component: {fileID: 5461193126876179252}
+  - component: {fileID: 5275275643219838362}
   m_Layer: 6
   m_Name: HumanMale_Character_FREE
   m_TagString: Untagged
@@ -3135,6 +3136,20 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &5275275643219838362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4009791729184978398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 1160495042224293377}
 --- !u!1 &4020602213105806944
 GameObject:
   m_ObjectHideFlags: 0
