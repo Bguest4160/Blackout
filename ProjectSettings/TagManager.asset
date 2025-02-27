@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - IsDamageTrigger
+  - IsBlockingHitbox
+  - IsMeleeHitbox
   layers:
   - Default
   - TransparentFX

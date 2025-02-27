@@ -6,20 +6,27 @@ using UnityEngine;
 public class ObjectGrabable : NetworkBehaviour
 {
     public float throwForce = 10f;
+    public float damageForce = 75f;
+    
+    [Space(15)] 
+    
+    public Transform playerTransform;
+    public Transform playerCamera;
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
-    public Transform playerCamera;
     public bool held = false;
     public bool activateCollider;
-   
+
     
     private void Awake()
     {
         objectRigidbody = GetComponent<Rigidbody>();
         objectRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-
     }
-
+    
+    public float GetDamageForce() {
+        return damageForce;
+    }
 
     public void SetPlayerCamera(Transform cameraTransform)
     {

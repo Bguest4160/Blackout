@@ -7,7 +7,6 @@ public class DummyBehavior : MonoBehaviour {
     // Fields
     private static bool _initCooldownUsed = false;
     private static float _lastHealthEventTime = 0f;
-    private static float _damageCooldown = 0.5f;
    
     public GameObject frontHealthSlider;
     public GameObject backHealthSlider;
@@ -25,17 +24,18 @@ public class DummyBehavior : MonoBehaviour {
             DummyTakeDamage(200);
         }
         if (Input.GetKeyDown(KeyCode.Y)) {
-            PlayerHeal(100);
+            DummyHeal(100);
         }
         
         DummyHealth.ChipHealth();
     }
 
-    void OnTriggerEnter(Collider other) {
-        if (CooldownCheck(_damageCooldown)) {
-            if (other.enabled && other.gameObject.CompareTag("IsDamageTrigger")) {
-                DummyTakeDamage(200);
-            }
+    void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.TryGetComponent(out ObjectGrabable projectile)) {
+            DummyTakeDamage((int)projectile.GetDamageForce());
+        }
+        else if (collision.gameObject.CompareTag("IsMeleeHitbox")) {
+            DummyTakeDamage(100);
         }
     }
     
@@ -61,7 +61,7 @@ public class DummyBehavior : MonoBehaviour {
         }
     }
 
-    private void PlayerHeal(int amount) {
+    private void DummyHeal(int amount) {
         if (DummyHealth.Value > 0 && DummyHealth.Value < DummyHealth.MaxValue) {
             DummyHealth.Add(amount);
             _lastHealthEventTime = Time.time;
