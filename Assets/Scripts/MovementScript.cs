@@ -16,6 +16,7 @@ public class MovementScript : NetworkBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
 
+    public GameObject[] heads;
     public float jumpHeight = 6f;
     float velocityY;
     public bool isGrounded;
@@ -44,11 +45,16 @@ public class MovementScript : NetworkBehaviour
         if (IsLocalPlayer)
         {
             playerCamera.gameObject.SetActive(true);
+            foreach(GameObject head in heads)
+            {
+                head.layer = 8;
+            }
         }
         else
         {
             playerCamera.gameObject.SetActive(false);
         }
+
     }
 
     void Update()
@@ -122,6 +128,7 @@ public class MovementScript : NetworkBehaviour
     {
         Speed = 50f;
         Invoke("ResetSpeedStats", 5f);
+        soundManager.PlaySound(SoundType.IMPACT);
     }
 
     public void ChangeJumpStats()

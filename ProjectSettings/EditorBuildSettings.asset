@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Actual merge scene.unity
     guid: 00f04ba3301de4514a8fe61c3dbbc628
+  - enabled: 1
+    path: Assets/Scenes/multiplayer throw scene.unity
+    guid: 509d6502a89704cf1926688e99af8904
+  - enabled: 1
+    path: Assets/Scenes/Nicks scene 3.unity
+    guid: 89957f54b3f904a22b25f569b7f00290
+  - enabled: 1
+    path: Assets/Scenes/Nicks Scene for camera.unity
+    guid: 9d19a426c85214c3fbd3ea98db95f974
   m_configObjects: {}
