@@ -3057,10 +3057,6 @@ MonoBehaviour:
   backHealthSliderFill: {fileID: 0}
   rightFistHitbox: {fileID: 7140203124592976117}
   leftFistHitbox: {fileID: 3271157716524061919}
-  rightHitboxRenderer: {fileID: 2051334239557360723}
-  leftHitboxRenderer: {fileID: 823749466783943721}
-  rightFistCollider: {fileID: 1979347113039399421}
-  leftFistCollider: {fileID: 3867377181320060708}
 --- !u!114 &8455604976825904261
 MonoBehaviour:
   m_ObjectHideFlags: 0

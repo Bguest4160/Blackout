@@ -32,7 +32,9 @@ public class DummyBehavior : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.TryGetComponent(out ObjectGrabable projectile)) {
-            DummyTakeDamage((int)projectile.GetDamageForce());
+            if (!projectile.held) {
+                DummyTakeDamage((int)projectile.GetDamageForce());
+            }
         }
         else if (collision.gameObject.CompareTag("IsMeleeHitbox")) {
             DummyTakeDamage(100);

@@ -27,19 +27,25 @@ public class PlayerBehavior : NetworkBehaviour {
     public GameObject rightFistHitbox;
     public GameObject leftFistHitbox;
     
-    public Renderer rightHitboxRenderer;
-    public Renderer leftHitboxRenderer;
-    public Collider rightFistCollider;
-    public Collider leftFistCollider;
+    private Renderer rightHitboxRenderer;
+    private Renderer leftHitboxRenderer;
+    private Collider rightFistCollider;
+    private Collider leftFistCollider;
     
     // Methods
+    public override void OnNetworkSpawn() {
+        if (IsOwner) {
+            Debug.Log("PlayerHealth not yet instantiaed");
+            PlayerHealth = new UnitBar(1000, 1000, frontHealthSlider, backHealthSlider, backHealthSliderFill);
+            Debug.Log("PlayerHealth instantiated");
+        }
+    }
+    
     void Start() {
-        PlayerHealth = new UnitBar(1000, 1000, frontHealthSlider, backHealthSlider, backHealthSliderFill);
-        
-        // rightHitboxRenderer = rightFistHitbox.GetComponent<Renderer>();
-        // leftHitboxRenderer = leftFistHitbox.GetComponent<Renderer>();
-        // rightFistCollider= rightFistHitbox.GetComponent<Collider>();
-        // leftFistCollider = leftFistHitbox.GetComponent<Collider>();
+        rightHitboxRenderer = rightFistHitbox.GetComponent<Renderer>();
+        leftHitboxRenderer = leftFistHitbox.GetComponent<Renderer>();
+        rightFistCollider= rightFistHitbox.GetComponent<Collider>();
+        leftFistCollider = leftFistHitbox.GetComponent<Collider>();
     }
 
     void Update() {
@@ -77,9 +83,10 @@ public class PlayerBehavior : NetworkBehaviour {
     // DAMAGE SOURCES
     // Remember to update BlockHandler version for any changes
     void OnControllerColliderHit(ControllerColliderHit hit) {
-        Debug.Log(hit.gameObject.name);
         if (hit.gameObject.TryGetComponent(out ObjectGrabable projectile) && CooldownCheck(ProjectileDamageCooldown)) {
-            PlayerTakeDamage((int)projectile.GetDamageForce());
+            if (!projectile.held) {
+                PlayerTakeDamage((int)projectile.GetDamageForce());
+            }
         }
         else if (hit.gameObject.CompareTag("IsMeleeHitbox")) {
             PlayerTakeDamage(100);
