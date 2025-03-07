@@ -33,15 +33,10 @@ public class PlayerBehavior : NetworkBehaviour {
     private Collider leftFistCollider;
     
     // Methods
-    public override void OnNetworkSpawn() {
-        if (IsOwner) {
-            Debug.Log("PlayerHealth not yet instantiaed");
-            PlayerHealth = new UnitBar(1000, 1000, frontHealthSlider, backHealthSlider, backHealthSliderFill);
-            Debug.Log("PlayerHealth instantiated");
-        }
-    }
     
     void Start() {
+        PlayerHealth = new UnitBar(1000, 1000, frontHealthSlider, backHealthSlider, backHealthSliderFill);
+        
         rightHitboxRenderer = rightFistHitbox.GetComponent<Renderer>();
         leftHitboxRenderer = leftFistHitbox.GetComponent<Renderer>();
         rightFistCollider= rightFistHitbox.GetComponent<Collider>();
@@ -77,7 +72,7 @@ public class PlayerBehavior : NetworkBehaviour {
             Invoke("BlockDown", 0.5f);
         }
         
-        // PlayerHealth.ChipHealth();
+        PlayerHealth.ChipHealth();
     }
 
     // DAMAGE SOURCES

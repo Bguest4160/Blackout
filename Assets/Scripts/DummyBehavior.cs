@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+using Unity.Netcode;
 
-public class DummyBehavior : MonoBehaviour {
+public class DummyBehavior : NetworkBehaviour {
     // Fields
     private static bool _initCooldownUsed = false;
     private static float _lastHealthEventTime = 0f;
