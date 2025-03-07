@@ -18,13 +18,24 @@ public class HeadBumper : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        camPivot.Translate(0f, 0f, -2);
+        
+        if (other.gameObject.layer == 3)
+        {
+            camPivot.Translate(0f, 0f, -.05f);
+            Debug.Log(other);
+        }
+        
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        camPivot = camHolder;
+        if (other.gameObject.layer == 3)
+        {
+            camPivot.Translate(0f, 0f, 0.5f);
+            Debug.Log("exited");
+        }
+        
     }
 }

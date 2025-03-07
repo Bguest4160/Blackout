@@ -77,7 +77,7 @@ public class PlayerBehavior : NetworkBehaviour {
     // DAMAGE SOURCES
     // Remember to update BlockHandler version for any changes
     void OnControllerColliderHit(ControllerColliderHit hit) {
-        Debug.Log(hit.gameObject.name);
+        //Debug.Log(hit.gameObject.name);
         if (hit.gameObject.TryGetComponent(out ObjectGrabable projectile) && CooldownCheck(ProjectileDamageCooldown)) {
             PlayerTakeDamage((int)projectile.GetDamageForce());
         }
