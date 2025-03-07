@@ -6,6 +6,11 @@ public class HeadBumper : MonoBehaviour
 {
     public Transform camPivot;
     public Transform camHolder;
+    public Transform PlayerCamera;
+    public Transform camHolder2;
+    public Transform colliderThing;
+    public Transform sphere;
+    public Transform sphereHolder;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +23,13 @@ public class HeadBumper : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         
         if (other.gameObject.layer == 3)
         {
-            camPivot.Translate(0f, 0f, -.05f);
+            PlayerCamera.Translate(0f, 0f, -1f*Time.deltaTime);
+            sphere.Translate(0f, 0f, -1f * Time.deltaTime);
             Debug.Log(other);
         }
         
@@ -33,7 +39,8 @@ public class HeadBumper : MonoBehaviour
     {
         if (other.gameObject.layer == 3)
         {
-            camPivot.Translate(0f, 0f, 0.5f);
+            PlayerCamera.position = camHolder2.position;
+            sphere.position = sphereHolder.position;
             Debug.Log("exited");
         }
         

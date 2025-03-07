@@ -46,7 +46,7 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 1.0333334
+        time: 1.0333333
         value: {x: 0, y: 1.74, z: 0.41}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
@@ -57,7 +57,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: headhead
+    path: Cam Holder Body
   m_ScaleCurves: []
   m_FloatCurves:
   - serializedVersion: 2
@@ -75459,7 +75459,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2517574615
+      path: 3934518750
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -152099,7 +152099,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.0333334
+        time: 1.0333333
         value: 0
         inSlope: 0
         outSlope: 0
@@ -152111,7 +152111,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: headhead
+    path: Cam Holder Body
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -152147,7 +152147,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.0333334
+        time: 1.0333333
         value: 1.74
         inSlope: 0
         outSlope: 0
@@ -152159,7 +152159,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: headhead
+    path: Cam Holder Body
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -152195,7 +152195,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.0333334
+        time: 1.0333333
         value: 0.41
         inSlope: 0
         outSlope: 0
@@ -152207,7 +152207,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: headhead
+    path: Cam Holder Body
     classID: 4
     script: {fileID: 0}
     flags: 0
