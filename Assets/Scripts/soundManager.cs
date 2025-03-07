@@ -10,7 +10,7 @@ public enum SoundType
     GRUNT,
     IMPACT,
     HURT,
-
+    GRUNT2,
 }
 [RequireComponent(typeof(AudioSource))]
 public class soundManager : MonoBehaviour

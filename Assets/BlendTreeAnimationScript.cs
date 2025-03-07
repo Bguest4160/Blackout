@@ -172,7 +172,7 @@ public class BlendTreeAnimationScript : NetworkBehaviour
             if (playerPickupThrow.GetHolding() == false)
             {
                 animator.SetBool("punch", true);
-            } 
+            }
         }
 
         else
