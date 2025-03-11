@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using Unity.Netcode;
 
-public class potionEffectScript : MonoBehaviour
+public class PotionEffectScript : NetworkBehaviour
 {
     [SerializeField] LayerMask players;
     [SerializeField] GameObject potion;
@@ -45,9 +46,8 @@ public class potionEffectScript : MonoBehaviour
                     {
                         c.GetComponent<MovementScript>().ChangeSpeedStats();
                     }
-                    else if (potName.Equals("heal"))
-                    {
-                        c.GetComponent<MovementScript>().ChangeHealStats();
+                    else if (potName.Equals("heal")) {
+                        c.GetComponent<PlayerBehavior>().PlayerHeal(300);
                     }
 
                     else if (potName.Equals("Jump"))

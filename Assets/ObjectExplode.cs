@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using Unity.Netcode;
 
-public class ObjectExplode : MonoBehaviour
+public class ObjectExplode : NetworkBehaviour
 {
     [SerializeField] GameObject object1;
     public GameObject particle;

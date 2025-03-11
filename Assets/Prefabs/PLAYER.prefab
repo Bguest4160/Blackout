@@ -6357,7 +6357,7 @@ GameObject:
   - component: {fileID: 2118652070346353320}
   - component: {fileID: 53585028535290040}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6544,7 +6544,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 5000
-  field of view: 100.1
+  field of view: 100
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -6569,7 +6569,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7939566061955295683}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!1 &7946503787853148575
 GameObject:
   m_ObjectHideFlags: 0

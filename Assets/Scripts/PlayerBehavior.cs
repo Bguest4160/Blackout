@@ -31,6 +31,7 @@ public class PlayerBehavior : NetworkBehaviour {
     private Renderer leftHitboxRenderer;
     private Collider rightFistCollider;
     private Collider leftFistCollider;
+    private Canvas UICanvas;
     
     // Methods
     
@@ -41,6 +42,11 @@ public class PlayerBehavior : NetworkBehaviour {
         leftHitboxRenderer = leftFistHitbox.GetComponent<Renderer>();
         rightFistCollider= rightFistHitbox.GetComponent<Collider>();
         leftFistCollider = leftFistHitbox.GetComponent<Collider>();
+        UICanvas = GetComponentInChildren<Canvas>();
+
+        if (!IsOwner) {
+            UICanvas.enabled = false;
+        }
     }
 
     void Update() {
