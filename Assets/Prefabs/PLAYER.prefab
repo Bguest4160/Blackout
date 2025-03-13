@@ -2133,7 +2133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4575306416190575894
 Transform:
   m_ObjectHideFlags: 0
@@ -2144,7 +2144,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.4956056, y: 0.50435615, z: 0.4956056, w: 0.50435615}
   m_LocalPosition: {x: 0.1013, y: -0.0129, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.9477, z: 0.5}
+  m_LocalScale: {x: 0.65721136, y: 0.9477, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 163470866634497338}
@@ -3357,6 +3357,7 @@ MonoBehaviour:
   backHealthSliderFill: {fileID: 7345263363299624239}
   rightFistHitbox: {fileID: 7140203124592976117}
   leftFistHitbox: {fileID: 3271157716524061919}
+  blockingHitbox: {fileID: 7345175385239174223}
 --- !u!114 &8455604976825904261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5821,9 +5822,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7345175385239174223}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.0087506175, w: 0.9999618}
-  m_LocalPosition: {x: 0.1116, y: 0.4451, z: -0.011}
-  m_LocalScale: {x: 1.936637, y: 0.17324917, z: 1.0188698}
+  m_LocalRotation: {x: -0, y: 0.000000014901159, z: -0.008750587, w: 0.9999618}
+  m_LocalPosition: {x: 0.11150016, y: 0.40490022, z: -0.011000127}
+  m_LocalScale: {x: 1.9366368, y: 0.22733186, z: 1.0188698}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 163470866634497338}

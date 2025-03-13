@@ -26,11 +26,13 @@ public class PlayerBehavior : NetworkBehaviour {
     
     public GameObject rightFistHitbox;
     public GameObject leftFistHitbox;
+    public GameObject blockingHitbox;
     
     private Renderer rightHitboxRenderer;
     private Renderer leftHitboxRenderer;
     private Collider rightFistCollider;
     private Collider leftFistCollider;
+    private Collider blockingCollider;
     private Canvas UICanvas;
     
     // Methods
@@ -42,6 +44,7 @@ public class PlayerBehavior : NetworkBehaviour {
         leftHitboxRenderer = leftFistHitbox.GetComponent<Renderer>();
         rightFistCollider= rightFistHitbox.GetComponent<Collider>();
         leftFistCollider = leftFistHitbox.GetComponent<Collider>();
+        blockingCollider = blockingHitbox.GetComponent<Collider>();
         UICanvas = GetComponentInChildren<Canvas>();
 
         if (!IsOwner) {
@@ -74,8 +77,15 @@ public class PlayerBehavior : NetworkBehaviour {
                 rightHitboxRenderer.material.color = Transparent;
             }
         }
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            blockingCollider.enabled = true;
+            if (_hitboxViewerActive) {
+                blockingHitbox.GetComponent<Renderer>().material.color = PassiveHitbox;
+            }
+        }
         if (Input.GetKeyUp(KeyCode.Q)) {
-            Invoke("BlockDown", 0.5f);
+            blockingCollider.enabled = false;
+            blockingHitbox.GetComponent<Renderer>().material.color = Transparent;
         }
         
         PlayerHealth.ChipHealth();
@@ -86,13 +96,16 @@ public class PlayerBehavior : NetworkBehaviour {
     void OnControllerColliderHit(ControllerColliderHit hit) {
         if (hit.gameObject.TryGetComponent(out ObjectGrabable projectile) && CooldownCheck(ProjectileDamageCooldown)) {
             if (!projectile.held) {
+                Debug.Log("projectile hit");
                 PlayerTakeDamage((int)projectile.GetDamageForce());
             }
         }
         else if (hit.gameObject.CompareTag("IsMeleeHitbox")) {
+            Debug.Log("fist hit");
             PlayerTakeDamage(100);
         }
-        else if (hit.gameObject.name == "Damage Cube" && CooldownCheck(CubeDamageCooldown)) { 
+        else if (hit.gameObject.name == "Damage Cube" && CooldownCheck(CubeDamageCooldown)) {
+            Debug.Log("damage cube hit");
             PlayerTakeDamage(100);
         }
     }
@@ -118,24 +131,6 @@ public class PlayerBehavior : NetworkBehaviour {
         leftFistCollider.enabled = false;
         if (_hitboxViewerActive) {
             leftHitboxRenderer.material.color = PassiveHitbox;
-        }
-    }
-
-    void BlockUp() {
-        foreach (GameObject hitbox in GameObject.FindGameObjectsWithTag("IsBlockingHitbox")) {
-            hitbox.GetComponent<Collider>().enabled = true;
-            if (_hitboxViewerActive) {
-                hitbox.GetComponent<Renderer>().material.color = PassiveHitbox;
-            }
-        }
-    }
-
-    void BlockDown() {
-        foreach (GameObject hitbox in GameObject.FindGameObjectsWithTag("IsBlockingHitbox")) {
-            hitbox.GetComponent<Collider>().enabled = false;
-            if (_hitboxViewerActive) {
-                hitbox.GetComponent<Renderer>().material.color = Transparent;
-            }
         }
     }
 
