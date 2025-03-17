@@ -7,6 +7,7 @@ public class PlayerBehavior : NetworkBehaviour {
     private static bool _initCooldownUsed = false;
     public float CubeDamageCooldown = 0.8f;
     public float ProjectileDamageCooldown = 0.1f;
+    public float MeleeDamageCooldown = 0.5f;
     
     private static float _lastHealthEventTime = 0f;
     private static bool _hitboxViewerActive = false;
@@ -27,6 +28,7 @@ public class PlayerBehavior : NetworkBehaviour {
     public GameObject rightFistHitbox;
     public GameObject leftFistHitbox;
     public GameObject blockingHitbox;
+    public GameObject playerHitbox;
     
     private Renderer rightHitboxRenderer;
     private Renderer leftHitboxRenderer;
@@ -71,10 +73,12 @@ public class PlayerBehavior : NetworkBehaviour {
             if (_hitboxViewerActive) {
                 leftHitboxRenderer.material.color = PassiveHitbox;
                 rightHitboxRenderer.material.color = PassiveHitbox;
+                playerHitbox.GetComponent<Renderer>().material.color = PassiveHitbox;
             }
             else {
                 leftHitboxRenderer.material.color = Transparent;
                 rightHitboxRenderer.material.color = Transparent;
+                playerHitbox.GetComponent<Renderer>().material.color = Transparent;
             }
         }
         if (Input.GetKeyDown(KeyCode.Q)) {
@@ -89,25 +93,6 @@ public class PlayerBehavior : NetworkBehaviour {
         }
         
         PlayerHealth.ChipHealth();
-    }
-
-    // DAMAGE SOURCES
-    // Remember to update BlockHandler version for any changes
-    void OnControllerColliderHit(ControllerColliderHit hit) {
-        if (hit.gameObject.TryGetComponent(out ObjectGrabable projectile) && CooldownCheck(ProjectileDamageCooldown)) {
-            if (!projectile.held) {
-                Debug.Log("projectile hit");
-                PlayerTakeDamage((int)projectile.GetDamageForce());
-            }
-        }
-        else if (hit.gameObject.CompareTag("IsMeleeHitbox")) {
-            Debug.Log("fist hit");
-            PlayerTakeDamage(100);
-        }
-        else if (hit.gameObject.name == "Damage Cube" && CooldownCheck(CubeDamageCooldown)) {
-            Debug.Log("damage cube hit");
-            PlayerTakeDamage(100);
-        }
     }
     
     IEnumerator RightHandPunch() {

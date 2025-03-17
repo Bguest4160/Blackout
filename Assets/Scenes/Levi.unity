@@ -775,7 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  damageForce: 75
+  damageForce: 100
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -1950,7 +1950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  damageForce: 75
+  damageForce: 100
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -5881,7 +5881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167f3d84abdba4503aa6ab44a6cd810f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 10
+  throwForce: 15
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
@@ -9541,7 +9541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167f3d84abdba4503aa6ab44a6cd810f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 10
+  throwForce: 15
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
@@ -13098,8 +13098,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167f3d84abdba4503aa6ab44a6cd810f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 10
-  damageForce: 75
+  throwForce: 8
+  damageForce: 125
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -14249,7 +14249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167f3d84abdba4503aa6ab44a6cd810f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 10
+  throwForce: 15
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
@@ -15091,7 +15091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  damageForce: 75
+  damageForce: 100
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -15943,7 +15943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167f3d84abdba4503aa6ab44a6cd810f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 10
+  throwForce: 15
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
@@ -17131,7 +17131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
-  damageForce: 75
+  damageForce: 100
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -21899,7 +21899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167f3d84abdba4503aa6ab44a6cd810f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 10
+  throwForce: 15
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
@@ -24500,8 +24500,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167f3d84abdba4503aa6ab44a6cd810f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 10
-  damageForce: 75
+  throwForce: 9
+  damageForce: 110
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0
@@ -24922,7 +24922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167f3d84abdba4503aa6ab44a6cd810f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 10
+  throwForce: 15
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
@@ -33058,8 +33058,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167f3d84abdba4503aa6ab44a6cd810f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 10
-  damageForce: 75
+  throwForce: 12
+  damageForce: 80
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
   held: 0

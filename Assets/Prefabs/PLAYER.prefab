@@ -2127,6 +2127,8 @@ GameObject:
   - component: {fileID: 5709718475869859423}
   - component: {fileID: 1730796022791819683}
   - component: {fileID: 3263982540741212915}
+  - component: {fileID: 2142860421209192401}
+  - component: {fileID: 7860502766169608530}
   m_Layer: 6
   m_Name: Player hitbox
   m_TagString: Untagged
@@ -2222,6 +2224,45 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2142860421209192401
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676300115775448773}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &7860502766169608530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676300115775448773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6824cc4d189d4bfea8af22974fa19c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2699653805692235396
 GameObject:
   m_ObjectHideFlags: 0
@@ -3358,6 +3399,7 @@ MonoBehaviour:
   rightFistHitbox: {fileID: 7140203124592976117}
   leftFistHitbox: {fileID: 3271157716524061919}
   blockingHitbox: {fileID: 7345175385239174223}
+  playerHitbox: {fileID: 2676300115775448773}
 --- !u!114 &8455604976825904261
 MonoBehaviour:
   m_ObjectHideFlags: 0
