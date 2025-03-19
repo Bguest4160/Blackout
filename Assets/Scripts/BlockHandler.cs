@@ -12,7 +12,7 @@ public class BlockHandler : NetworkBehaviour {
     // Should be the same as HitboxHandler's but halved
     void OnCollisionEnter(Collision other) {
         if (other.gameObject.TryGetComponent(out ObjectGrabable projectile) && _playerBehavior.CooldownCheck(_playerBehavior.ProjectileDamageCooldown)) {
-            if (projectile.state.Value == "thrown") {
+            if (projectile.state == "thrown") {
                 _playerBehavior.PlayerTakeDamage((int)(projectile.GetDamageForce() * 0.5));
             }
         }

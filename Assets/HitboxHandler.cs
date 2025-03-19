@@ -14,7 +14,7 @@ public class HitboxHandler : MonoBehaviour {
     // Remember to update BlockHandler version for any changes, cooldowns can be modified in PlayerBehavior
     void OnCollisionEnter(Collision other) {
         if (other.gameObject.TryGetComponent(out ObjectGrabable projectile) && _playerBehavior.CooldownCheck(_playerBehavior.ProjectileDamageCooldown)) {
-            if (projectile.state.Value == "thrown") {
+            if (projectile.state == "thrown") {
                 _playerBehavior.PlayerTakeDamage((int)projectile.GetDamageForce());
             }
         }

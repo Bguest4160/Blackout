@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class ObjectGrabable : NetworkBehaviour
 {
@@ -15,7 +12,7 @@ public class ObjectGrabable : NetworkBehaviour
     public Transform playerCamera;
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
-    public NetworkVariable<string> state = new NetworkVariable<string>("static");
+    public string state = "static";
     public bool activateCollider;
 
     
@@ -38,7 +35,7 @@ public class ObjectGrabable : NetworkBehaviour
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
-        SetServerRpcState("held");
+        SetStateServerRpc("held");
         objectRigidbody.constraints = RigidbodyConstraints.None;
     }
 
@@ -47,18 +44,18 @@ public class ObjectGrabable : NetworkBehaviour
         this.objectGrabPointTransform = null;
         objectRigidbody.useGravity = true;
         objectRigidbody.AddForce(playerCamera.forward * throwForce, ForceMode.VelocityChange);
-        if (state.Value == "held")
+        if (state == "held")
         {
             activateCollider = true;
         }
-        SetServerRpcState("thrown");
+        SetStateServerRpc("thrown");
     }
-
+    
     [ServerRpc]
-    public void SetServerRpcState(string state) {
+    public void SetStateServerRpc(string state) {
         if (!IsServer) return;
 
-        this.state.Value = state;
+        this.state = state;
     }
 
 
