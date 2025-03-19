@@ -8,6 +8,7 @@ public class ObjectExplode : MonoBehaviour
     [SerializeField] GameObject object1;
     public GameObject particle;
     ObjectGrabable objectGrabable;
+    ParticleSystem particleSystem;
 
 
     // Start is called before the first frame update
@@ -26,12 +27,15 @@ public class ObjectExplode : MonoBehaviour
     {
         if (objectGrabable.GetactivateCollier() == true)
         {
-
-            var instance = Instantiate(particle, transform.position, Quaternion.Euler(90, 0, 0));
-            object1.SetActive(false);
+            GameObject particleInstance = Instantiate(particle, transform.position, Quaternion.Euler(90, 0, 0));
+            /*particleSystem = particleInstance.GetComponent<ParticleSystem>();
+            Color color = object1.GetComponent<Renderer>().material.color;
+            var mainModule = particleSystem.main;
+            mainModule.startColor = color;*/
             ParticleSystem parts = particle.GetComponent<ParticleSystem>();
             float totalDuration = parts.duration + parts.startLifetime;
-            Destroy(instance, totalDuration);
+            object1.SetActive(false);
+            Destroy(particleInstance, totalDuration);
 
         }
         objectGrabable.SetActivateCollider(false);
