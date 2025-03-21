@@ -12,7 +12,7 @@ public class ObjectGrabable : NetworkBehaviour
     public Transform playerCamera;
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
-    public string state = "static";
+    private byte state = 0; // 0 = static, 1 = held, 2 = thrown
     public bool activateCollider;
 
     
@@ -26,6 +26,10 @@ public class ObjectGrabable : NetworkBehaviour
         return damageForce;
     }
 
+    public byte GetState() {
+        return state;
+    }
+
     public void SetPlayerCamera(Transform cameraTransform)
     {
         playerCamera = cameraTransform;
@@ -35,7 +39,7 @@ public class ObjectGrabable : NetworkBehaviour
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
-        SetStateServerRpc("held");
+        state = 1;
         objectRigidbody.constraints = RigidbodyConstraints.None;
     }
 
@@ -44,21 +48,13 @@ public class ObjectGrabable : NetworkBehaviour
         this.objectGrabPointTransform = null;
         objectRigidbody.useGravity = true;
         objectRigidbody.AddForce(playerCamera.forward * throwForce, ForceMode.VelocityChange);
-        if (state == "held")
+        if (state == 1)
         {
             activateCollider = true;
         }
-        SetStateServerRpc("thrown");
+        state = 2;
     }
     
-    [ServerRpc]
-    public void SetStateServerRpc(string state) {
-        if (!IsServer) return;
-
-        this.state = state;
-    }
-
-
     private void FixedUpdate()
     {
 

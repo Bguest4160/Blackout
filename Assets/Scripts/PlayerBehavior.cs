@@ -1,11 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.Serialization;
 
 public class PlayerBehavior : NetworkBehaviour {
     // Fields
-    private static bool _initCooldownUsed = false;
-    public float CubeDamageCooldown = 0.8f;
+    private static bool _initCooldownUsed = false; 
+    public float CubeCooldown = 0.8f;
     public float ProjectileDamageCooldown = 0.1f;
     public float MeleeDamageCooldown = 0.5f;
     

@@ -30,7 +30,7 @@ public class DummyBehavior : NetworkBehaviour {
 
     void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.TryGetComponent(out ObjectGrabable projectile)) {
-            if (projectile.state == "thrown") {
+            if (projectile.GetState() == 2) {
                 DummyTakeDamage((int)projectile.GetDamageForce());
             }
         }
