@@ -95,7 +95,6 @@ public class PlayerBehavior : NetworkBehaviour {
         
         PlayerHealth.ChipHealth();
     }
-
     
     IEnumerator RightHandPunch() {
         rightFistCollider.enabled = true;
