@@ -41,6 +41,9 @@ public class PlayerBehavior : NetworkBehaviour {
     // Methods
     
     void Start() {
+       
+
+
         PlayerHealth = new UnitBar(1000, 1000, frontHealthSlider, backHealthSlider, backHealthSliderFill);
         
         rightHitboxRenderer = rightFistHitbox.GetComponent<Renderer>();
