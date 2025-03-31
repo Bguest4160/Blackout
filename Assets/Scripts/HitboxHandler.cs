@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class HitboxHandler : MonoBehaviour {
+public class HitboxHandler : NetworkBehaviour {
     private PlayerBehavior _playerBehavior;
 
     void Start()
@@ -14,6 +13,7 @@ public class HitboxHandler : MonoBehaviour {
     // Remember to update BlockHandler version for any changes, cooldowns can be modified in PlayerBehavior
     void OnCollisionEnter(Collision other) {
         if (other.gameObject.TryGetComponent(out ObjectGrabable projectile) && _playerBehavior.CooldownCheck(_playerBehavior.ProjectileDamageCooldown)) {
+            // Debug.Log(projectile.GetState());
             if (projectile.GetState() == 2) {
                 _playerBehavior.PlayerTakeDamage((int)projectile.GetDamageForce());
             }
