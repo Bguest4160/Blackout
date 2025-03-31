@@ -95,6 +95,21 @@ public class PlayerBehavior : NetworkBehaviour {
         
         PlayerHealth.ChipHealth();
     }
+
+    // DAMAGE SOURCES
+    // Remember to update BlockHandler version for any changes
+    void OnControllerColliderHit(ControllerColliderHit hit) {
+        //Debug.Log(hit.gameObject.name);
+        if (hit.gameObject.TryGetComponent(out ObjectGrabable projectile) && CooldownCheck(ProjectileDamageCooldown)) {
+            PlayerTakeDamage((int)projectile.GetDamageForce());
+        }
+        else if (hit.gameObject.CompareTag("IsMeleeHitbox")) {
+            PlayerTakeDamage(100);
+        }
+        else if (hit.gameObject.name == "Damage Cube" && CooldownCheck(CubeDamageCooldown)) { 
+            PlayerTakeDamage(100);
+        }
+    }
     
     IEnumerator RightHandPunch() {
         rightFistCollider.enabled = true;

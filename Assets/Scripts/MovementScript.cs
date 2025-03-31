@@ -63,7 +63,7 @@ public class MovementScript : NetworkBehaviour
         if (!IsLocalPlayer) return;
         UpdateMouse();
         UpdateMove();
-        //UpdateCamera();
+        UpdateCamera();
 
     }
 
@@ -75,10 +75,10 @@ public class MovementScript : NetworkBehaviour
 
         cameraCap -= currentMouseDelta.y * mouseSensitivity;
 
-        cameraCap = Mathf.Clamp(cameraCap, -80.0f, 80.0f);
-        cameraCap2 = Mathf.Clamp(cameraCap, -80.0f, 80.0f);
+        cameraCap = Mathf.Clamp(cameraCap, -90.0f, 80.0f);
+        cameraCap2 = Mathf.Clamp(cameraCap, -90.0f, 80.0f);
 
-        playerCamera.localEulerAngles = Vector3.right * cameraCap;
+        camHolder.localEulerAngles = Vector3.right * cameraCap;
         //if using update camera setting change to cam holder
         //otherCamera.localEulerAngles = Vector3.right * cameraCap2;
 
@@ -112,17 +112,12 @@ public class MovementScript : NetworkBehaviour
         }
     }
 
-    /*void UpdateCamera()
+    void UpdateCamera()
     {
         playerCamera.position = camHolder.position;
         playerCamera.rotation = camHolder.rotation;
         
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }*/
 
     public void ChangeSpeedStats()
     {

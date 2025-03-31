@@ -84,7 +84,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: headhead
+    path: Cam Holder Body
   m_ScaleCurves: []
   m_FloatCurves:
   - serializedVersion: 2
@@ -21666,7 +21666,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2517574615
+      path: 3934518750
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -44498,7 +44498,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: headhead
+    path: Cam Holder Body
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -44564,7 +44564,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: headhead
+    path: Cam Holder Body
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -44639,7 +44639,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: headhead
+    path: Cam Holder Body
     classID: 4
     script: {fileID: 0}
     flags: 0
