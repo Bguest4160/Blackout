@@ -9,6 +9,8 @@ public class NetworkManagerUI : MonoBehaviour
     [SerializeField] private Button hostBtn;
     [SerializeField] private Button clientBtn;
 
+    public static object Singleton { get; internal set; }
+
     private void Awake()
     {
         serverBtn.onClick.AddListener(() => {
