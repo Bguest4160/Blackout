@@ -75,8 +75,8 @@ public class MovementScript : NetworkBehaviour
 
         cameraCap -= currentMouseDelta.y * mouseSensitivity;
 
-        cameraCap = Mathf.Clamp(cameraCap, -80.0f, 80.0f);
-        cameraCap2 = Mathf.Clamp(cameraCap, -80.0f, 80.0f);
+        cameraCap = Mathf.Clamp(cameraCap, -90.0f, 80.0f);
+        cameraCap2 = Mathf.Clamp(cameraCap, -90.0f, 80.0f);
 
         camHolder.localEulerAngles = Vector3.right * cameraCap;
         //if using update camera setting change to cam holder

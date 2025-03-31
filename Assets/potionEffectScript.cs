@@ -10,6 +10,7 @@ public class potionEffectScript : MonoBehaviour
     public string potName;
     public GameObject particle;
     ObjectGrabable objectGrabable;
+    ParticleSystem particleSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -30,11 +31,15 @@ public class potionEffectScript : MonoBehaviour
             Debug.Log("NONSENSE");
             Collider[] colliders = Physics.OverlapSphere(transform.position, 3f, players);
 
-            var instance = Instantiate(particle, transform.position, Quaternion.Euler(90,0,0));
+            GameObject particleInstance = Instantiate(particle, transform.position, Quaternion.Euler(90,0,0));
+            particleSystem = particleInstance.GetComponent<ParticleSystem>();
+            Color color = potion.GetComponent<Renderer>().material.color;
+            var mainModule = particleSystem.main;
+            mainModule.startColor = color;
             potion.SetActive(false);
             ParticleSystem parts = particle.GetComponent<ParticleSystem>();
             float totalDuration = parts.duration + parts.startLifetime;
-            Destroy(instance, totalDuration);
+            Destroy(particleInstance, totalDuration);
 
 
             foreach (Collider c in colliders)
