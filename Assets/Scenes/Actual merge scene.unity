@@ -1110,7 +1110,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &47658904
 MonoBehaviour:
@@ -1179,7 +1178,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &51182487
 MonoBehaviour:
@@ -1221,7 +1219,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &52265886
 MonoBehaviour:
@@ -1290,7 +1287,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &59611223
 MonoBehaviour:
@@ -1652,7 +1648,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &74443543
 Rigidbody:
@@ -2967,7 +2962,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &136969027
 MonoBehaviour:
@@ -3730,7 +3724,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &177044526
 MonoBehaviour:
@@ -4239,7 +4232,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &200520208
 Rigidbody:
@@ -4958,7 +4950,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &221029333
 MonoBehaviour:
@@ -5609,7 +5600,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &236868089
 MonoBehaviour:
@@ -5966,7 +5956,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &249202500
 MonoBehaviour:
@@ -6008,7 +5997,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &251141075
 MonoBehaviour:
@@ -6394,7 +6382,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &259784875
 MonoBehaviour:
@@ -7903,7 +7890,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &318720162
 MonoBehaviour:
@@ -9286,7 +9272,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &362344434
 MonoBehaviour:
@@ -9912,7 +9897,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &387328259
 Rigidbody:
@@ -10841,7 +10825,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &418132519
 MonoBehaviour:
@@ -11545,7 +11528,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &449075882
 MonoBehaviour:
@@ -11641,7 +11623,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &450745415
 MonoBehaviour:
@@ -12031,7 +12012,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &491035381
 Rigidbody:
@@ -13630,7 +13610,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &565113485
 MonoBehaviour:
@@ -14077,7 +14056,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!1 &594201056
 GameObject:
@@ -14869,7 +14847,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &601753393
 Rigidbody:
@@ -15585,7 +15562,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &631482834
 MonoBehaviour:
@@ -15663,7 +15639,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &650603898
 MonoBehaviour:
@@ -16352,7 +16327,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &692244046
 MonoBehaviour:
@@ -16608,7 +16582,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &710420335
 MonoBehaviour:
@@ -16659,7 +16632,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &711795509
 Rigidbody:
@@ -17779,7 +17751,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &747113104
 MonoBehaviour:
@@ -18942,7 +18913,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &786932918
 Rigidbody:
@@ -19439,7 +19409,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!1001 &802735721
 PrefabInstance:
@@ -19868,7 +19837,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &814738909
 Rigidbody:
@@ -21456,50 +21424,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 450745413}
   m_SourcePrefab: {fileID: 100100000, guid: 7c4994a3755c2734aa3021de1e5b42fd, type: 3}
---- !u!1 &883480148
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 883480150}
-  - component: {fileID: 883480149}
-  m_Layer: 0
-  m_Name: TestLobby
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &883480149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 883480148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c907ae51157d64e9b98a0f7f3bfa83c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &883480150
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 883480148}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.976704, y: -16.26846, z: -9.917732}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &885499388
 GameObject:
   m_ObjectHideFlags: 0
@@ -21606,7 +21530,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &888321376
 MonoBehaviour:
@@ -22786,7 +22709,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &930091651
 MonoBehaviour:
@@ -23467,7 +23389,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &964984632
 MonoBehaviour:
@@ -23536,7 +23457,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &966794479
 MonoBehaviour:
@@ -25571,7 +25491,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1027797714
 MonoBehaviour:
@@ -26071,7 +25990,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1039755910
 MonoBehaviour:
@@ -26634,7 +26552,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1073111975
 MonoBehaviour:
@@ -27921,7 +27838,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1128691832
 MonoBehaviour:
@@ -28469,7 +28385,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1146349844
 MonoBehaviour:
@@ -29616,7 +29531,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1158983137
 MonoBehaviour:
@@ -31410,7 +31324,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1231287548
 MonoBehaviour:
@@ -31506,7 +31419,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1232327612
 MonoBehaviour:
@@ -31578,7 +31490,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1233139847
 MonoBehaviour:
@@ -32628,7 +32539,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1253931937
 MonoBehaviour:
@@ -34038,7 +33948,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1318198457
 MonoBehaviour:
@@ -35289,7 +35198,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1352010517
 MonoBehaviour:
@@ -35889,7 +35797,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1374106104
 MonoBehaviour:
@@ -36352,7 +36259,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1386167807
 MonoBehaviour:
@@ -36886,7 +36792,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1408842826
 MonoBehaviour:
@@ -36955,50 +36860,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8, y: 0.1, z: 4.1}
   m_Center: {x: 0, y: 2.5, z: 0}
---- !u!1 &1414233877
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1414233879}
-  - component: {fileID: 1414233878}
-  m_Layer: 0
-  m_Name: Relay Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1414233878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414233877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d3e48bf54fbe4f6ab6781d3ef0a12d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1414233879
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414233877}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.976704, y: -16.26846, z: -9.917732}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1416270522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37613,7 +37474,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1428386267
 MonoBehaviour:
@@ -38236,7 +38096,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1446673632
 MonoBehaviour:
@@ -40389,7 +40248,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &1547210066
 Rigidbody:
@@ -40576,7 +40434,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1561951070
 MonoBehaviour:
@@ -41361,7 +41218,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1631849282
 MonoBehaviour:
@@ -41480,7 +41336,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1635611500
 MonoBehaviour:
@@ -41522,7 +41377,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1639308328
 MonoBehaviour:
@@ -41618,7 +41472,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1640419996
 MonoBehaviour:
@@ -42276,7 +42129,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1656421352
 MonoBehaviour:
@@ -42425,7 +42277,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1657245238
 MonoBehaviour:
@@ -42679,7 +42530,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1660386329
 MonoBehaviour:
@@ -45871,7 +45721,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1741319646
 MonoBehaviour:
@@ -47097,7 +46946,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1789992108
 MonoBehaviour:
@@ -47939,7 +47787,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1834632921
 MonoBehaviour:
@@ -49909,7 +49756,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1904309032
 MonoBehaviour:
@@ -50802,7 +50648,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1934139642
 MonoBehaviour:
@@ -50871,7 +50716,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1941089491
 MonoBehaviour:
@@ -51180,7 +51024,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!1001 &1947128142
 PrefabInstance:
@@ -52515,7 +52358,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1998274534
 MonoBehaviour:
@@ -52552,7 +52394,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &2002416441
 MonoBehaviour:
@@ -53351,7 +53192,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &2013197931
 MonoBehaviour:
@@ -53650,7 +53490,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &2030074471
 MonoBehaviour:
@@ -54010,7 +53849,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &2048838704
 MonoBehaviour:
@@ -54306,7 +54144,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &2052013854
 MonoBehaviour:
@@ -55026,7 +54863,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &2074721890
 MonoBehaviour:
@@ -55657,7 +55493,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &2109876009
 MonoBehaviour:
@@ -56418,7 +56253,6 @@ MonoBehaviour:
   damageForce: 75
   playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!1 &2143308755
 GameObject:
@@ -56481,9 +56315,4 @@ SceneRoots:
   - {fileID: 1745497295}
   - {fileID: 743522950}
   - {fileID: 1836300171}
-  - {fileID: 1259475670}
-  - {fileID: 1367393211}
-  - {fileID: 1517257451}
   - {fileID: 1018936842}
-  - {fileID: 1414233879}
-  - {fileID: 883480150}
