@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -37,6 +38,7 @@ public class BlendTreeAnimationScript : NetworkBehaviour
         bool leftPressed = Input.GetKey("a");
         bool rightPressed = Input.GetKey("d");
         bool backPressed = Input.GetKey("s");
+
 
         //acceleration
         if (forwardPressed && velocityZ < 0.5f)
