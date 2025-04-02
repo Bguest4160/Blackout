@@ -11,6 +11,7 @@ public enum SoundType
     IMPACT,
     HURT,
     GRUNT2,
+    SHATTER,
 }
 [RequireComponent(typeof(AudioSource))]
 public class soundManager : MonoBehaviour
@@ -21,16 +22,16 @@ public class soundManager : MonoBehaviour
 
     private void Awake()
     {
-        // instance = this;
+        instance = this;
     }
 
     private void Start()
     {
-       // audioSource = GetComponent<AudioSource>();
+       audioSource = GetComponent<AudioSource>();
     }
 
     public static void PlaySound(SoundType sound, float volume = 1)
     {
-       // instance.audioSource.PlayOneShot(instance.soundlist[(int)sound],volume);
+       instance.audioSource.PlayOneShot(instance.soundlist[(int)sound],volume);
     }
 }

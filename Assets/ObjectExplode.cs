@@ -28,6 +28,7 @@ public class ObjectExplode : NetworkBehaviour
     {
         if (objectGrabable.GetactivateCollier() == true)
         {
+            soundManager.PlaySound(SoundType.IMPACT);
             GameObject particleInstance = Instantiate(particle, transform.position, Quaternion.Euler(90, 0, 0));
             ParticleSystem parts = particle.GetComponent<ParticleSystem>();
             float totalDuration = parts.duration + parts.startLifetime;

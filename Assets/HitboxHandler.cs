@@ -16,19 +16,23 @@ public class HitboxHandler : MonoBehaviour {
         if (other.gameObject.TryGetComponent(out ObjectGrabable projectile) && _playerBehavior.CooldownCheck(_playerBehavior.ProjectileDamageCooldown)) {
             if (projectile.GetState() == 2) {
                 _playerBehavior.PlayerTakeDamage((int)projectile.GetDamageForce());
+                soundManager.PlaySound(SoundType.HURT);
             }
         }
         else if (other.gameObject.CompareTag("IsMeleeHitbox") && _playerBehavior.CooldownCheck(_playerBehavior.MeleeDamageCooldown)) {
             _playerBehavior.PlayerTakeDamage(100);
+            soundManager.PlaySound(SoundType.HURT);
         }
     }
 
     void OnCollisionStay(Collision other) {
         if (other.gameObject.name == "Damage Cube" && _playerBehavior.CooldownCheck(_playerBehavior.CubeCooldown)) {
             _playerBehavior.PlayerTakeDamage(100);
+            soundManager.PlaySound(SoundType.HURT);
         }
         else if (other.gameObject.name == "Heal Cube" && _playerBehavior.CooldownCheck(_playerBehavior.CubeCooldown)) {
             _playerBehavior.PlayerHeal(1000);
+            soundManager.PlaySound(SoundType.HURT);
         }
     }
 }
