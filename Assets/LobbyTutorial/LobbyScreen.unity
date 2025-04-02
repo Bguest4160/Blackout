@@ -4707,7 +4707,6 @@ MonoBehaviour:
   playerCountText: {fileID: 697043155}
   gameModeText: {fileID: 1363225968}
   leaveLobbyButton: {fileID: 935551613}
-  changeGameModeButton: {fileID: 1279448330}
   startGameButton: {fileID: 1650655889}
 --- !u!1 &1202501701
 GameObject:
@@ -6554,14 +6553,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6277d275dd185f4bb3bdd693f3d77f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSingleTemplate: {fileID: 0}
-  container: {fileID: 0}
-  lobbyNameText: {fileID: 0}
-  playerCountText: {fileID: 0}
-  gameModeText: {fileID: 0}
-  leaveLobbyButton: {fileID: 0}
-  changeGameModeButton: {fileID: 0}
-  startGameButton: {fileID: 0}
+  playerSingleTemplate: {fileID: 172513781}
+  container: {fileID: 517885538}
+  lobbyNameText: {fileID: 692929696}
+  playerCountText: {fileID: 697043155}
+  gameModeText: {fileID: 1363225968}
+  leaveLobbyButton: {fileID: 935551613}
+  startGameButton: {fileID: 1650655889}
 --- !u!1 &1680970760
 GameObject:
   m_ObjectHideFlags: 0
