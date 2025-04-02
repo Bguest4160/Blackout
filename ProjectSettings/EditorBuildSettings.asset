@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TEST RELAY LOBBY.unity
     guid: bbc0c913427ec4f3397a5e9899a68dfa
+  - enabled: 1
+    path: Assets/Scenes/Classroom Scene.unity
+    guid: 88d026c05decd4d1db5e10b04b53431e
   m_configObjects: {}
