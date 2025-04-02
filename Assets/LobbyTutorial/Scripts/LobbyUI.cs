@@ -5,6 +5,7 @@ using Unity.Services.Authentication;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LobbyUI : MonoBehaviour {
 
@@ -100,6 +101,11 @@ public class LobbyUI : MonoBehaviour {
 
     private void Show() {
         gameObject.SetActive(true);
+    }
+
+     public void MainSceneLoader()
+    {
+        SceneManager.LoadScene("Actual merge scene");
     }
 
 }
