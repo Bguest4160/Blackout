@@ -29,6 +29,7 @@ public class PotionEffectScript : NetworkBehaviour
     {
         if (objectGrabable.GetactivateCollier() == true)
         {
+            soundManager.PlaySound(SoundType.SHATTER);
             Debug.Log("NONSENSE");
             Collider[] colliders = Physics.OverlapSphere(transform.position, 3f, players);
 

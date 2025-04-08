@@ -5,12 +5,12 @@ using Unity.Services.Authentication;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using Unity.Netcode;
 
-public class LobbyUI : MonoBehaviour {
-
-
+public class LobbyUI : MonoBehaviour
+{
     public static LobbyUI Instance { get; private set; }
-
 
     [SerializeField] private Transform playerSingleTemplate;
     [SerializeField] private Transform container;
@@ -21,7 +21,8 @@ public class LobbyUI : MonoBehaviour {
     [SerializeField] private Button changeGameModeButton;
     [SerializeField] private Button startGameButton;
 
-    private void Awake() {
+    private void Awake()
+    {
         Instance = this;
 
         playerSingleTemplate.gameObject.SetActive(false);
@@ -39,33 +40,49 @@ public class LobbyUI : MonoBehaviour {
         });
     }
 
-    private void Start() {
+    private void Start()
+    {
+        // Subscribe to events
         LobbyManager.Instance.OnJoinedLobby += UpdateLobby_Event;
         LobbyManager.Instance.OnJoinedLobbyUpdate += UpdateLobby_Event;
         LobbyManager.Instance.OnLobbyGameModeChanged += UpdateLobby_Event;
         LobbyManager.Instance.OnLeftLobby += LobbyManager_OnLeftLobby;
         LobbyManager.Instance.OnKickedFromLobby += LobbyManager_OnLeftLobby;
 
+        // Subscribe to scene loaded event
+        //SceneManager.sceneLoaded += OnSceneLoaded;
+
         Hide();
     }
 
-    private void LobbyManager_OnLeftLobby(object sender, System.EventArgs e) {
+    private void OnDisable()
+    {
+        // Unsubscribe from the event to prevent memory leaks
+       //SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void LobbyManager_OnLeftLobby(object sender, System.EventArgs e)
+    {
         ClearLobby();
         Hide();
     }
 
-    private void UpdateLobby_Event(object sender, LobbyManager.LobbyEventArgs e) {
+    private void UpdateLobby_Event(object sender, LobbyManager.LobbyEventArgs e)
+    {
         UpdateLobby();
     }
 
-    private void UpdateLobby() {
+    private void UpdateLobby()
+    {
         UpdateLobby(LobbyManager.Instance.GetJoinedLobby());
     }
 
-    private void UpdateLobby(Lobby lobby) {
+    private void UpdateLobby(Lobby lobby)
+    {
         ClearLobby();
 
-        foreach (Player player in lobby.Players) {
+        foreach (Player player in lobby.Players)
+        {
             Transform playerSingleTransform = Instantiate(playerSingleTemplate, container);
             playerSingleTransform.gameObject.SetActive(true);
             LobbyPlayerSingleUI lobbyPlayerSingleUI = playerSingleTransform.GetComponent<LobbyPlayerSingleUI>();
@@ -87,19 +104,50 @@ public class LobbyUI : MonoBehaviour {
         Show();
     }
 
-    private void ClearLobby() {
-        foreach (Transform child in container) {
+    private void ClearLobby()
+    {
+        foreach (Transform child in container)
+        {
             if (child == playerSingleTemplate) continue;
             Destroy(child.gameObject);
         }
     }
 
-    private void Hide() {
+    private void Hide()
+    {
         gameObject.SetActive(false);
     }
 
-    private void Show() {
+    private void Show()
+    {
         gameObject.SetActive(true);
     }
 
+    // Store the host status when switching scenes
+    /*public void MainSceneLoader()
+    {
+        Debug.Log("Starting game");
+        PlayerPrefs.SetInt("IsHost", LobbyManager.Instance.IsLobbyHost() ? 1 : 0);
+        Debug.Log("found host");
+       // NetworkSceneManager.
+       I
+    }
+
+    // Retrieve host status after the scene is loaded and start the network
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        IsCurrentPlayerHost = PlayerPrefs.GetInt("IsHost", 0) == 1;
+        Debug.Log("Host status loaded: " + IsCurrentPlayerHost);
+
+        if (IsCurrentPlayerHost)
+        {
+            NetworkManager.Singleton.StartHost();  // Start as host
+        }
+        else
+        {
+            NetworkManager.Singleton.StartClient();  // Start as client
+        }
+    }*/
+
+    //public bool IsCurrentPlayerHost { get; private set; } = false;
 }

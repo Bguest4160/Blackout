@@ -175,8 +175,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &2164785
 MonoBehaviour:
@@ -888,8 +889,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &24600016
 MonoBehaviour:
@@ -3009,8 +3011,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &202784480
 MonoBehaviour:
@@ -6044,8 +6047,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &397049847
 Rigidbody:
@@ -6609,8 +6613,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &423544009
 MonoBehaviour:
@@ -8954,10 +8959,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7c4994a3755c2734aa3021de1e5b42fd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 617797156}
+      addedObject: {fileID: 617797159}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7c4994a3755c2734aa3021de1e5b42fd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 617797159}
+      addedObject: {fileID: 617797156}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7c4994a3755c2734aa3021de1e5b42fd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 617797155}
@@ -9021,8 +9026,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &617797156
 MonoBehaviour:
@@ -10786,8 +10792,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &774748370
 Rigidbody:
@@ -13563,8 +13570,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &961352590
 MonoBehaviour:
@@ -15107,8 +15115,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &1005433687
 Rigidbody:
@@ -15867,8 +15876,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1028826109
 MonoBehaviour:
@@ -17019,8 +17029,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1073424772
 MonoBehaviour:
@@ -19043,8 +19054,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1189671856
 MonoBehaviour:
@@ -22290,8 +22302,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &1333012607
 Rigidbody:
@@ -22815,8 +22828,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1363869293
 MonoBehaviour:
@@ -23402,8 +23416,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1398597917
 MonoBehaviour:
@@ -25200,8 +25215,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1545338483
 MonoBehaviour:
@@ -25425,8 +25441,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!1 &1569660832
 GameObject:
@@ -26550,8 +26567,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &1604102307
 Rigidbody:
@@ -26774,8 +26792,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &1628364498
 Rigidbody:
@@ -27473,8 +27492,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1678030086
 MonoBehaviour:
@@ -28926,8 +28946,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1773293181
 MonoBehaviour:
@@ -29144,8 +29165,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &1799734094
 Rigidbody:
@@ -29315,8 +29337,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 20
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!54 &1807186277
 Rigidbody:
@@ -30572,8 +30595,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 10
+  damageForce: 75
+  playerTransform: {fileID: 0}
   playerCamera: {fileID: 0}
-  held: 0
   activateCollider: 0
 --- !u!114 &1857111243
 MonoBehaviour:

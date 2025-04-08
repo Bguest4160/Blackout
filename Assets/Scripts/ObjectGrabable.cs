@@ -51,6 +51,8 @@ public class ObjectGrabable : NetworkBehaviour
         if (state == 1)
         {
             activateCollider = true;
+            soundManager.PlaySound(SoundType.GRUNT2);
+            Debug.Log("thrown");
         }
         state = 2;
     }

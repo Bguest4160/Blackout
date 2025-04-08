@@ -17,6 +17,7 @@ public class MovementScript : NetworkBehaviour
     [SerializeField] LayerMask ground;
 
     public GameObject[] heads;
+    private PlayerBehavior PlayerBehavior;
     public float jumpHeight = 6f;
     float velocityY;
     public bool isGrounded;
@@ -123,7 +124,6 @@ public class MovementScript : NetworkBehaviour
     {
         Speed = 50f;
         Invoke("ResetSpeedStats", 5f);
-        soundManager.PlaySound(SoundType.IMPACT);
     }
 
     public void ChangeJumpStats()
@@ -166,6 +166,6 @@ public class MovementScript : NetworkBehaviour
   
     public void ChangeHealStats()
     {
-        
+        PlayerBehavior.PlayerHeal(300);
     }
 }

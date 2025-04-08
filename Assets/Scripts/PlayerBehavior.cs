@@ -3,6 +3,7 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.Serialization;
 
+
 public class PlayerBehavior : NetworkBehaviour {
     // Fields
     private static bool _initCooldownUsed = false; 
@@ -41,6 +42,9 @@ public class PlayerBehavior : NetworkBehaviour {
     // Methods
     
     void Start() {
+       
+
+
         PlayerHealth = new UnitBar(1000, 1000, frontHealthSlider, backHealthSlider, backHealthSliderFill);
         
         rightHitboxRenderer = rightFistHitbox.GetComponent<Renderer>();
