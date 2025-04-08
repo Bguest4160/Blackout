@@ -59,6 +59,8 @@ public class LobbyManager : MonoBehaviour
     private Lobby joinedLobby;
     private string playerName;
 
+    
+
     private void Awake()
     {
         UnityServices.InitializeAsync();
@@ -72,19 +74,10 @@ public class LobbyManager : MonoBehaviour
         {
             Destroy(gameObject); // Prevent duplicate instances
         }
-
-        UpdatePlayerHostStatus();
         
     }
 
     
-
-    private  void UpdatePlayerHostStatus()
-    {
-
-        HandleLobbyHeartbeat();
-        HandleLobbyPolling();
-    }
 
     public async void Authenticate(string playerName)
     {
@@ -116,7 +109,7 @@ public class LobbyManager : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
-    private void HandleRefreshLobbyList()
+    private async void HandleRefreshLobbyList()
     {
         if (UnityServices.State == ServicesInitializationState.Initialized && AuthenticationService.Instance.IsSignedIn)
         {
