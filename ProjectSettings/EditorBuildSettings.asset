@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LobbyScreen.unity
     guid: be8200a558cfff84b8ce074fa6e33558
+  - enabled: 1
+    path: Assets/Scenes/Levi.unity
+    guid: 0873dd45c72f44376936dfe1b28a57ed
   m_configObjects: {}

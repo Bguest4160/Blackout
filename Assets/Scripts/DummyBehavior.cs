@@ -4,6 +4,10 @@ using Unity.Netcode;
 public class DummyBehavior : NetworkBehaviour {
     // Fields
     private static bool _initCooldownUsed = false;
+    private float CubeCooldown = 0.8f;
+    private float ProjectileDamageCooldown = 0.1f;
+    private float MeleeDamageCooldown = 0.5f;
+    
     private static float _lastHealthEventTime = 0f;
    
     public GameObject frontHealthSlider;
@@ -28,13 +32,14 @@ public class DummyBehavior : NetworkBehaviour {
         DummyHealth.ChipHealth();
     }
 
-    void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.TryGetComponent(out ObjectGrabable projectile)) {
+    void OnCollisionEnter(Collision other) {
+        if (other.gameObject.TryGetComponent(out ObjectGrabable projectile) && CooldownCheck(ProjectileDamageCooldown)) {
+            // Debug.Log(projectile.GetState());
             if (projectile.GetState() == 2) {
                 DummyTakeDamage((int)projectile.GetDamageForce());
             }
         }
-        else if (collision.gameObject.CompareTag("IsMeleeHitbox")) {
+        else if (other.gameObject.CompareTag("IsMeleeHitbox") && CooldownCheck(MeleeDamageCooldown)) {
             DummyTakeDamage(100);
         }
     }
