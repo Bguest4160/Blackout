@@ -63,7 +63,7 @@ public class LobbyManager : MonoBehaviour
 
     private void Awake()
     {
-        UnityServices.InitializeAsync();
+            UnityServices.InitializeAsync();
         Instance = this;
         if (Instance == null)
         {
@@ -72,15 +72,21 @@ public class LobbyManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // Prevent duplicate instances
+            //Destroy(gameObject); // Prevent duplicate instances
         }
         
     }
 
-    
+    public void Update()
+    {
+        HandleRefreshLobbyList();
+        HandleLobbyHeartbeat();
+        HandleLobbyPolling();
+    }
 
     public async void Authenticate(string playerName)
     {
+        Debug.Log("asadaaaa");
         if (string.IsNullOrEmpty(playerName) || playerName.Length > 30)
         {
             Debug.LogError("Invalid player name. It must not be empty and must be 30 characters or less.");
@@ -448,7 +454,9 @@ public class LobbyManager : MonoBehaviour
             Debug.Log(e);
         }
     }
-
+    /// <summary>
+    /// /////////////
+    /// </summary>
     public async void StartGame()
     {
         if (!IsLobbyHost()) return;
