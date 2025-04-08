@@ -3,6 +3,7 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.Serialization;
 
+
 public class PlayerBehavior : NetworkBehaviour {
     // Fields
     private static bool _initCooldownUsed = false; 
