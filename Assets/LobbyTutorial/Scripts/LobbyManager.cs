@@ -454,9 +454,7 @@ public class LobbyManager : MonoBehaviour
             Debug.Log(e);
         }
     }
-    /// <summary>
-    /// /////////////
-    /// </summary>
+
     public async void StartGame()
     {
         if (!IsLobbyHost()) return;
@@ -474,6 +472,8 @@ public class LobbyManager : MonoBehaviour
                 return;
             }
 
+            Debug.Log("Relay created successfully with code: " + relayCode);
+
             //  Update Lobby with Relay Code
             if (joinedLobby != null && !string.IsNullOrEmpty(joinedLobby.Id))
             {
@@ -484,6 +484,12 @@ public class LobbyManager : MonoBehaviour
                     { KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Member, relayCode) }
                 }
                 });
+
+                if (lobby == null)
+                {
+                    Debug.LogError("Failed to update lobby with relay code.");
+                    return;
+                }
 
                 joinedLobby = lobby;
                 Debug.Log("Lobby updated with relay code. Game starting...");
@@ -505,9 +511,18 @@ public class LobbyManager : MonoBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void StartGameOnClients()
     {
-        // When the host calls this method, the clients will also load the scene.
-        NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+        // Ensure that the network manager and relay connection are established
+        if (NetworkManager.Singleton.IsConnectedClient)
+        {
+            Debug.Log("Clients are connected to the network. Loading scene...");
+            NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+        }
+        else
+        {
+            Debug.LogError("Clients are not connected to the network. Scene load failed.");
+        }
     }
+
 
 
 
