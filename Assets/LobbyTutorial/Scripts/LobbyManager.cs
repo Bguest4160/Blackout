@@ -59,6 +59,8 @@ public class LobbyManager : MonoBehaviour
     private Lobby joinedLobby;
     private string playerName;
 
+    
+
     private void Awake()
     {
         UnityServices.InitializeAsync();
@@ -72,19 +74,10 @@ public class LobbyManager : MonoBehaviour
         {
             Destroy(gameObject); // Prevent duplicate instances
         }
-
-        UpdatePlayerHostStatus();
         
     }
 
     
-
-    private  void UpdatePlayerHostStatus()
-    {
-
-        HandleLobbyHeartbeat();
-        HandleLobbyPolling();
-    }
 
     public async void Authenticate(string playerName)
     {
@@ -116,7 +109,7 @@ public class LobbyManager : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
-    private void HandleRefreshLobbyList()
+    private async void HandleRefreshLobbyList()
     {
         if (UnityServices.State == ServicesInitializationState.Initialized && AuthenticationService.Instance.IsSignedIn)
         {
@@ -479,16 +472,16 @@ public class LobbyManager : MonoBehaviour
                 Lobby lobby = await LobbyService.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions
                 {
                     Data = new Dictionary<string, DataObject>
-                    {
-                        { KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Member, relayCode) }
-                    }
+                {
+                    { KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Member, relayCode) }
+                }
                 });
 
                 joinedLobby = lobby;
                 Debug.Log("Lobby updated with relay code. Game starting...");
 
-                //  Load Game Scene for All Players
-                NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+                // Trigger the clients to load the game scene
+                StartGameOnClients();
             }
             else
             {
@@ -501,6 +494,14 @@ public class LobbyManager : MonoBehaviour
         }
     }
 
-    
+    [ServerRpc(RequireOwnership = false)]
+    private void StartGameOnClients()
+    {
+        // When the host calls this method, the clients will also load the scene.
+        NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+    }
+
+
+
 }
 
