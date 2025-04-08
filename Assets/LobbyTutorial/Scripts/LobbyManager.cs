@@ -451,7 +451,7 @@ public class LobbyManager : MonoBehaviour
 
     public async void StartGame()
     {
-        
+        if (!IsLobbyHost()) return;
 
         try
         {
@@ -472,16 +472,16 @@ public class LobbyManager : MonoBehaviour
                 Lobby lobby = await LobbyService.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions
                 {
                     Data = new Dictionary<string, DataObject>
-                    {
-                        { KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Member, relayCode) }
-                    }
+                {
+                    { KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Member, relayCode) }
+                }
                 });
 
                 joinedLobby = lobby;
                 Debug.Log("Lobby updated with relay code. Game starting...");
 
-                //  Load Game Scene for All Players
-                NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+                // Trigger the clients to load the game scene
+                StartGameOnClients();
             }
             else
             {
@@ -494,6 +494,14 @@ public class LobbyManager : MonoBehaviour
         }
     }
 
-    
+    [ServerRpc(RequireOwnership = false)]
+    private void StartGameOnClients()
+    {
+        // When the host calls this method, the clients will also load the scene.
+        NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+    }
+
+
+
 }
 
