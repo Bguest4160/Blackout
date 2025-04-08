@@ -123,31 +123,5 @@ public class LobbyUI : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    // Store the host status when switching scenes
-    /*public void MainSceneLoader()
-    {
-        Debug.Log("Starting game");
-        PlayerPrefs.SetInt("IsHost", LobbyManager.Instance.IsLobbyHost() ? 1 : 0);
-        Debug.Log("found host");
-       // NetworkSceneManager.
-       I
-    }
-
-    // Retrieve host status after the scene is loaded and start the network
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        IsCurrentPlayerHost = PlayerPrefs.GetInt("IsHost", 0) == 1;
-        Debug.Log("Host status loaded: " + IsCurrentPlayerHost);
-
-        if (IsCurrentPlayerHost)
-        {
-            NetworkManager.Singleton.StartHost();  // Start as host
-        }
-        else
-        {
-            NetworkManager.Singleton.StartClient();  // Start as client
-        }
-    }*/
-
-    //public bool IsCurrentPlayerHost { get; private set; } = false;
+    
 }
