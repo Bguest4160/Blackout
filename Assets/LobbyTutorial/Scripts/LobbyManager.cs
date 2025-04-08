@@ -451,7 +451,7 @@ public class LobbyManager : MonoBehaviour
 
     public async void StartGame()
     {
-        if (!IsLobbyHost()) return;
+        
 
         try
         {
