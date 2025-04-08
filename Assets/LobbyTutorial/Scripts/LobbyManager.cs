@@ -72,10 +72,16 @@ public class LobbyManager : MonoBehaviour
         {
             Destroy(gameObject); // Prevent duplicate instances
         }
+
+        UpdatePlayerHostStatus();
+        
     }
 
-    private void UpdatePlayerHostStatus()
+    
+
+    private  void UpdatePlayerHostStatus()
     {
+
         HandleLobbyHeartbeat();
         HandleLobbyPolling();
     }
