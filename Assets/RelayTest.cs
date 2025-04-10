@@ -57,7 +57,7 @@ public class RelayTest : MonoBehaviour
 
             // Start hosting the network session
             NetworkManager.Singleton.StartHost();
-            NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+            
 
             return joinCode;
         }
@@ -83,7 +83,7 @@ public class RelayTest : MonoBehaviour
             // Start client
             NetworkManager.Singleton.StartClient();
             Debug.Log("2");
-
+            NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
         }
         catch (RelayServiceException e)
         {
