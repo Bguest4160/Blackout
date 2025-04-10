@@ -21,10 +21,10 @@ public class ObjectExplode : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
-    private void OnCollisionEnter(Collision collision)
+    [ClientRpc] private void OnCollisionEnter(Collision collision)
     {
         if (objectGrabable.GetactivateCollier() == true)
         {

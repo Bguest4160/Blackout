@@ -34,6 +34,7 @@ public class PlayerPickupThrow : NetworkBehaviour
                     if (raycastHit.transform.TryGetComponent(out objectGrabable))
                     {
                         objectGrabable.SetPlayerCamera(playerCameraTransform); // Set the camera transform here
+                        objectGrabable.SetPlayerTransform(transform);
                         objectGrabable.Grab(objectGrabPointTranform);
                         holding = true;
                     }

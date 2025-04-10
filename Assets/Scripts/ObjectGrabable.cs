@@ -34,6 +34,11 @@ public class ObjectGrabable : NetworkBehaviour
     {
         playerCamera = cameraTransform;
     }
+    
+    public void SetPlayerTransform(Transform transform)
+    {
+        playerTransform = transform;
+    }
 
     public void Grab(Transform objectGrabPointTransform)
     {
