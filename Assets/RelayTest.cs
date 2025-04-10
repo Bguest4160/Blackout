@@ -9,6 +9,7 @@ using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
 using Unity.Netcode;
 using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 public class RelayTest : MonoBehaviour
 {
@@ -56,6 +57,7 @@ public class RelayTest : MonoBehaviour
 
             // Start hosting the network session
             NetworkManager.Singleton.StartHost();
+            
 
             return joinCode;
         }
@@ -76,9 +78,12 @@ public class RelayTest : MonoBehaviour
             // Set relay server data for the client
             RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
+            Debug.Log("1");
 
             // Start client
             NetworkManager.Singleton.StartClient();
+            Debug.Log("2");
+            NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
         }
         catch (RelayServiceException e)
         {

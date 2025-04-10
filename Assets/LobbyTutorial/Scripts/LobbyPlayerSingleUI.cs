@@ -15,7 +15,7 @@ public class LobbyPlayerSingleUI : MonoBehaviour {
 
     private Player player;
 
-
+    
     private void Awake() {
         kickPlayerButton.onClick.AddListener(KickPlayer);
     }

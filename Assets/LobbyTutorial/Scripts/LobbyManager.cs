@@ -63,7 +63,7 @@ public class LobbyManager : MonoBehaviour
 
     private void Awake()
     {
-        UnityServices.InitializeAsync();
+            UnityServices.InitializeAsync();
         Instance = this;
         if (Instance == null)
         {
@@ -72,15 +72,21 @@ public class LobbyManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // Prevent duplicate instances
+            //Destroy(gameObject); // Prevent duplicate instances
         }
         
     }
 
-    
+    public void Update()
+    {
+        HandleRefreshLobbyList();
+        HandleLobbyHeartbeat();
+        HandleLobbyPolling();
+    }
 
     public async void Authenticate(string playerName)
     {
+        Debug.Log("asadaaaa");
         if (string.IsNullOrEmpty(playerName) || playerName.Length > 30)
         {
             Debug.LogError("Invalid player name. It must not be empty and must be 30 characters or less.");
@@ -466,22 +472,30 @@ public class LobbyManager : MonoBehaviour
                 return;
             }
 
+            Debug.Log("Relay created successfully with code: " + relayCode);
+
             //  Update Lobby with Relay Code
             if (joinedLobby != null && !string.IsNullOrEmpty(joinedLobby.Id))
             {
                 Lobby lobby = await LobbyService.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions
                 {
                     Data = new Dictionary<string, DataObject>
-                    {
-                        { KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Member, relayCode) }
-                    }
+                {
+                    { KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Member, relayCode) }
+                }
                 });
+
+                if (lobby == null)
+                {
+                    Debug.LogError("Failed to update lobby with relay code.");
+                    return;
+                }
 
                 joinedLobby = lobby;
                 Debug.Log("Lobby updated with relay code. Game starting...");
 
-                //  Load Game Scene for All Players
-                NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+                // Trigger the clients to load the game scene
+                StartGameOnClients();
             }
             else
             {
@@ -494,6 +508,23 @@ public class LobbyManager : MonoBehaviour
         }
     }
 
-    
+    [ServerRpc(RequireOwnership = false)]
+    private void StartGameOnClients()
+    {
+        // Ensure that the network manager and relay connection are established
+        if (NetworkManager.Singleton.IsConnectedClient)
+        {
+            Debug.Log("Clients are connected to the network. Loading scene...");
+            NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+        }
+        else
+        {
+            Debug.LogError("Clients are not connected to the network. Scene load failed.");
+        }
+    }
+
+
+
+
 }
 
