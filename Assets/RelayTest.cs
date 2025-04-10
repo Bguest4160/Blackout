@@ -9,6 +9,7 @@ using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
 using Unity.Netcode;
 using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 public class RelayTest : MonoBehaviour
 {
@@ -56,6 +57,7 @@ public class RelayTest : MonoBehaviour
 
             // Start hosting the network session
             NetworkManager.Singleton.StartHost();
+            NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
 
             return joinCode;
         }
