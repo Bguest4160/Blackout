@@ -83,7 +83,7 @@ public class RelayTest : MonoBehaviour
             // Start client
             NetworkManager.Singleton.StartClient();
             Debug.Log("2");
-            //NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+            NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
             Debug.Log("2a");
 
         }
