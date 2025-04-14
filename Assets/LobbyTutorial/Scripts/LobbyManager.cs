@@ -515,7 +515,7 @@ public class LobbyManager : MonoBehaviour
         if (NetworkManager.Singleton.IsConnectedClient)
         {
             Debug.Log("Clients are connected to the network. Loading scene...");
-            //NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+            NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
             Debug.Log("2b");
         }
         else
