@@ -509,13 +509,14 @@ public class LobbyManager : MonoBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void StartGameOnClients()
+    public void StartGameOnClients()
     {
         // Ensure that the network manager and relay connection are established
         if (NetworkManager.Singleton.IsConnectedClient)
         {
             Debug.Log("Clients are connected to the network. Loading scene...");
-            NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+           NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+            Debug.Log("2b");
         }
         else
         {
