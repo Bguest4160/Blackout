@@ -77,7 +77,7 @@ public class RelayTest : MonoBehaviour
 
             // Set relay server data for the client
             RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
-            //NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
             Debug.Log("1");
 
             // Start client
