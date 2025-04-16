@@ -68,7 +68,9 @@ public class RelayTest : MonoBehaviour
         return null;
     }
 
-    public async void JoinRelay(string joinCode)
+    public async 
+    Task
+JoinRelay(string joinCode)
     {
         try
         {
