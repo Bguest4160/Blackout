@@ -138,7 +138,7 @@ public class LobbyManager : MonoBehaviour
             heartbeatTimer -= Time.deltaTime;
             if (heartbeatTimer < 0f)
             {
-                float heartbeatTimerMax = 15f;
+                float heartbeatTimerMax = 7f;
                 heartbeatTimer = heartbeatTimerMax;
 
                 Debug.Log("Heartbeat");
