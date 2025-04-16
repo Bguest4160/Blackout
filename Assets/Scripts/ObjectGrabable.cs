@@ -12,7 +12,7 @@ public class ObjectGrabable : NetworkBehaviour
     public Transform playerCamera;
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
-    private byte state = 0; // 0 = static, 1 = held, 2 = thrown
+    private NetworkVariable<byte> state = new NetworkVariable<byte>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner); // 0 = static, 1 = held, 2 = thrown
     public bool activateCollider;
 
     
@@ -27,7 +27,7 @@ public class ObjectGrabable : NetworkBehaviour
     }
 
     public byte GetState() {
-        return state;
+        return state.Value;
     }
 
     public void SetPlayerCamera(Transform cameraTransform)
@@ -44,7 +44,7 @@ public class ObjectGrabable : NetworkBehaviour
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
-        state = 1;
+        state.Value = 1;
         objectRigidbody.constraints = RigidbodyConstraints.None;
     }
 
@@ -53,13 +53,13 @@ public class ObjectGrabable : NetworkBehaviour
         this.objectGrabPointTransform = null;
         objectRigidbody.useGravity = true;
         objectRigidbody.AddForce(playerCamera.forward * throwForce, ForceMode.VelocityChange);
-        if (state == 1)
+        if (state.Value == 1)
         {
             activateCollider = true;
             soundManager.PlaySound(SoundType.GRUNT2);
             Debug.Log("thrown");
         }
-        state = 2;
+        state.Value = 2;
     }
     
     private void FixedUpdate()

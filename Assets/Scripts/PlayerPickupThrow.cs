@@ -19,40 +19,32 @@ public class PlayerPickupThrow : NetworkBehaviour
 
 
 
-    private void Update()
-    {
-        
-        if (Input.GetMouseButtonDown(1))
+    private void Update() {
+        if (Input.GetMouseButtonDown(1) && objectGrabable == null)
         {
-            if (objectGrabable == null)
+            //try to grab
+            float pickUpDistance = 3f;
+            if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
             {
-                //try to grab
-                float pickUpDistance = 3f;
-                if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
+
+                if (raycastHit.transform.TryGetComponent(out objectGrabable))
                 {
-
-                    if (raycastHit.transform.TryGetComponent(out objectGrabable))
-                    {
-                        objectGrabable.SetPlayerCamera(playerCameraTransform); // Set the camera transform here
-                        objectGrabable.SetPlayerTransform(transform);
-                        objectGrabable.Grab(objectGrabPointTranform);
-                        holding = true;
-                    }
-
+                    objectGrabable.SetPlayerCamera(playerCameraTransform); // Set the camera transform here
+                    objectGrabable.SetPlayerTransform(transform);
+                    objectGrabable.Grab(objectGrabPointTranform);
+                    holding = true;
                 }
+
             }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && holding)
         {
-            
-               objectGrabable.Throw();
+            objectGrabable.Throw();
             objectGrabable.Throw();
             
             objectGrabable = null;
             holding = false;
-
-            
         }
     }
 
