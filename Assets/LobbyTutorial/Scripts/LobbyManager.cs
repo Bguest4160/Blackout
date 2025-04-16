@@ -124,7 +124,7 @@ public class LobbyManager : MonoBehaviour
             {
                 float refreshLobbyListTimerMax = 5f;
                 refreshLobbyListTimer = refreshLobbyListTimerMax;
-                Debug.Log("refresh");
+
                 RefreshLobbyList();
             }
         }
@@ -187,6 +187,7 @@ public class LobbyManager : MonoBehaviour
             Debug.LogError($"Polling lobby failed: {e}");
         }
     }
+
 
 
 

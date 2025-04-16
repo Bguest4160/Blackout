@@ -39,6 +39,10 @@ public class LobbyUI : MonoBehaviour
             LobbyManager.Instance.ChangeGameMode();
         });
     }
+    private void Update()
+    {
+        UpdateLobby();
+    }
 
     private void Start()
     {
