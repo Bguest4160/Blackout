@@ -16,7 +16,7 @@ public class RelayTest : MonoBehaviour
     // Singleton Instance
     public static RelayTest Instance { get; private set; }
 
-    private async void Awake()
+    private void Awake()
     {
         // Ensure only one instance of RelayTest exists
         if (Instance != null && Instance != this)

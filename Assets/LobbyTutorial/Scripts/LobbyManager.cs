@@ -63,7 +63,7 @@ public class LobbyManager : MonoBehaviour
 
     private void Awake()
     {
-            UnityServices.InitializeAsync();
+        UnityServices.InitializeAsync();
         Instance = this;
         if (Instance == null)
         {
@@ -115,7 +115,7 @@ public class LobbyManager : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
-    private async void HandleRefreshLobbyList()
+    private void HandleRefreshLobbyList()
     {
         if (UnityServices.State == ServicesInitializationState.Initialized && AuthenticationService.Instance.IsSignedIn)
         {
@@ -124,7 +124,7 @@ public class LobbyManager : MonoBehaviour
             {
                 float refreshLobbyListTimerMax = 5f;
                 refreshLobbyListTimer = refreshLobbyListTimerMax;
-
+                Debug.Log("refresh");
                 RefreshLobbyList();
             }
         }
