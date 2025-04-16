@@ -117,6 +117,7 @@ public class LobbyManager : MonoBehaviour
 
     private void HandleRefreshLobbyList()
     {
+        if (SceneManager.GetActiveScene().name != "LobbyScreen") return;
         if (UnityServices.State == ServicesInitializationState.Initialized && AuthenticationService.Instance.IsSignedIn)
         {
             refreshLobbyListTimer -= Time.deltaTime;
