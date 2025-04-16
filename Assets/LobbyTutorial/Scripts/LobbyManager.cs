@@ -13,7 +13,7 @@ using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviour
 {
-
+    
     public static LobbyManager Instance { get; private set; }
 
     public const string KEY_PLAYER_NAME = "PlayerName";
@@ -63,7 +63,7 @@ public class LobbyManager : MonoBehaviour
 
     private void Awake()
     {
-            UnityServices.InitializeAsync();
+        UnityServices.InitializeAsync();
         Instance = this;
         if (Instance == null)
         {
@@ -115,7 +115,7 @@ public class LobbyManager : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
-    private async void HandleRefreshLobbyList()
+    private void HandleRefreshLobbyList()
     {
         if (UnityServices.State == ServicesInitializationState.Initialized && AuthenticationService.Instance.IsSignedIn)
         {
@@ -124,6 +124,7 @@ public class LobbyManager : MonoBehaviour
             {
                 float refreshLobbyListTimerMax = 5f;
                 refreshLobbyListTimer = refreshLobbyListTimerMax;
+                LobbyUI.Instance.UpdateLobby();
 
                 RefreshLobbyList();
             }
@@ -137,7 +138,7 @@ public class LobbyManager : MonoBehaviour
             heartbeatTimer -= Time.deltaTime;
             if (heartbeatTimer < 0f)
             {
-                float heartbeatTimerMax = 15f;
+                float heartbeatTimerMax = 7f;
                 heartbeatTimer = heartbeatTimerMax;
 
                 Debug.Log("Heartbeat");
@@ -148,40 +149,48 @@ public class LobbyManager : MonoBehaviour
 
     private async void HandleLobbyPolling()
     {
-        if (joinedLobby != null)
+        if (joinedLobby == null) return;
+
+        // Ensure timer is initialized
+        if (lobbyPollTimer <= 0f)
+            lobbyPollTimer = 1.5f;
+
+        lobbyPollTimer-= Time.deltaTime;
+        if (lobbyPollTimer> 0f) return;
+
+        lobbyPollTimer = 1.5f;
+
+        try
         {
-            lobbyPollTimer -= Time.deltaTime;
-            if (lobbyPollTimer < 0f)
+            joinedLobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
+
+            if (joinedLobby.Data != null &&
+                joinedLobby.Data.ContainsKey(KEY_START_GAME) &&
+                joinedLobby.Data[KEY_START_GAME].Value != "0")
             {
-                float lobbyPollTimerMax = 1.1f;
-                lobbyPollTimer = lobbyPollTimerMax;
-
-                joinedLobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
-
-                OnJoinedLobbyUpdate?.Invoke(this, new LobbyEventArgs { lobby = joinedLobby });
-
-                if (!IsPlayerInLobby())
+                if (!IsLobbyHost())
                 {
-                    Debug.Log("Kicked from Lobby!");
+                    Debug.Log("Client detected game start. Joining Relay...");
+                    await RelayTest.Instance.JoinRelay(joinedLobby.Data[KEY_START_GAME].Value);
 
-                    OnKickedFromLobby?.Invoke(this, new LobbyEventArgs { lobby = joinedLobby });
+                    if (!NetworkManager.Singleton.IsClient)
+                        NetworkManager.Singleton.StartClient();
 
-                    joinedLobby = null;
+                    Debug.Log("Client connected. Scene will sync automatically.");
                 }
 
-                if (joinedLobby.Data[KEY_START_GAME].Value != "0")
-                {
-                    if (!IsLobbyHost())
-                    {
-                        RelayTest.Instance.JoinRelay(joinedLobby.Data[KEY_START_GAME].Value);
-                    }
-
-                    joinedLobby = null;
-                    OnGameStarted?.Invoke(this, (LobbyEventArgs)EventArgs.Empty);
-                }
+                joinedLobby = null;
+                OnGameStarted?.Invoke(this, new LobbyEventArgs());
             }
         }
+        catch (LobbyServiceException e)
+        {
+            Debug.LogError($"Polling lobby failed: {e}");
+        }
     }
+
+
+
 
     public Lobby GetJoinedLobby()
     {
@@ -192,6 +201,7 @@ public class LobbyManager : MonoBehaviour
     {
         return joinedLobby != null && joinedLobby.HostId == AuthenticationService.Instance.PlayerId;
     }
+
 
     private bool IsPlayerInLobby()
     {
@@ -459,70 +469,23 @@ public class LobbyManager : MonoBehaviour
     {
         if (!IsLobbyHost()) return;
 
-        try
+        Debug.Log("Host is starting the game...");
+        string joinCode = await RelayTest.Instance.CreateRelay(); // Starts host
+
+        await LobbyService.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions
         {
-            Debug.Log("Starting game...");
-
-            // Create Relay Server
-            string relayCode = await RelayTest.Instance.CreateRelay();
-
-            if (string.IsNullOrEmpty(relayCode))
-            {
-                Debug.LogError("Failed to create relay.");
-                return;
-            }
-
-            Debug.Log("Relay created successfully with code: " + relayCode);
-
-            //  Update Lobby with Relay Code
-            if (joinedLobby != null && !string.IsNullOrEmpty(joinedLobby.Id))
-            {
-                Lobby lobby = await LobbyService.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions
-                {
-                    Data = new Dictionary<string, DataObject>
-                {
-                    { KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Member, relayCode) }
-                }
-                });
-
-                if (lobby == null)
-                {
-                    Debug.LogError("Failed to update lobby with relay code.");
-                    return;
-                }
-
-                joinedLobby = lobby;
-                Debug.Log("Lobby updated with relay code. Game starting...");
-
-                // Trigger the clients to load the game scene
-                StartGameOnClients();
-            }
-            else
-            {
-                Debug.LogError("Lobby is null or invalid.");
-            }
-        }
-        catch (LobbyServiceException e)
+            Data = new Dictionary<string, DataObject>
         {
-            Debug.LogError("Error starting game: " + e.Message);
+            { KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Member, joinCode) }
+            
         }
+        });
+
+        Debug.Log("Relay created. Loading scene for all players...");
+
+        NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    public void StartGameOnClients()
-    {
-        // Ensure that the network manager and relay connection are established
-        if (NetworkManager.Singleton.IsConnectedClient)
-        {
-            Debug.Log("Clients are connected to the network. Loading scene...");
-           NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
-            Debug.Log("2b");
-        }
-        else
-        {
-            Debug.LogError("Clients are not connected to the network. Scene load failed.");
-        }
-    }
 
 
 

@@ -39,7 +39,7 @@ public class LobbyUI : MonoBehaviour
             LobbyManager.Instance.ChangeGameMode();
         });
     }
-
+   
     private void Start()
     {
         // Subscribe to events
@@ -72,7 +72,7 @@ public class LobbyUI : MonoBehaviour
         UpdateLobby();
     }
 
-    private void UpdateLobby()
+    public void UpdateLobby()
     {
         UpdateLobby(LobbyManager.Instance.GetJoinedLobby());
     }
