@@ -13,7 +13,7 @@ using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviour
 {
-
+    
     public static LobbyManager Instance { get; private set; }
 
     public const string KEY_PLAYER_NAME = "PlayerName";
@@ -124,6 +124,7 @@ public class LobbyManager : MonoBehaviour
             {
                 float refreshLobbyListTimerMax = 5f;
                 refreshLobbyListTimer = refreshLobbyListTimerMax;
+                LobbyUI.Instance.UpdateLobby();
 
                 RefreshLobbyList();
             }
