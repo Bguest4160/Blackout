@@ -40,8 +40,7 @@ public class ObjectGrabable : NetworkBehaviour
         playerTransform = transform;
     }
 
-    public void Grab(Transform objectGrabPointTransform)
-    {
+    public void Grab(Transform objectGrabPointTransform) {
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
         state.Value = 1;
