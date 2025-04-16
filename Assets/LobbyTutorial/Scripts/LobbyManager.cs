@@ -475,8 +475,7 @@ public class LobbyManager : MonoBehaviour
             Data = new Dictionary<string, DataObject>
         {
             { KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Member, joinCode) }
-            Debug.Log("Clients are connected to the network. Loading scene...");
-            Debug.Log("2b");
+            
         }
         });
 
