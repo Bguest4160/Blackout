@@ -24,7 +24,7 @@ public class ObjectExplode : NetworkBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if (objectGrabable.GetactivateCollier() == true)
         {
