@@ -161,7 +161,7 @@ public class LobbyManager : MonoBehaviour
             lobbyPollTimer -= Time.deltaTime;
             if (lobbyPollTimer < 0f)
             {
-                float lobbyPollTimerMax = 1.1f;
+                float lobbyPollTimerMax = 1f;
                 lobbyPollTimer = lobbyPollTimerMax;
 
                 joinedLobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
@@ -176,7 +176,10 @@ public class LobbyManager : MonoBehaviour
 
                     joinedLobby = null;
                 }
-
+                if (!IsLobbyHost())
+                {
+                    RelayTest.Instance.JoinRelay(joinedLobby.Data[KEY_START_GAME].Value);
+                }
                 if (joinedLobby.Data[KEY_START_GAME].Value != "0")
                 {
                     if (!IsLobbyHost())
