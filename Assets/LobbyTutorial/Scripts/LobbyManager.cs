@@ -40,6 +40,8 @@ public class LobbyManager : MonoBehaviour
         public List<Lobby> lobbyList;
     }
 
+    public ScoreManager scoreManager;
+
     public enum GameMode
     {
         CaptureTheFlag,
@@ -320,7 +322,7 @@ public class LobbyManager : MonoBehaviour
         });
 
         Debug.Log("Joined Lobby: " + (joinedLobby != null ? joinedLobby.Id : "null"));
-
+        scoreManager.AddPlayer(playerName);
 
         OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
     }
