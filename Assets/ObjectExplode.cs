@@ -26,16 +26,30 @@ public class ObjectExplode : NetworkBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (objectGrabable.GetactivateCollier() == true)
-        {
-            soundManager.PlaySound(SoundType.IMPACT);
-            GameObject particleInstance = Instantiate(particle, transform.position, Quaternion.Euler(90, 0, 0));
-            ParticleSystem parts = particle.GetComponent<ParticleSystem>();
-            float totalDuration = parts.duration + parts.startLifetime;
-            object1.SetActive(false);
-            Destroy(particleInstance, totalDuration);
-
+        if (objectGrabable.GetactivateCollier() == true) {
+            ExplodeServerRpc();
+            ExplodeClientRpc();
         }
         objectGrabable.SetActivateCollider(false);
+    }
+
+    [ServerRpc]
+    private void ExplodeServerRpc() {
+        soundManager.PlaySound(SoundType.IMPACT);
+        GameObject particleInstance = Instantiate(particle, transform.position, Quaternion.Euler(90, 0, 0));
+        ParticleSystem parts = particle.GetComponent<ParticleSystem>();
+        float totalDuration = parts.duration + parts.startLifetime;
+        object1.SetActive(false);
+        Destroy(particleInstance, totalDuration);
+    }
+
+    [ClientRpc]
+    private void ExplodeClientRpc() {
+        soundManager.PlaySound(SoundType.IMPACT);
+        GameObject particleInstance = Instantiate(particle, transform.position, Quaternion.Euler(90, 0, 0));
+        ParticleSystem parts = particle.GetComponent<ParticleSystem>();
+        float totalDuration = parts.duration + parts.startLifetime;
+        object1.SetActive(false);
+        Destroy(particleInstance, totalDuration);
     }
 }
