@@ -16,7 +16,7 @@ public class RelayTest : MonoBehaviour
     // Singleton Instance
     public static RelayTest Instance { get; private set; }
 
-    private async void Awake()
+    private void Awake()
     {
         // Ensure only one instance of RelayTest exists
         if (Instance != null && Instance != this)
@@ -57,7 +57,7 @@ public class RelayTest : MonoBehaviour
 
             // Start hosting the network session
             NetworkManager.Singleton.StartHost();
-
+            
 
             return joinCode;
         }
@@ -85,11 +85,15 @@ JoinRelay(string joinCode)
             // Start client
             NetworkManager.Singleton.StartClient();
             Debug.Log("2");
-            NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+            //NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+            Debug.Log("2a");
+
         }
         catch (RelayServiceException e)
         {
             Debug.LogError("Error in JoinRelay: " + e.Message);
         }
     }
+
+    
 }
