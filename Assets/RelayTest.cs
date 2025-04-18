@@ -71,14 +71,17 @@ public class RelayTest : MonoBehaviour
         try
         {
             Debug.Log("Joining relay with " + joinCode);
+
             JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+
+            // Start client
+            NetworkManager.Singleton.StartClient();
 
             // Set relay server data for the client
             RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
-            // Start client
-            NetworkManager.Singleton.StartClient();
+            
         }
         catch (RelayServiceException e)
         {
