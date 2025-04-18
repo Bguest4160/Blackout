@@ -9,14 +9,13 @@ using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
 using Unity.Netcode;
 using System.Threading.Tasks;
-using UnityEngine.SceneManagement;
 
 public class RelayTest : MonoBehaviour
 {
     // Singleton Instance
     public static RelayTest Instance { get; private set; }
 
-    private void Awake()
+    private async void Awake()
     {
         // Ensure only one instance of RelayTest exists
         if (Instance != null && Instance != this)
@@ -57,7 +56,6 @@ public class RelayTest : MonoBehaviour
 
             // Start hosting the network session
             NetworkManager.Singleton.StartHost();
-            
 
             return joinCode;
         }
@@ -68,9 +66,7 @@ public class RelayTest : MonoBehaviour
         return null;
     }
 
-    public async 
-    Task
-JoinRelay(string joinCode)
+    public async void JoinRelay(string joinCode)
     {
         try
         {
@@ -80,20 +76,13 @@ JoinRelay(string joinCode)
             // Set relay server data for the client
             RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
-            Debug.Log("1");
 
             // Start client
             NetworkManager.Singleton.StartClient();
-            Debug.Log("2");
-            //NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
-            Debug.Log("2a");
-
         }
         catch (RelayServiceException e)
         {
             Debug.LogError("Error in JoinRelay: " + e.Message);
         }
     }
-
-    
 }
