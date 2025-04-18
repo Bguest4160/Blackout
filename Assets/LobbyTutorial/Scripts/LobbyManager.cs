@@ -70,13 +70,17 @@ public class LobbyManager : MonoBehaviour
         }
         else
         {
-            //Destroy(gameObject); // Prevent duplicate instances
+            Destroy(gameObject); // Prevent duplicate instances
         }
 
         UpdatePlayerHostStatus();
 
     }
-
+    private void Update()
+    {
+        HandleLobbyHeartbeat();
+        HandleLobbyPolling();
+    }
 
 
     private void UpdatePlayerHostStatus()
@@ -84,6 +88,7 @@ public class LobbyManager : MonoBehaviour
 
         HandleLobbyHeartbeat();
         HandleLobbyPolling();
+
     }
 
     public async void Authenticate(string playerName)
