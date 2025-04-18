@@ -70,7 +70,7 @@ public class LobbyManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // Prevent duplicate instances
+            //Destroy(gameObject); // Prevent duplicate instances
         }
 
         UpdatePlayerHostStatus();
@@ -78,8 +78,8 @@ public class LobbyManager : MonoBehaviour
     }
     private void Update()
     {
-        HandleLobbyHeartbeat();
-        HandleLobbyPolling();
+
+        UpdatePlayerHostStatus();
     }
 
 
