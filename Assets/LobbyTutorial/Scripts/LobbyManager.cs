@@ -70,7 +70,7 @@ public class LobbyManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // Prevent duplicate instances
+            //Destroy(gameObject); // Prevent duplicate instances
         }
 
         UpdatePlayerHostStatus();
@@ -344,7 +344,6 @@ public class LobbyManager : MonoBehaviour
                 joinedLobby = lobby;
 
                 OnJoinedLobbyUpdate?.Invoke(this, new LobbyEventArgs { lobby = joinedLobby });
-                //ScoreManager.AddPlayer(playerName);
             }
             catch (LobbyServiceException e)
             {
