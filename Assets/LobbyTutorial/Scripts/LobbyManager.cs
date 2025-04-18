@@ -343,7 +343,7 @@ public class LobbyManager : MonoBehaviour
                 joinedLobby = lobby;
 
                 OnJoinedLobbyUpdate?.Invoke(this, new LobbyEventArgs { lobby = joinedLobby });
-                ScoreManager.AddPlayer(playerName);
+                //ScoreManager.AddPlayer(playerName);
             }
             catch (LobbyServiceException e)
             {
