@@ -72,7 +72,7 @@ public class LobbyManager : MonoBehaviour
         }
         else
         {
-            //Destroy(gameObject); // Prevent duplicate instances
+            Destroy(gameObject); // Prevent duplicate instances
         }
         
     }
