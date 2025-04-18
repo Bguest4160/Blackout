@@ -78,7 +78,11 @@ public class LobbyManager : MonoBehaviour
         UpdatePlayerHostStatus();
 
     }
+    private void Update()
+    {
 
+        UpdatePlayerHostStatus();
+    }
 
 
     private void UpdatePlayerHostStatus()
@@ -86,6 +90,7 @@ public class LobbyManager : MonoBehaviour
 
         HandleLobbyHeartbeat();
         HandleLobbyPolling();
+
     }
 
     public async void Authenticate(string playerName)
