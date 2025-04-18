@@ -269,6 +269,7 @@ public class LobbyManager : MonoBehaviour
         OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
 
         Debug.Log("Created Lobby " + lobby.Name);
+        scoreManager.AddPlayer(playerName);
     }
 
     public async void RefreshLobbyList()

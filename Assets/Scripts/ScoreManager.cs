@@ -21,7 +21,8 @@ public class ScoreManager : MonoBehaviour
 
     public void AddPlayer(string name)
     {
-        masterlist.Add(name);
         Debug.Log(name);
+        masterlist.Add(name);
+        
     }
 }
