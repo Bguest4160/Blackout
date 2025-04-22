@@ -505,6 +505,8 @@ public class LobbyManager : MonoBehaviour
 
                 Debug.Log("Host started, now loading scene...");
                 NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+                
+                
             }
             else
             {
