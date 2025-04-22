@@ -151,6 +151,7 @@ public class LobbyManager : MonoBehaviour
                 Debug.Log("Heartbeat");
                 await LobbyService.Instance.SendHeartbeatPingAsync(joinedLobby.Id);
             }
+
         }
     }
 
