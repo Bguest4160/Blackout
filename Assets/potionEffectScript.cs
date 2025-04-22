@@ -27,7 +27,7 @@ public class PotionEffectScript : NetworkBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (objectGrabable.GetactivateCollier() == true)
+        if (objectGrabable.GetActivateCollider() == true)
         {
             soundManager.PlaySound(SoundType.SHATTER);
             Debug.Log("NONSENSE");

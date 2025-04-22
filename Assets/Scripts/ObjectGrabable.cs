@@ -30,6 +30,11 @@ public class ObjectGrabable : NetworkBehaviour
         return state.Value;
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    private void SetStateServerRpc(byte stateValue) {
+        state.Value = stateValue;
+    }
+
     public void SetPlayerCamera(Transform cameraTransform)
     {
         playerCamera = cameraTransform;
@@ -39,17 +44,18 @@ public class ObjectGrabable : NetworkBehaviour
     {
         playerTransform = transform;
     }
-
+    
     public void Grab(Transform objectGrabPointTransform) {
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
-        state.Value = 1;
+        SetStateServerRpc(1);
         objectRigidbody.constraints = RigidbodyConstraints.None;
     }
 
-    public void Throw()
+    [ServerRpc(RequireOwnership = false)]
+    public void ThrowServerRpc()
     {
-        this.objectGrabPointTransform = null;
+        objectGrabPointTransform = null;
         objectRigidbody.useGravity = true;
         objectRigidbody.AddForce(playerCamera.forward * throwForce, ForceMode.VelocityChange);
         if (state.Value == 1)
@@ -58,12 +64,11 @@ public class ObjectGrabable : NetworkBehaviour
             soundManager.PlaySound(SoundType.GRUNT2);
             Debug.Log("thrown");
         }
-        state.Value = 2;
+        SetStateServerRpc(2);
     }
     
     private void FixedUpdate()
     {
-
 
         if (objectGrabPointTransform != null)
         {
@@ -78,7 +83,7 @@ public class ObjectGrabable : NetworkBehaviour
       
     }
 
-    public bool GetactivateCollier()
+    public bool GetActivateCollider()
     {
         return activateCollider;
     }
