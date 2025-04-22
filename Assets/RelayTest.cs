@@ -9,6 +9,7 @@ using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
 using Unity.Netcode;
 using System.Threading.Tasks;
+using System;
 
 public class RelayTest : MonoBehaviour
 {
@@ -66,31 +67,36 @@ public class RelayTest : MonoBehaviour
         return null;
     }
 
-    public async void JoinRelay(string joinCode)
+    public async  Task JoinRelay(string joinCode)
     {
-        if (!UnityServices.State.Equals(ServicesInitializationState.Initialized))
-        {
-            Debug.LogError("Unity Services are not initialized before joining relay.");
-            return;
-        }
         try
         {
-            Debug.Log("Joining relay with " + joinCode);
+            Debug.Log("JoinRelay with code: " + joinCode); // Add this line
 
-            JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+            if (string.IsNullOrEmpty(joinCode) || joinCode.Length != 6)
+            {
+                Debug.LogError("JoinRelay failed: Invalid join code format");
+                return;
+            }
 
-            // Set relay server data for the client
-            RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
-            Debug.Log("Start datat shsit");
-            // Start client
+            JoinAllocation allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+
+            // Setup the transport and start client
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(
+                allocation.RelayServer.IpV4,
+                (ushort)allocation.RelayServer.Port,
+                allocation.AllocationIdBytes,
+                allocation.Key,
+                allocation.ConnectionData,
+                allocation.HostConnectionData
+            );
+
             NetworkManager.Singleton.StartClient();
-            Debug.Log("Start CLient");
-
         }
-        catch (RelayServiceException e)
+        catch (Exception e)
         {
-            Debug.LogError("Error in JoinRelay: " + e.Message);
+            Debug.LogError("Error in JoinRelay: " + e);
         }
     }
+
 }
