@@ -25,4 +25,11 @@ public class ScoreManager : MonoBehaviour
         masterlist.Add(name);
         
     }
+
+    [Rpc(SendTo.Server)]
+    public void sendName(string name)
+    {
+        AddPlayer(name);
+    }
+
 }
