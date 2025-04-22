@@ -477,21 +477,33 @@ public class LobbyManager : MonoBehaviour
                 return;
             }
 
-            //  Update Lobby with Relay Code
+            // Update Lobby with Relay Code
             if (joinedLobby != null && !string.IsNullOrEmpty(joinedLobby.Id))
             {
+                // Only update if the visibility has not been set yet
+                // Alternatively, remove or modify the data on initial lobby creation to avoid visibility issues
+                var dataObject = new DataObject(DataObject.VisibilityOptions.Member, relayCode);
+                var lobbyData = new Dictionary<string, DataObject>
+            {
+                { KEY_START_GAME, dataObject }
+            };
+
+                // Update the lobby with the relay code (keeping the same visibility)
                 Lobby lobby = await LobbyService.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions
                 {
-                    Data = new Dictionary<string, DataObject>
-                    {
-                        { KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Public, relayCode) }
-                    }
+                    Data = lobbyData
                 });
 
                 joinedLobby = lobby;
                 Debug.Log("Lobby updated with relay code. Game starting...");
 
-                //  Load Game Scene for All Players
+                // Start the host and load the game scene
+                NetworkManager.Singleton.StartHost();
+
+                // Add a short delay before loading the scene (sometimes network initialization can take time)
+                await Task.Delay(1000); // Adjust as needed, can be a short delay to let the host start
+
+                Debug.Log("Host started, now loading scene...");
                 NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
             }
             else
@@ -504,6 +516,9 @@ public class LobbyManager : MonoBehaviour
             Debug.LogError("Error starting game: " + e.Message);
         }
     }
+
+
+
 
 
 }
