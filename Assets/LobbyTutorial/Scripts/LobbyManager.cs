@@ -61,28 +61,26 @@ public class LobbyManager : MonoBehaviour
     private Lobby joinedLobby;
     private string playerName;
 
-    private void Awake()
+    private async void Awake()
     {
-        UnityServices.InitializeAsync();
         Instance = this;
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist between scenes
-        }
-        else
-        {
-            //Destroy(gameObject); // Prevent duplicate instances
+            DontDestroyOnLoad(gameObject);
         }
 
-        UpdatePlayerHostStatus();
-
+        // Maybe remove this from here:
+        // await UnityServices.InitializeAsync();
     }
+
     private void Update()
     {
-
-        UpdatePlayerHostStatus();
+        HandleLobbyHeartbeat();
+        HandleLobbyPolling();
+        HandleRefreshLobbyList(); // This is defined but never called
     }
+
 
 
     private void UpdatePlayerHostStatus()
