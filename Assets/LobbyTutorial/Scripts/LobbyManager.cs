@@ -82,15 +82,6 @@ public class LobbyManager : MonoBehaviour
     }
 
 
-
-    private void UpdatePlayerHostStatus()
-    {
-
-        HandleLobbyHeartbeat();
-        HandleLobbyPolling();
-
-    }
-
     public async void Authenticate(string playerName)
     {
         if (string.IsNullOrEmpty(playerName) || playerName.Length > 30)
@@ -149,6 +140,7 @@ public class LobbyManager : MonoBehaviour
                 Debug.Log("Heartbeat");
                 await LobbyService.Instance.SendHeartbeatPingAsync(joinedLobby.Id);
             }
+
         }
     }
 
@@ -174,20 +166,23 @@ public class LobbyManager : MonoBehaviour
 
                     joinedLobby = null;
                 }
-                if (!IsLobbyHost())
+                if (joinedLobby.Data.TryGetValue(KEY_START_GAME, out var startGameData))
                 {
-                    RelayTest.Instance.JoinRelay(joinedLobby.Data[KEY_START_GAME].Value);
-                }
-                if (joinedLobby.Data[KEY_START_GAME].Value != "0")
-                {
-                    if (!IsLobbyHost())
-                    {
-                        RelayTest.Instance.JoinRelay(joinedLobby.Data[KEY_START_GAME].Value);
-                    }
+                    string relayCode = startGameData.Value;
 
-                    joinedLobby = null;
-                    OnGameStarted?.Invoke(this, (LobbyEventArgs)EventArgs.Empty);
+                    if (relayCode != "0")
+                    {
+                        if (!IsLobbyHost())
+                        {
+                            Debug.Log("Client detected game start, joining Relay with code: " + relayCode);
+                            RelayTest.Instance.JoinRelay(relayCode);
+                        }
+
+                        joinedLobby = null;
+                        OnGameStarted?.Invoke(this, new LobbyEventArgs { lobby = null });
+                    }
                 }
+
             }
         }
     }
@@ -324,7 +319,7 @@ public class LobbyManager : MonoBehaviour
         });
 
         Debug.Log("Joined Lobby: " + (joinedLobby != null ? joinedLobby.Id : "null"));
-        scoreManager.AddPlayer(playerName);
+        scoreManager.SendNameServerRpc(name);
 
         OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
     }
@@ -489,7 +484,7 @@ public class LobbyManager : MonoBehaviour
                 {
                     Data = new Dictionary<string, DataObject>
                     {
-                        { KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Member, relayCode) }
+                        { KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Public, relayCode) }
                     }
                 });
 
