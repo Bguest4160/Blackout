@@ -26,8 +26,8 @@ public class ScoreManager : NetworkBehaviour
         
     }
 
-    [Rpc(SendTo.Server)]
-    public void sendName(string name)
+    [ServerRpc]
+    public void SendNameServerRpc(string name)
     {
         AddPlayer(name);
     }

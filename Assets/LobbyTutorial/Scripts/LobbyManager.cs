@@ -325,7 +325,7 @@ public class LobbyManager : MonoBehaviour
         });
 
         Debug.Log("Joined Lobby: " + (joinedLobby != null ? joinedLobby.Id : "null"));
-        scoreManager.AddPlayer(playerName);
+        scoreManager.SendNameServerRpc(name);
 
         OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
     }
