@@ -69,6 +69,8 @@ public class RelayTest : MonoBehaviour
 
     public async  Task JoinRelay(string joinCode)
     {
+        Debug.Log("JoinRelay called with code: [" + joinCode + "]");
+
         try
         {
             Debug.Log("JoinRelay with code: " + joinCode); // Add this line
