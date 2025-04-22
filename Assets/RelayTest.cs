@@ -68,6 +68,11 @@ public class RelayTest : MonoBehaviour
 
     public async void JoinRelay(string joinCode)
     {
+        if (!UnityServices.State.Equals(ServicesInitializationState.Initialized))
+        {
+            Debug.LogError("Unity Services are not initialized before joining relay.");
+            return;
+        }
         try
         {
             Debug.Log("Joining relay with " + joinCode);
