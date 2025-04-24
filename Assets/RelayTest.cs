@@ -10,6 +10,7 @@ using Unity.Networking.Transport.Relay;
 using Unity.Netcode;
 using System.Threading.Tasks;
 using System;
+using UnityEngine.SceneManagement;
 
 public class RelayTest : MonoBehaviour
 {
@@ -67,20 +68,20 @@ public class RelayTest : MonoBehaviour
         return null;
     }
 
-    public async  Task JoinRelay(string joinCode)
+    public async Task JoinRelay(string joinCode)
     {
-        Debug.Log("JoinRelay called with code: [" + joinCode + "]");
-
         try
         {
-            Debug.Log("JoinRelay with code: " + joinCode); // Add this line
+            Debug.Log("JoinRelay with code: " + joinCode); // Add this line for debugging
 
+            // Validate the join code format
             if (string.IsNullOrEmpty(joinCode) || joinCode.Length != 6)
             {
                 Debug.LogError("JoinRelay failed: Invalid join code format");
                 return;
             }
 
+            // Join the relay with the provided join code
             JoinAllocation allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
 
             // Setup the transport and start client
@@ -93,12 +94,18 @@ public class RelayTest : MonoBehaviour
                 allocation.HostConnectionData
             );
 
+            // Start the client
             NetworkManager.Singleton.StartClient();
+
+            // Load the game scene once the client starts
+            Debug.Log("Successfully joined relay, loading game scene...");
+            SceneManager.LoadScene("Actual merge scene");  // Replace "GameScene" with the actual name of your game scene
         }
         catch (Exception e)
         {
             Debug.LogError("Error in JoinRelay: " + e);
         }
     }
+
 
 }
