@@ -10,16 +10,13 @@ public class ScoreManager : NetworkBehaviour
     public TMP_Text nameText;
     public TMP_Text winsText;
 
-    ArrayList nameList = new ArrayList();
-    ArrayList scoreList = new ArrayList();
+    public ArrayList nameList = new ArrayList();
+    //ArrayList scoreList = new ArrayList();
 
     // Start is called before the first frame update
     void Start()
     {
-        foreach(int x in scoreList)
-        {
-            
-        }
+
     }
 
     // Update is called once per frame
@@ -28,17 +25,48 @@ public class ScoreManager : NetworkBehaviour
         
     }
 
-    public void AddPlayer(string name)
+    public void AddPlayer(PlayerInfo player)
     {
-        Debug.Log(name);
-        nameList.Add(name);
+        Debug.Log(player.GetName()); ;
+        nameList.Add(player);
         
     }
 
-    [ServerRpc]
+    /*[ServerRpc]
     public void SendNameServerRpc(string name)
     {
         AddPlayer(name);
+    }*/
+
+}
+
+public class PlayerInfo
+{
+    string name;
+    int wins;
+
+    public void SetName(string n)
+    {
+        name = n;
     }
 
+    public void AddWin()
+    {
+        wins += 1;
+    }
+
+    public void ResetWins()
+    {
+        wins = 0;
+    }
+
+    public int GetWins()
+    {
+        return wins;
+    }
+
+    public string GetName()
+    {
+        return name;
+    }
 }

@@ -9,8 +9,16 @@ public class Scoreboard : MonoBehaviour
     [SerializeField] Transform container;
     [SerializeField] GameObject scoreBoardItemPrefab;
 
-    private void Start()
+    void Start()
     {
-        foreach()
+        foreach(PlayerInfo player in scoreManager.nameList)
+        {
+            AddScoreBoardItem(player);
+        }
+    }
+
+    void AddScoreBoardItem(PlayerInfo player)
+    {
+        scoreBoardItem item = Instantiate(scoreBoardItemPrefab, container).GetComponent<scoreBoardItem>();
     }
 }

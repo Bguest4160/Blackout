@@ -426,8 +426,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08869a46413c4b28a53bd1925789fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  container: {fileID: 0}
-  scoreBoardItemPrefab: {fileID: 0}
+  container: {fileID: 1542242977}
+  scoreBoardItemPrefab: {fileID: 3261592337637613261, guid: e50ecfa0d2c1e4a91a3bfc39717aca29, type: 3}
 --- !u!114 &1542242979
 MonoBehaviour:
   m_ObjectHideFlags: 0
