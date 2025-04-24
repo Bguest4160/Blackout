@@ -42,8 +42,8 @@ public class ScoreManager : NetworkBehaviour
 
 public class PlayerInfo
 {
-    string name;
-    int wins;
+    private string name;
+    private int wins;
 
     public void SetName(string n)
     {
