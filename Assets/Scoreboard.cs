@@ -5,6 +5,7 @@ using UnityEngine;
 public class Scoreboard : MonoBehaviour
 {
     ScoreManager scoreManager;
+    scoreBoardItem scoreBoardItem;
 
     [SerializeField] Transform container;
     [SerializeField] GameObject scoreBoardItemPrefab;
@@ -20,5 +21,6 @@ public class Scoreboard : MonoBehaviour
     void AddScoreBoardItem(PlayerInfo player)
     {
         scoreBoardItem item = Instantiate(scoreBoardItemPrefab, container).GetComponent<scoreBoardItem>();
+        scoreBoardItem.Initialize(player);
     }
 }
