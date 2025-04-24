@@ -15,6 +15,8 @@ public class Scoreboard : MonoBehaviour
         foreach(PlayerInfo player in scoreManager.nameList)
         {
             AddScoreBoardItem(player);
+            Debug.Log("we are trying to add");
+            Debug.Log(player.GetName());
 
         }
     }
@@ -23,6 +25,6 @@ public class Scoreboard : MonoBehaviour
     {
         scoreBoardItem item = Instantiate(scoreBoardItemPrefab, container).GetComponent<scoreBoardItem>();
         item.Initialize(player);
-        Debug.Log(player.GetName());
+        Debug.Log(player.GetName() + "intancinating");
     }
 }
