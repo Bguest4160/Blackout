@@ -6,6 +6,11 @@ public class humanSpawner : NetworkBehaviour
     public GameObject playerPrefab;  // Your player prefab
     public Transform spawnPoint;     // Spawn location for the player
 
+    public void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void OnStartHost()  // This is called when the server starts
     {
      
