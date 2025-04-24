@@ -99,7 +99,7 @@ public class RelayTest : MonoBehaviour
 
             // Load the game scene once the client starts
             Debug.Log("Successfully joined relay, loading game scene...");
-            SceneManager.LoadScene("Actual merge scene");  // Replace "GameScene" with the actual name of your game scene
+             // Replace "GameScene" with the actual name of your game scene
         }
         catch (Exception e)
         {
