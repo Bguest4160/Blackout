@@ -15,6 +15,7 @@ public class Scoreboard : MonoBehaviour
         foreach(PlayerInfo player in scoreManager.nameList)
         {
             AddScoreBoardItem(player);
+
         }
     }
 
