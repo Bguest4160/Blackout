@@ -22,5 +22,6 @@ public class Scoreboard : MonoBehaviour
     {
         scoreBoardItem item = Instantiate(scoreBoardItemPrefab, container).GetComponent<scoreBoardItem>();
         scoreBoardItem.Initialize(player);
+        Debug.Log(player.GetName());
     }
 }
