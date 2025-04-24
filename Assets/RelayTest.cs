@@ -19,14 +19,13 @@ public class RelayTest : MonoBehaviour
 
     private async void Awake()
     {
-        // Ensure only one instance of RelayTest exists
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject); // Destroy duplicate instance
+            Destroy(gameObject);
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject); // Keep this instance between scene loads
+        DontDestroyOnLoad(gameObject);
     }
 
     private async void Start()
@@ -35,7 +34,7 @@ public class RelayTest : MonoBehaviour
 
         AuthenticationService.Instance.SignedIn += () =>
         {
-            Debug.Log("Signed In" + AuthenticationService.Instance.PlayerId);
+            Debug.Log("Signed In: " + AuthenticationService.Instance.PlayerId);
         };
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
@@ -44,20 +43,19 @@ public class RelayTest : MonoBehaviour
     {
         try
         {
-            // Create relay allocation for up to 3 players
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(3);
 
-            // Get the join code for this allocation
             string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
             Debug.Log("Relay Created. Join Code: " + joinCode);
 
-            // Set relay server data
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
-            // Start hosting the network session
             NetworkManager.Singleton.StartHost();
+
+            //  This is the critical line that ensures scene sync for all clients
+            NetworkManager.Singleton.SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
 
             return joinCode;
         }
@@ -72,19 +70,16 @@ public class RelayTest : MonoBehaviour
     {
         try
         {
-            Debug.Log("JoinRelay with code: " + joinCode); // Add this line for debugging
+            Debug.Log("JoinRelay with code: " + joinCode);
 
-            // Validate the join code format
             if (string.IsNullOrEmpty(joinCode) || joinCode.Length != 6)
             {
                 Debug.LogError("JoinRelay failed: Invalid join code format");
                 return;
             }
 
-            // Join the relay with the provided join code
             JoinAllocation allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
 
-            // Setup the transport and start client
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(
                 allocation.RelayServer.IpV4,
                 (ushort)allocation.RelayServer.Port,
@@ -94,18 +89,13 @@ public class RelayTest : MonoBehaviour
                 allocation.HostConnectionData
             );
 
-            // Start the client
             NetworkManager.Singleton.StartClient();
 
-            // Load the game scene once the client starts
-            Debug.Log("Successfully joined relay, loading game scene...");
-             // Replace "GameScene" with the actual name of your game scene
+            Debug.Log("Successfully joined relay, waiting for host to load scene...");
         }
         catch (Exception e)
         {
             Debug.LogError("Error in JoinRelay: " + e);
         }
     }
-
-
 }
