@@ -264,6 +264,7 @@ public class LobbyManager : MonoBehaviour
         Debug.Log("Created Lobby " + lobby.Name);
         PlayerInfo player1 = new PlayerInfo();
         player1.SetName(playerName);
+        Debug.Log(player1.GetName() + "create lobby area");
         scoreManager.AddPlayer(player1);
     }
 

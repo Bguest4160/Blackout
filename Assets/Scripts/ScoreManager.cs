@@ -29,6 +29,7 @@ public class ScoreManager : NetworkBehaviour
     {
         Debug.Log(player.GetName()); ;
         nameList.Add(player);
+        Debug.Log("player added to list");
         
     }
 
