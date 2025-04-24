@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HostManager : NetworkBehaviour
 {
-    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject playerPrefab; // Ensure this is assigned in Inspector
     [SerializeField] private List<Transform> spawnPoints;
 
     private int nextSpawnIndex = 0;
@@ -47,12 +47,29 @@ public class HostManager : NetworkBehaviour
 
         // Handle spawn logic here
         Transform spawnPoint = GetNextSpawnPoint();
-        GameObject playerInstance = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
-        playerInstance.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
 
-        // Get PlayerSpawner and set the spawn index from a possible player selection
-        PlayerSpawner playerSpawner = playerInstance.GetComponent<PlayerSpawner>();
-        playerSpawner.SetSpawnIndex(nextSpawnIndex); // This would ideally be set based on the player's choice
+        // Instantiate the player prefab and assign it the spawn position
+        GameObject playerInstance = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+        NetworkObject playerNetworkObject = playerInstance.GetComponent<NetworkObject>();
+
+        // Make sure the NetworkObject is assigned and spawning correctly
+        if (playerNetworkObject != null)
+        {
+            // Spawn the player object as a networked player object
+            playerNetworkObject.SpawnAsPlayerObject(clientId, true);
+
+            // Get PlayerSpawner and set the spawn index from a possible player selection
+            PlayerSpawner playerSpawner = playerInstance.GetComponent<PlayerSpawner>();
+            if (playerSpawner != null)
+            {
+                // Set the spawn index according to player selection
+                playerSpawner.SetSpawnIndex(nextSpawnIndex); // This could be player-selected
+            }
+        }
+        else
+        {
+            Debug.LogError("Player prefab is missing NetworkObject component.");
+        }
     }
 
     private Transform GetNextSpawnPoint()
