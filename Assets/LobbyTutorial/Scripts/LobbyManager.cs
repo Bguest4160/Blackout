@@ -262,7 +262,9 @@ public class LobbyManager : MonoBehaviour
         OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
 
         Debug.Log("Created Lobby " + lobby.Name);
-        scoreManager.AddPlayer(playerName);
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(playerName);
+        scoreManager.AddPlayer(player1);
     }
 
     public async void RefreshLobbyList()
@@ -319,7 +321,6 @@ public class LobbyManager : MonoBehaviour
         });
 
         Debug.Log("Joined Lobby: " + (joinedLobby != null ? joinedLobby.Id : "null"));
-        scoreManager.SendNameServerRpc(name);
 
         OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
     }
