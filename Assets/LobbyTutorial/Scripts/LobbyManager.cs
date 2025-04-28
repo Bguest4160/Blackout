@@ -466,7 +466,7 @@ public class LobbyManager : MonoBehaviour
     public async void StartGame()
     {
         if (!IsLobbyHost()) return;
-        scoreboard.AddToScoreBoard();
+        scoreManager.AddToScoreBoard();
 
         try
         {
