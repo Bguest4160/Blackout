@@ -10,8 +10,9 @@ public class Scoreboard : MonoBehaviour
     [SerializeField] Transform container;
     [SerializeField] GameObject scoreBoardItemPrefab;
 
-    void Start()
+    void Update()
     {
+        Debug.Log("iamrunning");
         foreach(PlayerInfo player in scoreManager.nameList)
         {
             AddScoreBoardItem(player);
