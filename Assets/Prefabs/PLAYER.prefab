@@ -3448,7 +3448,7 @@ MonoBehaviour:
   pickUpLayerMask:
     serializedVersion: 2
     m_Bits: 63
-  objectGrabPointTranform: {fileID: 5169169080577176491}
+  objectGrabPointTransform: {fileID: 5169169080577176491}
   holding: 0
 --- !u!114 &6302327744464707903
 MonoBehaviour:
