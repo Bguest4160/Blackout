@@ -32,6 +32,7 @@ public class RelayTest : MonoBehaviour
 
     private async void Start()
     {
+        lobbyManager.SetPlayersReadyServerRpc(1);
         await UnityServices.InitializeAsync();
 
         AuthenticationService.Instance.SignedIn += () =>
