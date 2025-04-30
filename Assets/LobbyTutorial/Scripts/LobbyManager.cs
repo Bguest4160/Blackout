@@ -61,9 +61,11 @@ public class LobbyManager : MonoBehaviour
     private float refreshLobbyListTimer = 5f;
     private Lobby joinedLobby;
     private string playerName;
+    public NetworkVariable<int> playersReady = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     private async void Awake()
     {
+        Debug.Log(playersReady);
         Instance = this;
         if (Instance == null)
         {
@@ -498,6 +500,12 @@ public class LobbyManager : MonoBehaviour
                     Data = lobbyData
                 });
 
+                while(!playersReady.Equals(1))
+                {
+                    Debug.Log("waiting for ready up, " + playersReady + "players ready");
+                    await Task.Delay(1000);
+                }
+                Debug.Log("starting host proccess");
                 joinedLobby = lobby;
                 Debug.Log("Lobby updated with relay code. Game starting...");
 
@@ -509,8 +517,9 @@ public class LobbyManager : MonoBehaviour
 
                 Debug.Log("Host started, now loading scene...");
                 NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
-                
-                
+
+
+
             }
             else
             {
