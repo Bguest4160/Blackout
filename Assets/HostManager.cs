@@ -45,24 +45,25 @@ public class HostManager : NetworkBehaviour
     {
         Debug.Log($"Client connected: {clientId}");
 
-        // Handle spawn logic here
+        // Get the next spawn point for the client
         Transform spawnPoint = GetNextSpawnPoint();
 
-        // Instantiate the player prefab and assign it the spawn position
+        // Spawn the player on the server
         GameObject playerInstance = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
         NetworkObject playerNetworkObject = playerInstance.GetComponent<NetworkObject>();
 
-        // Make sure the NetworkObject is assigned and spawning correctly
         if (playerNetworkObject != null)
         {
             // Spawn the player object as a networked player object
             playerNetworkObject.SpawnAsPlayerObject(clientId, true);
 
-            // Get PlayerSpawner and set the spawn index from a possible player selection
+            // Now, change the ownership to the client
+            playerNetworkObject.ChangeOwnership(clientId);
+
+            // Get the PlayerSpawner component and set the spawn index for the client
             PlayerSpawner playerSpawner = playerInstance.GetComponent<PlayerSpawner>();
             if (playerSpawner != null)
             {
-                // Set the spawn index according to player selection
                 playerSpawner.SetSpawnIndex(nextSpawnIndex); // This could be player-selected
             }
         }

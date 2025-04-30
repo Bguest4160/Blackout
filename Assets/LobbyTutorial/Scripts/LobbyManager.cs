@@ -41,6 +41,7 @@ public class LobbyManager : MonoBehaviour
     }
 
     public ScoreManager scoreManager;
+    public Scoreboard scoreboard;
 
     public enum GameMode
     {
@@ -264,6 +265,7 @@ public class LobbyManager : MonoBehaviour
         Debug.Log("Created Lobby " + lobby.Name);
         PlayerInfo player1 = new PlayerInfo();
         player1.SetName(playerName);
+        Debug.Log(player1.GetName() + "create lobby area");
         scoreManager.AddPlayer(player1);
     }
 
@@ -447,23 +449,24 @@ public class LobbyManager : MonoBehaviour
             Lobby lobby = await Lobbies.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions
             {
                 Data = new Dictionary<string, DataObject> {
-                    { KEY_GAME_MODE, new DataObject(DataObject.VisibilityOptions.Public, gameMode.ToString()) }
-                }
+                { KEY_GAME_MODE, new DataObject(DataObject.VisibilityOptions.Public, gameMode.ToString()) }
+            }
             });
 
             joinedLobby = lobby;
-
             OnLobbyGameModeChanged?.Invoke(this, new LobbyEventArgs { lobby = joinedLobby });
         }
         catch (LobbyServiceException e)
         {
-            Debug.Log(e);
+            Debug.LogError($"Failed to update lobby game mode: {e}");
         }
     }
+
 
     public async void StartGame()
     {
         if (!IsLobbyHost()) return;
+        scoreboard.AddToScoreBoard();
 
         try
         {

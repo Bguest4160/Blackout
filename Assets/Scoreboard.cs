@@ -10,18 +10,27 @@ public class Scoreboard : MonoBehaviour
     [SerializeField] Transform container;
     [SerializeField] GameObject scoreBoardItemPrefab;
 
-    void Start()
+    void Update()
     {
-        foreach(PlayerInfo player in scoreManager.nameList)
-        {
-            AddScoreBoardItem(player);
-        }
+        
     }
 
     void AddScoreBoardItem(PlayerInfo player)
     {
         scoreBoardItem item = Instantiate(scoreBoardItemPrefab, container).GetComponent<scoreBoardItem>();
-        scoreBoardItem.Initialize(player);
-        Debug.Log(player.GetName());
+        item.Initialize(player);
+        Debug.Log(player.GetName() + "intancinating");
+    }
+
+    public void AddToScoreBoard()
+    {
+        Debug.Log("iamrunning");
+        foreach (PlayerInfo player in scoreManager.nameList)
+        {
+            AddScoreBoardItem(player);
+            Debug.Log("we are trying to add");
+            Debug.Log(player.GetName());
+
+        }
     }
 }
