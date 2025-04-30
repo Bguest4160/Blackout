@@ -474,6 +474,11 @@ public class LobbyManager : MonoBehaviour
 
     public async void StartGame()
     {
+        while (!playersReady.Equals(1))
+        {
+            Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
+            await Task.Delay(1000);
+        }
         if (!IsLobbyHost()) return;
         scoreManager.AddToScoreBoard();
 
@@ -507,11 +512,6 @@ public class LobbyManager : MonoBehaviour
                     Data = lobbyData
                 });
 
-                while(!playersReady.Equals(1))
-                {
-                    Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
-                    await Task.Delay(1000);
-                }
                 Debug.Log("starting host proccess");
                 joinedLobby = lobby;
                 Debug.Log("Lobby updated with relay code. Game starting...");
