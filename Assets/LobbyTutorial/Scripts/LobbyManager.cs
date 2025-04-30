@@ -502,7 +502,7 @@ public class LobbyManager : MonoBehaviour
 
                 while(!playersReady.Equals(1))
                 {
-                    Debug.Log("waiting for ready up, " + playersReady.Value + "players ready");
+                    Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
                     await Task.Delay(1000);
                 }
                 Debug.Log("starting host proccess");
