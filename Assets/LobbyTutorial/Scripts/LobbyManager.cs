@@ -41,6 +41,7 @@ public class LobbyManager : MonoBehaviour
     }
 
     public ScoreManager scoreManager;
+    public Scoreboard scoreboard;
 
     public enum GameMode
     {
@@ -465,6 +466,7 @@ public class LobbyManager : MonoBehaviour
     public async void StartGame()
     {
         if (!IsLobbyHost()) return;
+        scoreboard.AddToScoreBoard();
 
         try
         {
