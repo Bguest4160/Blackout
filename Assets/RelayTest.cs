@@ -12,8 +12,6 @@ using System.Threading.Tasks;
 using System;
 using UnityEngine.SceneManagement;
 
-
-
 public class RelayTest : MonoBehaviour
 {
     private LobbyManager lobbyManager;
@@ -34,7 +32,6 @@ public class RelayTest : MonoBehaviour
 
     private async void Start()
     {
-        lobbyManager = GetComponentInParent<LobbyManager>();
         await UnityServices.InitializeAsync();
 
         AuthenticationService.Instance.SignedIn += () =>
@@ -44,12 +41,6 @@ public class RelayTest : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    private void SetPlayersReadyServerRpc(int num)
-    {
-        lobbyManager.playersReady.Value += num;
-        Debug.Log("add one to playerReady");
-    }
 
     public async Task<string> CreateRelay()
     {
@@ -104,7 +95,7 @@ public class RelayTest : MonoBehaviour
             NetworkManager.Singleton.StartClient();
 
             Debug.Log("Successfully joined relay, waiting for host to load scene...");
-            SetPlayersReadyServerRpc(1);
+            lobbyManager.SetPlayersReadyServerRpc(1);
             Debug.Log("runs server rpc method");
         }
         catch (Exception e)
