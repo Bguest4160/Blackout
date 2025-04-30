@@ -92,6 +92,7 @@ public class RelayTest : MonoBehaviour
             NetworkManager.Singleton.StartClient();
 
             Debug.Log("Successfully joined relay, waiting for host to load scene...");
+            NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
         }
         catch (Exception e)
         {
