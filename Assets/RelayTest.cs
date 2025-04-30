@@ -14,7 +14,7 @@ using UnityEngine.SceneManagement;
 
 public class RelayTest : MonoBehaviour
 {
-    private LobbyManager lobbyManager;
+    public LobbyManager lobbyManager;
 
     // Singleton Instance
     public static RelayTest Instance { get; private set; }
