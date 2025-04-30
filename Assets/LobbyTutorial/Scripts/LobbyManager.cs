@@ -474,7 +474,7 @@ public class LobbyManager : MonoBehaviour
 
     public async void StartGame()
     {
-        while (!playersReady.Equals(1))
+        while (!playersReady.Value.Equals(1))
         {
             Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
             await Task.Delay(1000);
