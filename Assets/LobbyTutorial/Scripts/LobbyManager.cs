@@ -157,7 +157,7 @@ public class LobbyManager : MonoBehaviour
     private async void HandleLobbyPolling()
     {
         if (joinedLobby != null)
-            Debug.Log("handle lobby plling running");
+           
         {
             lobbyPollTimer -= Time.deltaTime;
             if (lobbyPollTimer < 0f)
