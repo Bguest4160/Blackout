@@ -157,6 +157,7 @@ public class LobbyManager : MonoBehaviour
     private async void HandleLobbyPolling()
     {
         if (joinedLobby != null)
+            Debug.Log("handle lobby plling running");
         {
             lobbyPollTimer -= Time.deltaTime;
             if (lobbyPollTimer < 0f)
@@ -185,7 +186,7 @@ public class LobbyManager : MonoBehaviour
                         if (!IsLobbyHost())
                         {
                             Debug.Log("Client detected game start, joining Relay with code: " + relayCode);
-                            RelayTest.Instance.JoinRelay(relayCode);
+                            await RelayTest.Instance.JoinRelay(relayCode);
                         }
 
                         joinedLobby = null;
