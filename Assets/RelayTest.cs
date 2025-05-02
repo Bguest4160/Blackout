@@ -55,10 +55,10 @@ public class RelayTest : MonoBehaviour
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
-            NetworkManager.Singleton.StartHost();
+            //NetworkManager.Singleton.StartHost();
 
             //  This is the critical line that ensures scene sync for all clients
-            NetworkManager.Singleton.SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+            //NetworkManager.Singleton.SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
 
             return joinCode;
         }
