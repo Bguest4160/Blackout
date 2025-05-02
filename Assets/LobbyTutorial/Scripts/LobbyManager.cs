@@ -479,7 +479,7 @@ public class LobbyManager : MonoBehaviour
         while (!playersReady.Value.Equals(1))
         {
             Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
-            await Task.Delay(1000);
+            await Task.Delay(3000);
         }
 
         scoreManager.AddToScoreBoard();
