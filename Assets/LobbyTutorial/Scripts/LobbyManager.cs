@@ -157,7 +157,6 @@ public class LobbyManager : MonoBehaviour
     private async void HandleLobbyPolling()
     {
         if (joinedLobby != null)
-            Debug.Log("handle lobby plling running");
         {
             lobbyPollTimer -= Time.deltaTime;
             if (lobbyPollTimer < 0f)
@@ -177,7 +176,8 @@ public class LobbyManager : MonoBehaviour
 
                     joinedLobby = null;
                 }
-                if (joinedLobby.Data.TryGetValue(KEY_START_GAME, out var startGameData))
+                Debug.Log("if statement in handle lobby polling" + joinedLobby.Data.TryGetValue(KEY_START_GAME, out var startGameData));
+                if (joinedLobby.Data.TryGetValue(KEY_START_GAME, out startGameData))
                 {
                     string relayCode = startGameData.Value;
 
