@@ -183,18 +183,19 @@ public class LobbyManager : MonoBehaviour
                     string relayCode = startGameData.Value;
                     Debug.Log(relayCode + " Relay Code");
 
-                    //if (relayCode != "0")
-                    //{
+                    if (relayCode != "0")
+                    {
                         if (!IsLobbyHost())
                         {
                             Debug.Log("Client detected game start, joining Relay with code: " + relayCode);
                             await RelayTest.Instance.JoinRelay(relayCode);
+                            Debug.Log("handle polling finished asking to start game");
                         }
 
                         joinedLobby = null;
                         OnGameStarted?.Invoke(this, new LobbyEventArgs { lobby = null });
-                        Debug.Log("handle polling finished asking to start game");
-                    //}
+                        
+                    }
                 }
 
             }
