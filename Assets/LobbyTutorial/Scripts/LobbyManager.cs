@@ -84,26 +84,12 @@ public class LobbyManager : MonoBehaviour
         HandleRefreshLobbyList(); // This is defined but never called
     }
 
-    [Rpc (SendTo.Server)]
+    [ServerRpc(RequireOwnership = false)]
     public void SetPlayersReadyServerRpc(int num)
     {
         playersReady.Value += num;
-        ReceivePlayersReadyServerRpc(playersReady.Value);
-        Debug.Log("hello my name is setPlayersReadyServerRpc, I am running, try to catch me!");
+        Debug.Log("add one to playerReady");
     }
-
-    [Rpc (SendTo.NotServer)]
-    public void ReceivePlayersReadyServerRpc(int num)
-    {
-        if (IsLobbyHost())
-        {
-            playersReady.Value = num;
-            Debug.Log("add one to playerReady " + playersReady.Value);
-        }
-        
-    }
-
-
 
 
     public async void Authenticate(string playerName)
