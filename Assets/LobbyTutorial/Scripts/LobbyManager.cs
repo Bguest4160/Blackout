@@ -87,7 +87,8 @@ public class LobbyManager : MonoBehaviour
     [Rpc (SendTo.Server)]
     public void SetPlayersReadyServerRpc(int num)
     {
-        ReceivePlayersReadyServerRpc(num);
+        playersReady.Value += num;
+        ReceivePlayersReadyServerRpc(playersReady.Value);
         Debug.Log("hello my name is setPlayersReadyServerRpc, I am running, try to catch me!");
     }
 
@@ -96,7 +97,7 @@ public class LobbyManager : MonoBehaviour
     {
         if (IsLobbyHost())
         {
-            playersReady.Value += num;
+            playersReady.Value = num;
             Debug.Log("add one to playerReady " + playersReady.Value);
         }
         
