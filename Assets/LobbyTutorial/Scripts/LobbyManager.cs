@@ -84,8 +84,8 @@ public class LobbyManager : MonoBehaviour
         HandleRefreshLobbyList(); // This is defined but never called
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    public void SetPlayersReadyServerRpc(int num)
+    [ClientRpc]
+    public void SetPlayersReadyClientrRpc(int num)
     {
         playersReady.Value += num;
         Debug.Log("add one to playerReady");
