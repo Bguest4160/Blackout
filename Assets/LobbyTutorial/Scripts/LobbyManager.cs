@@ -183,18 +183,19 @@ public class LobbyManager : MonoBehaviour
                     string relayCode = startGameData.Value;
                     Debug.Log(relayCode + " Relay Code");
 
-                    //if (relayCode != "0")
-                    //{
+                    if (relayCode != "0")
+                    {
                         if (!IsLobbyHost())
                         {
                             Debug.Log("Client detected game start, joining Relay with code: " + relayCode);
                             await RelayTest.Instance.JoinRelay(relayCode);
+                            Debug.Log("handle polling finished asking to start game");
                         }
 
                         joinedLobby = null;
                         OnGameStarted?.Invoke(this, new LobbyEventArgs { lobby = null });
-                        Debug.Log("handle polling finished asking to start game");
-                    //}
+                        
+                    }
                 }
 
             }
@@ -480,12 +481,6 @@ public class LobbyManager : MonoBehaviour
     {
         if (!IsLobbyHost()) return;
 
-        while (!playersReady.Value.Equals(1))
-        {
-            Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
-            await Task.Delay(3000);
-        }
-
         scoreManager.AddToScoreBoard();
 
         try
@@ -517,6 +512,12 @@ public class LobbyManager : MonoBehaviour
                 {
                     Data = lobbyData
                 });
+
+                while (!playersReady.Value.Equals(1))
+                {
+                    Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
+                    await Task.Delay(3000);
+                }
 
                 Debug.Log("starting host proccess");
                 joinedLobby = lobby;
