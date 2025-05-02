@@ -181,9 +181,10 @@ public class LobbyManager : MonoBehaviour
                 {
                     Debug.Log("running if in hangle polling");
                     string relayCode = startGameData.Value;
+                    Debug.Log(relayCode + " Relay Code");
 
-                    if (relayCode != "0")
-                    {
+                    //if (relayCode != "0")
+                    //{
                         if (!IsLobbyHost())
                         {
                             Debug.Log("Client detected game start, joining Relay with code: " + relayCode);
@@ -193,7 +194,7 @@ public class LobbyManager : MonoBehaviour
                         joinedLobby = null;
                         OnGameStarted?.Invoke(this, new LobbyEventArgs { lobby = null });
                         Debug.Log("handle polling finished asking to start game");
-                    }
+                    //}
                 }
 
             }
