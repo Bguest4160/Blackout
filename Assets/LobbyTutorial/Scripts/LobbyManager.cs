@@ -11,7 +11,7 @@ using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LobbyManager : MonoBehaviour
+public class LobbyManager : NetworkBehaviour
 {
 
     public static LobbyManager Instance { get; private set; }
@@ -84,8 +84,8 @@ public class LobbyManager : MonoBehaviour
         HandleRefreshLobbyList(); // This is defined but never called
     }
 
-    [ClientRpc]
-    public void SetPlayersReadyClientrRpc(int num)
+    [ServerRpc(RequireOwnership = false)]
+    public void SetPlayersReadyServerRpc(int num)
     {
         playersReady.Value += num;
         Debug.Log("add one to playerReady");
