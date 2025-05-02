@@ -157,6 +157,7 @@ public class LobbyManager : MonoBehaviour
     private async void HandleLobbyPolling()
     {
         if (joinedLobby != null)
+           
         {
             lobbyPollTimer -= Time.deltaTime;
             if (lobbyPollTimer < 0f)
