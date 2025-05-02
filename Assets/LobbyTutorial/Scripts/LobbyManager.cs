@@ -88,6 +88,7 @@ public class LobbyManager : MonoBehaviour
     public void SetPlayersReadyServerRpc(int num)
     {
         ReceivePlayersReadyServerRpc(num);
+        Debug.Log("hello my name is setPlayersReadyServerRpc, I am running, try to catch me!");
     }
 
     [Rpc (SendTo.NotServer)]
