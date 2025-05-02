@@ -474,12 +474,14 @@ public class LobbyManager : MonoBehaviour
 
     public async void StartGame()
     {
+        if (!IsLobbyHost()) return;
+
         while (!playersReady.Value.Equals(1))
         {
             Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
             await Task.Delay(1000);
         }
-        if (!IsLobbyHost()) return;
+
         scoreManager.AddToScoreBoard();
 
         try
