@@ -51,10 +51,14 @@ public class ObjectGrabable : NetworkBehaviour {
     public void Grab(Transform objectGrabPointTransform) {
         this.objectGrabPointTransform = objectGrabPointTransform;
         SetStateServerRpc(1);
+        objectRigidbody.useGravity = false;
+        objectRigidbody.constraints = RigidbodyConstraints.None;
+        objectRigidbody.isKinematic = false;
     }
 
     public void Throw() {
         objectGrabPointTransform = null;
+        objectRigidbody.useGravity = true;
         objectRigidbody.AddForce(playerCamera.forward * throwForce, ForceMode.VelocityChange);
         if (state.Value == 1) {
             activateCollider = true;
@@ -69,8 +73,8 @@ public class ObjectGrabable : NetworkBehaviour {
         if (objectGrabPointTransform != null) {
             GrabLerpServerRpc(objectGrabPointTransform.position);
         }
-        else {
-            // objectRigidbody.AddForce(Physics.gravity * (3 / 2), ForceMode.Acceleration);
+        if (state.Value > 1) {
+            objectRigidbody.AddForce(Physics.gravity * (3 / 2), ForceMode.Acceleration);
         }
 
     }
@@ -89,18 +93,5 @@ public class ObjectGrabable : NetworkBehaviour {
         Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransformPosition, Time.deltaTime * lerpSpeed);
         objectRigidbody.MovePosition(newPosition);
         Debug.Log("SERVER || " + objectRigidbody.name + " lerped to " + objectRigidbody.position + "; client objectgrabpointtransform: " + objectGrabPointTransformPosition);
-        // rabLerpClientRpc(objectGrabPointTransformPosition);
     }
-
-    // [ClientRpc]
-    // private void GrabLerpClientRpc(Vector3 objectGrabPointTransformPosition) {
-    //     float lerpSpeed = 15f;
-    //     Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransformPosition, Time.deltaTime * lerpSpeed);
-    //     objectRigidbody.MovePosition(newPosition);
-    //     Debug.Log("CLIENT || " + objectRigidbody.name + " lerped to " + objectRigidbody.position + "; client objectgrabpointtransform: " + objectGrabPointTransformPosition);
-    // }
-
-    /* objectgrabpointtransform (lerp destination) synced succesfully always also object state syncing and everything else in client debug is fine dont mess with that.
-    for some reason the lerp function just does not want to cooperate. might be an issue with the lerp resetting itself OR the object's original position (opposite of destination) (transform.position in this method) not being set correctly.
-    */
 }
