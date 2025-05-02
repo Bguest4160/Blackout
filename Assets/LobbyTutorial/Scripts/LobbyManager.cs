@@ -481,12 +481,6 @@ public class LobbyManager : MonoBehaviour
     {
         if (!IsLobbyHost()) return;
 
-        while (!playersReady.Value.Equals(1))
-        {
-            Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
-            await Task.Delay(3000);
-        }
-
         scoreManager.AddToScoreBoard();
 
         try
@@ -518,6 +512,12 @@ public class LobbyManager : MonoBehaviour
                 {
                     Data = lobbyData
                 });
+
+                while (!playersReady.Value.Equals(1))
+                {
+                    Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
+                    await Task.Delay(3000);
+                }
 
                 Debug.Log("starting host proccess");
                 joinedLobby = lobby;
