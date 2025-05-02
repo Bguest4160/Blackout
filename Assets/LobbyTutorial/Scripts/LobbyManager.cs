@@ -61,7 +61,7 @@ public class LobbyManager : MonoBehaviour
     private float refreshLobbyListTimer = 5f;
     private Lobby joinedLobby;
     private string playerName;
-    public NetworkVariable<int> playersReady = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    public NetworkVariable<int> playersReady = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     private async void Awake()
     {
@@ -90,6 +90,8 @@ public class LobbyManager : MonoBehaviour
         playersReady.Value += num;
         Debug.Log("add one to playerReady");
     }
+
+    
 
 
     public async void Authenticate(string playerName)
