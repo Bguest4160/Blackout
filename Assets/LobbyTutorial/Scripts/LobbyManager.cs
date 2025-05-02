@@ -176,9 +176,9 @@ public class LobbyManager : MonoBehaviour
 
                     joinedLobby = null;
                 }
-                Debug.Log("if statement in handle lobby polling" + joinedLobby.Data.TryGetValue(KEY_START_GAME, out var startGameData));
-                if (joinedLobby.Data.TryGetValue(KEY_START_GAME, out startGameData))
+                if (joinedLobby.Data.TryGetValue(KEY_START_GAME, out var startGameData))
                 {
+                    Debug.Log("running if in hangle polling");
                     string relayCode = startGameData.Value;
 
                     if (relayCode != "0")
@@ -191,6 +191,7 @@ public class LobbyManager : MonoBehaviour
 
                         joinedLobby = null;
                         OnGameStarted?.Invoke(this, new LobbyEventArgs { lobby = null });
+                        Debug.Log("handle polling finished asking to start game");
                     }
                 }
 
