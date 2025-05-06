@@ -30,6 +30,7 @@ public class PlayerPickupThrow : NetworkBehaviour
 
                 if (raycastHit.transform.TryGetComponent(out objectGrabable)) {
                     Debug.Log("object detected for grab");
+                    objectGrabable.RequestOwnershipServerRpc(OwnerClientId);
                     objectGrabable.SetPlayerCamera(playerCameraTransform); // Set the camera transform here
                     objectGrabable.SetPlayerTransform(transform);
                     objectGrabable.Grab(objectGrabPointTransform);
