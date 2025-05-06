@@ -14,6 +14,8 @@ using UnityEngine.SceneManagement;
 
 public class RelayTest : MonoBehaviour
 {
+    public LobbyManager lobbyManager;
+
     // Singleton Instance
     public static RelayTest Instance { get; private set; }
 
@@ -39,6 +41,7 @@ public class RelayTest : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
+
     public async Task<string> CreateRelay()
     {
         try
@@ -52,10 +55,10 @@ public class RelayTest : MonoBehaviour
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
-            NetworkManager.Singleton.StartHost();
+            //NetworkManager.Singleton.StartHost();
 
             //  This is the critical line that ensures scene sync for all clients
-            NetworkManager.Singleton.SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+            //NetworkManager.Singleton.SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
 
             return joinCode;
         }
@@ -92,6 +95,8 @@ public class RelayTest : MonoBehaviour
             NetworkManager.Singleton.StartClient();
 
             Debug.Log("Successfully joined relay, waiting for host to load scene...");
+            lobbyManager.SetPlayersReadyServerRpc(1);
+            Debug.Log("runs server rpc method");
         }
         catch (Exception e)
         {

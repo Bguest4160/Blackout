@@ -11,7 +11,7 @@ using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LobbyManager : MonoBehaviour
+public class LobbyManager : NetworkBehaviour
 {
 
     public static LobbyManager Instance { get; private set; }
@@ -61,9 +61,12 @@ public class LobbyManager : MonoBehaviour
     private float refreshLobbyListTimer = 5f;
     private Lobby joinedLobby;
     private string playerName;
+    public NetworkVariable<int> playersReady = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    int num = 0;
 
     private async void Awake()
     {
+        Debug.Log(playersReady);
         Instance = this;
         if (Instance == null)
         {
@@ -81,6 +84,16 @@ public class LobbyManager : MonoBehaviour
         HandleLobbyPolling();
         HandleRefreshLobbyList(); // This is defined but never called
     }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void SetPlayersReadyServerRpc(int num)
+    {
+        playersReady.Value += num;
+        Debug.Log("add one to playerReady");
+    }
+    //not recievibg rpc all on my end
+
+    
 
 
     public async void Authenticate(string playerName)
@@ -148,6 +161,7 @@ public class LobbyManager : MonoBehaviour
     private async void HandleLobbyPolling()
     {
         if (joinedLobby != null)
+           
         {
             lobbyPollTimer -= Time.deltaTime;
             if (lobbyPollTimer < 0f)
@@ -169,18 +183,22 @@ public class LobbyManager : MonoBehaviour
                 }
                 if (joinedLobby.Data.TryGetValue(KEY_START_GAME, out var startGameData))
                 {
+                    Debug.Log("running if in hangle polling");
                     string relayCode = startGameData.Value;
+                    Debug.Log(relayCode + " Relay Code");
 
                     if (relayCode != "0")
                     {
                         if (!IsLobbyHost())
                         {
                             Debug.Log("Client detected game start, joining Relay with code: " + relayCode);
-                            RelayTest.Instance.JoinRelay(relayCode);
+                            await RelayTest.Instance.JoinRelay(relayCode);
+                            Debug.Log("handle polling finished asking to start game");
                         }
 
                         joinedLobby = null;
                         OnGameStarted?.Invoke(this, new LobbyEventArgs { lobby = null });
+                        
                     }
                 }
 
@@ -466,7 +484,8 @@ public class LobbyManager : MonoBehaviour
     public async void StartGame()
     {
         if (!IsLobbyHost()) return;
-        scoreboard.AddToScoreBoard();
+
+        scoreManager.AddToScoreBoard();
 
         try
         {
@@ -498,6 +517,15 @@ public class LobbyManager : MonoBehaviour
                     Data = lobbyData
                 });
 
+                //while (!playersReady.Value.Equals(1))
+                while(num<5000)
+                {
+                    //Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
+                    //await Task.Delay(3000);
+                    num += 1;
+                }
+
+                Debug.Log("starting host proccess");
                 joinedLobby = lobby;
                 Debug.Log("Lobby updated with relay code. Game starting...");
 
@@ -509,8 +537,9 @@ public class LobbyManager : MonoBehaviour
 
                 Debug.Log("Host started, now loading scene...");
                 NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
-                
-                
+
+
+
             }
             else
             {
