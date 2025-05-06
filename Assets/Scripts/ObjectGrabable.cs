@@ -59,8 +59,8 @@ public class ObjectGrabable : NetworkBehaviour {
     }
 
     public void Grab(Transform objectGrabPointTransform) {
-        this.objectGrabPointTransform = objectGrabPointTransform;
         SetStateServerRpc(1);
+        this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
         objectRigidbody.constraints = RigidbodyConstraints.None;
         objectRigidbody.isKinematic = false;
@@ -79,16 +79,19 @@ public class ObjectGrabable : NetworkBehaviour {
     }
 
     private void FixedUpdate() {
-        if (objectGrabPointTransform != null && state.Value < 2) {
-            SetLerpPositionServerRpc(objectGrabPointTransform.position);
+        if (state.Value == 1 && Input.GetKeyDown(KeyCode.P)) {
+            Debug.Log(IsOwner);
         }
-        if (IsServer && lerpPosition.Value != Vector3.zero && state.Value < 2) {
-            objectRigidbody.MovePosition(lerpPosition.Value);
-            Debug.Log("SERVER || " + objectRigidbody.name + " lerped to " + objectRigidbody.position + "; client objectgrabpointtransform: " + lerpPosition.Value);
-        }
-        else {
-            objectRigidbody.AddForce(Physics.gravity * (3 / 2), ForceMode.Acceleration);
-        }
+        // if (objectGrabPointTransform != null && state.Value < 2) {
+        //     SetLerpPositionServerRpc(objectGrabPointTransform.position);
+        // }
+        // if (IsServer && lerpPosition.Value != Vector3.zero && state.Value < 2) {
+        //     objectRigidbody.MovePosition(lerpPosition.Value);
+        //     Debug.Log("SERVER || " + objectRigidbody.name + " lerped to " + objectRigidbody.position + "; client objectgrabpointtransform: " + lerpPosition.Value);
+        // }
+        // else {
+        //     objectRigidbody.AddForce(Physics.gravity * (3 / 2), ForceMode.Acceleration);
+        // }
     }
 
     public bool GetActivateCollider() {
