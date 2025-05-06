@@ -90,6 +90,7 @@ public class LobbyManager : NetworkBehaviour
         playersReady.Value += num;
         Debug.Log("add one to playerReady");
     }
+    //not recievibg rpc all on my end
 
     
 
