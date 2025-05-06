@@ -11,9 +11,9 @@ using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LobbyManager : MonoBehaviour
+public class LobbyManager : NetworkBehaviour
 {
-    
+
     public static LobbyManager Instance { get; private set; }
 
     public const string KEY_PLAYER_NAME = "PlayerName";
@@ -40,6 +40,9 @@ public class LobbyManager : MonoBehaviour
         public List<Lobby> lobbyList;
     }
 
+    public ScoreManager scoreManager;
+    public Scoreboard scoreboard;
+
     public enum GameMode
     {
         CaptureTheFlag,
@@ -58,35 +61,43 @@ public class LobbyManager : MonoBehaviour
     private float refreshLobbyListTimer = 5f;
     private Lobby joinedLobby;
     private string playerName;
+    public NetworkVariable<int> playersReady = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    int num = 0;
 
-    
-
-    private void Awake()
+    private async void Awake()
     {
-        UnityServices.InitializeAsync();
+        Debug.Log(playersReady);
         Instance = this;
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist between scenes
+            DontDestroyOnLoad(gameObject);
         }
-        else
-        {
-            //Destroy(gameObject); // Prevent duplicate instances
-        }
-        
+
+        // Maybe remove this from here:
+        // await UnityServices.InitializeAsync();
     }
 
-    public void Update()
+    private void Update()
     {
-        HandleRefreshLobbyList();
         HandleLobbyHeartbeat();
         HandleLobbyPolling();
+        HandleRefreshLobbyList(); // This is defined but never called
     }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void SetPlayersReadyServerRpc(int num)
+    {
+        playersReady.Value += num;
+        Debug.Log("add one to playerReady");
+    }
+    //not recievibg rpc all on my end
+
+    
+
 
     public async void Authenticate(string playerName)
     {
-        Debug.Log("asadaaaa");
         if (string.IsNullOrEmpty(playerName) || playerName.Length > 30)
         {
             Debug.LogError("Invalid player name. It must not be empty and must be 30 characters or less.");
@@ -124,7 +135,6 @@ public class LobbyManager : MonoBehaviour
             {
                 float refreshLobbyListTimerMax = 5f;
                 refreshLobbyListTimer = refreshLobbyListTimerMax;
-                LobbyUI.Instance.UpdateLobby();
 
                 RefreshLobbyList();
             }
@@ -138,59 +148,63 @@ public class LobbyManager : MonoBehaviour
             heartbeatTimer -= Time.deltaTime;
             if (heartbeatTimer < 0f)
             {
-                float heartbeatTimerMax = 7f;
+                float heartbeatTimerMax = 15f;
                 heartbeatTimer = heartbeatTimerMax;
 
                 Debug.Log("Heartbeat");
                 await LobbyService.Instance.SendHeartbeatPingAsync(joinedLobby.Id);
             }
+
         }
     }
 
     private async void HandleLobbyPolling()
     {
-        if (joinedLobby == null) return;
-
-        // Ensure timer is initialized
-        if (lobbyPollTimer <= 0f)
-            lobbyPollTimer = 1.5f;
-
-        lobbyPollTimer-= Time.deltaTime;
-        if (lobbyPollTimer> 0f) return;
-
-        lobbyPollTimer = 1.5f;
-
-        try
+        if (joinedLobby != null)
+           
         {
-            joinedLobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
-
-            if (joinedLobby.Data != null &&
-                joinedLobby.Data.ContainsKey(KEY_START_GAME) &&
-                joinedLobby.Data[KEY_START_GAME].Value != "0")
+            lobbyPollTimer -= Time.deltaTime;
+            if (lobbyPollTimer < 0f)
             {
-                if (!IsLobbyHost())
+                float lobbyPollTimerMax = 1f;
+                lobbyPollTimer = lobbyPollTimerMax;
+
+                joinedLobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
+
+                OnJoinedLobbyUpdate?.Invoke(this, new LobbyEventArgs { lobby = joinedLobby });
+
+                if (!IsPlayerInLobby())
                 {
-                    Debug.Log("Client detected game start. Joining Relay...");
-                    await RelayTest.Instance.JoinRelay(joinedLobby.Data[KEY_START_GAME].Value);
+                    Debug.Log("Kicked from Lobby!");
 
-                    if (!NetworkManager.Singleton.IsClient)
-                        NetworkManager.Singleton.StartClient();
+                    OnKickedFromLobby?.Invoke(this, new LobbyEventArgs { lobby = joinedLobby });
 
-                    Debug.Log("Client connected. Scene will sync automatically.");
+                    joinedLobby = null;
+                }
+                if (joinedLobby.Data.TryGetValue(KEY_START_GAME, out var startGameData))
+                {
+                    Debug.Log("running if in hangle polling");
+                    string relayCode = startGameData.Value;
+                    Debug.Log(relayCode + " Relay Code");
+
+                    if (relayCode != "0")
+                    {
+                        if (!IsLobbyHost())
+                        {
+                            Debug.Log("Client detected game start, joining Relay with code: " + relayCode);
+                            await RelayTest.Instance.JoinRelay(relayCode);
+                            Debug.Log("handle polling finished asking to start game");
+                        }
+
+                        joinedLobby = null;
+                        OnGameStarted?.Invoke(this, new LobbyEventArgs { lobby = null });
+                        
+                    }
                 }
 
-                joinedLobby = null;
-                OnGameStarted?.Invoke(this, new LobbyEventArgs());
             }
         }
-        catch (LobbyServiceException e)
-        {
-            Debug.LogError($"Polling lobby failed: {e}");
-        }
     }
-
-
-
 
     public Lobby GetJoinedLobby()
     {
@@ -201,7 +215,6 @@ public class LobbyManager : MonoBehaviour
     {
         return joinedLobby != null && joinedLobby.HostId == AuthenticationService.Instance.PlayerId;
     }
-
 
     private bool IsPlayerInLobby()
     {
@@ -268,6 +281,10 @@ public class LobbyManager : MonoBehaviour
         OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
 
         Debug.Log("Created Lobby " + lobby.Name);
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(playerName);
+        Debug.Log(player1.GetName() + "create lobby area");
+        scoreManager.AddPlayer(player1);
     }
 
     public async void RefreshLobbyList()
@@ -324,7 +341,6 @@ public class LobbyManager : MonoBehaviour
         });
 
         Debug.Log("Joined Lobby: " + (joinedLobby != null ? joinedLobby.Id : "null"));
-
 
         OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
     }
@@ -451,39 +467,89 @@ public class LobbyManager : MonoBehaviour
             Lobby lobby = await Lobbies.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions
             {
                 Data = new Dictionary<string, DataObject> {
-                    { KEY_GAME_MODE, new DataObject(DataObject.VisibilityOptions.Public, gameMode.ToString()) }
-                }
+                { KEY_GAME_MODE, new DataObject(DataObject.VisibilityOptions.Public, gameMode.ToString()) }
+            }
             });
 
             joinedLobby = lobby;
-
             OnLobbyGameModeChanged?.Invoke(this, new LobbyEventArgs { lobby = joinedLobby });
         }
         catch (LobbyServiceException e)
         {
-            Debug.Log(e);
+            Debug.LogError($"Failed to update lobby game mode: {e}");
         }
     }
+
 
     public async void StartGame()
     {
         if (!IsLobbyHost()) return;
 
-        Debug.Log("Host is starting the game...");
-        string joinCode = await RelayTest.Instance.CreateRelay(); // Starts host
+        scoreManager.AddToScoreBoard();
 
-        await LobbyService.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions
+        try
         {
-            Data = new Dictionary<string, DataObject>
-        {
-            { KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Member, joinCode) }
-            
+            Debug.Log("Starting game...");
+
+            // Create Relay Server
+            string relayCode = await RelayTest.Instance.CreateRelay();
+
+            if (string.IsNullOrEmpty(relayCode))
+            {
+                Debug.LogError("Failed to create relay.");
+                return;
+            }
+
+            // Update Lobby with Relay Code
+            if (joinedLobby != null && !string.IsNullOrEmpty(joinedLobby.Id))
+            {
+                // Only update if the visibility has not been set yet
+                // Alternatively, remove or modify the data on initial lobby creation to avoid visibility issues
+                var dataObject = new DataObject(DataObject.VisibilityOptions.Member, relayCode);
+                var lobbyData = new Dictionary<string, DataObject>
+            {
+                { KEY_START_GAME, dataObject }
+            };
+
+                // Update the lobby with the relay code (keeping the same visibility)
+                Lobby lobby = await LobbyService.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions
+                {
+                    Data = lobbyData
+                });
+
+                //while (!playersReady.Value.Equals(1))
+                while(num<5000)
+                {
+                    //Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
+                    //await Task.Delay(3000);
+                    num += 1;
+                }
+
+                Debug.Log("starting host proccess");
+                joinedLobby = lobby;
+                Debug.Log("Lobby updated with relay code. Game starting...");
+
+                // Start the host and load the game scene
+                NetworkManager.Singleton.StartHost();
+
+                // Add a short delay before loading the scene (sometimes network initialization can take time)
+                await Task.Delay(1000); // Adjust as needed, can be a short delay to let the host start
+
+                Debug.Log("Host started, now loading scene...");
+                NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+
+
+
+            }
+            else
+            {
+                Debug.LogError("Lobby is null or invalid.");
+            }
         }
-        });
-
-        Debug.Log("Relay created. Loading scene for all players...");
-
-        NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
+        catch (LobbyServiceException e)
+        {
+            Debug.LogError("Error starting game: " + e.Message);
+        }
     }
 
 
@@ -491,4 +557,3 @@ public class LobbyManager : MonoBehaviour
 
 
 }
-

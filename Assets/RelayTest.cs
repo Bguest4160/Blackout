@@ -9,23 +9,25 @@ using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
 using Unity.Netcode;
 using System.Threading.Tasks;
+using System;
 using UnityEngine.SceneManagement;
 
 public class RelayTest : MonoBehaviour
 {
+    public LobbyManager lobbyManager;
+
     // Singleton Instance
     public static RelayTest Instance { get; private set; }
 
-    private void Awake()
+    private async void Awake()
     {
-        // Ensure only one instance of RelayTest exists
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject); // Destroy duplicate instance
+            Destroy(gameObject);
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject); // Keep this instance between scene loads
+        DontDestroyOnLoad(gameObject);
     }
 
     private async void Start()
@@ -34,30 +36,29 @@ public class RelayTest : MonoBehaviour
 
         AuthenticationService.Instance.SignedIn += () =>
         {
-            Debug.Log("Signed In" + AuthenticationService.Instance.PlayerId);
+            Debug.Log("Signed In: " + AuthenticationService.Instance.PlayerId);
         };
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
+
 
     public async Task<string> CreateRelay()
     {
         try
         {
-            // Create relay allocation for up to 3 players
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(3);
 
-            // Get the join code for this allocation
             string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
             Debug.Log("Relay Created. Join Code: " + joinCode);
 
-            // Set relay server data
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
-            // Start hosting the network session
-            NetworkManager.Singleton.StartHost();
-            
+            //NetworkManager.Singleton.StartHost();
+
+            //  This is the critical line that ensures scene sync for all clients
+            //NetworkManager.Singleton.SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
 
             return joinCode;
         }
@@ -68,32 +69,38 @@ public class RelayTest : MonoBehaviour
         return null;
     }
 
-    public async 
-    Task
-JoinRelay(string joinCode)
+    public async Task JoinRelay(string joinCode)
     {
         try
         {
-            Debug.Log("Joining relay with " + joinCode);
-            JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+            Debug.Log("JoinRelay with code: " + joinCode);
 
-            // Set relay server data for the client
-            RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
-            Debug.Log("1");
+            if (string.IsNullOrEmpty(joinCode) || joinCode.Length != 6)
+            {
+                Debug.LogError("JoinRelay failed: Invalid join code format");
+                return;
+            }
 
-            // Start client
+            JoinAllocation allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(
+                allocation.RelayServer.IpV4,
+                (ushort)allocation.RelayServer.Port,
+                allocation.AllocationIdBytes,
+                allocation.Key,
+                allocation.ConnectionData,
+                allocation.HostConnectionData
+            );
+
             NetworkManager.Singleton.StartClient();
-            Debug.Log("2");
-            //NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
-            Debug.Log("2a");
 
+            Debug.Log("Successfully joined relay, waiting for host to load scene...");
+            lobbyManager.SetPlayersReadyServerRpc(1);
+            Debug.Log("runs server rpc method");
         }
-        catch (RelayServiceException e)
+        catch (Exception e)
         {
-            Debug.LogError("Error in JoinRelay: " + e.Message);
+            Debug.LogError("Error in JoinRelay: " + e);
         }
     }
-
-    
 }
