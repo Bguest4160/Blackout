@@ -62,6 +62,7 @@ public class LobbyManager : NetworkBehaviour
     private Lobby joinedLobby;
     private string playerName;
     public NetworkVariable<int> playersReady = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    int num = 0;
 
     private async void Awake()
     {
@@ -516,10 +517,12 @@ public class LobbyManager : NetworkBehaviour
                     Data = lobbyData
                 });
 
-                while (!playersReady.Value.Equals(1))
+                //while (!playersReady.Value.Equals(1))
+                while(num<5000)
                 {
-                    Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
-                    await Task.Delay(3000);
+                    //Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
+                    //await Task.Delay(3000);
+                    num += 1;
                 }
 
                 Debug.Log("starting host proccess");
