@@ -1663,6 +1663,79 @@ MonoBehaviour:
   playerNameText: {fileID: 2100327362}
   characterImage: {fileID: 1573570749}
   kickPlayerButton: {fileID: 1026696825}
+--- !u!1 &295135409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 295135412}
+  - component: {fileID: 295135410}
+  - component: {fileID: 295135411}
+  m_Layer: 0
+  m_Name: ScoreBoardManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &295135410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295135409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2862863452
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &295135411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295135409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d203ffd86eff416ebb26d19c4d8840d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 204421119}
+  winsText: {fileID: 204421118}
+  container: {fileID: 1439983483}
+  scoreBoardItemPrefab: {fileID: 3261592337637613261, guid: e50ecfa0d2c1e4a91a3bfc39717aca29, type: 3}
+  scoreBoardItem: {fileID: 204421116}
+  scoreBoard: {fileID: 1504259580}
+--- !u!4 &295135412
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295135409}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 840, y: 396.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1504259586}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &299229196
 GameObject:
   m_ObjectHideFlags: 0
@@ -4384,7 +4457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a14259dc4bfdeef4db5654c97251127d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreManager: {fileID: 1504259581}
+  scoreManager: {fileID: 0}
   scoreboard: {fileID: 0}
   playersReady:
     m_InternalValue: 0
@@ -7592,7 +7665,6 @@ GameObject:
   - component: {fileID: 1504259584}
   - component: {fileID: 1504259583}
   - component: {fileID: 1504259582}
-  - component: {fileID: 1504259581}
   m_Layer: 5
   m_Name: ScoreBoardCanvas
   m_TagString: Untagged
@@ -7600,23 +7672,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1504259581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1504259580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d203ffd86eff416ebb26d19c4d8840d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 204421119}
-  winsText: {fileID: 204421118}
-  container: {fileID: 1439983483}
-  scoreBoardItemPrefab: {fileID: 3261592337637613261, guid: e50ecfa0d2c1e4a91a3bfc39717aca29, type: 3}
-  scoreBoardItem: {fileID: 204421116}
 --- !u!114 &1504259582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7714,7 +7769,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1439983483}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 295135412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10956,4 +11011,4 @@ SceneRoots:
   - {fileID: 245513337}
   - {fileID: 1543648062}
   - {fileID: 222851822}
-  - {fileID: 1504259586}
+  - {fileID: 295135412}
