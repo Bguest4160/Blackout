@@ -36,7 +36,7 @@ public class ScoreManager : NetworkBehaviour
         {
             scoreBoard.SetActive(true);
         }
-        else
+        if (!scoreboardCanBeActive || Input.GetKeyUp(KeyCode.Tab))
         {
             scoreBoard.SetActive(false);
         }
