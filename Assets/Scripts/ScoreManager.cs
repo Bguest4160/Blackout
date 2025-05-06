@@ -15,6 +15,8 @@ public class ScoreManager : NetworkBehaviour
     public ArrayList nameList = new ArrayList();
     public scoreBoardItem scoreBoardItem;
     //ArrayList scoreList = new ArrayList();
+    [SerializeField] private GameObject scoreBoard;
+    bool scoreboardCanBeActive = false;
 
     private void Awake()
     {
@@ -24,15 +26,23 @@ public class ScoreManager : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*PlayerInfo player1 = new PlayerInfo();
-        player1.SetName("Nick");
-        AddPlayer(player1);*/
+        scoreBoard.SetActive(true);
+        scoreboardCanBeActive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+        if(scoreboardCanBeActive && Input.GetKey(KeyCode.Tab))
+        {
+            scoreBoard.SetActive(true);
+        }
+
+        if (scoreboardCanBeActive == false || !Input.GetKey(KeyCode.Tab))
+        {
+            scoreBoard.SetActive(false);
+        }
     }
 
     public void AddPlayer(PlayerInfo player)
