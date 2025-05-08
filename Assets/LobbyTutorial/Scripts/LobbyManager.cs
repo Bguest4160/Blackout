@@ -320,6 +320,9 @@ public class LobbyManager : NetworkBehaviour
     public async void JoinLobbyByCode(string lobbyCode)
     {
         Player player = GetPlayer();
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(playerName);
+        scoreManager.AddPlayer(player1);
 
         Lobby lobby = await LobbyService.Instance.JoinLobbyByCodeAsync(lobbyCode, new JoinLobbyByCodeOptions
         {
@@ -334,6 +337,9 @@ public class LobbyManager : NetworkBehaviour
     public async Task JoinLobby(Lobby lobby)
     {
         Player player = GetPlayer();
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(playerName);
+        scoreManager.AddPlayer(player1);
 
         joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id, new JoinLobbyByIdOptions
         {

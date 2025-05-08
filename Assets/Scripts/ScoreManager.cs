@@ -90,7 +90,7 @@ public class ScoreManager : NetworkBehaviour
 public class PlayerInfo
 {
     private string name;
-    private int wins;
+    private int wins = 0;
 
     public void SetName(string n)
     {
