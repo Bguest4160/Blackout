@@ -9,7 +9,7 @@ public class ObjectGrabable : NetworkBehaviour {
     public Transform playerCamera;
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
-    private NetworkVariable<byte> state = new NetworkVariable<byte>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner); // 0 = static, 1 = held, 2 = thrown
+    private NetworkVariable<byte> state = new NetworkVariable<byte>(); // 0 = static, 1 = held, 2 = thrown
     private NetworkVariable<Vector3> lerpPosition = new NetworkVariable<Vector3>(Vector3.zero, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     public bool activateCollider;
     private float lerpSpeed = 15f;
@@ -36,6 +36,7 @@ public class ObjectGrabable : NetworkBehaviour {
     [ServerRpc(RequireOwnership = false)]
     private void SetStateServerRpc(byte stateValue) {
         state.Value = stateValue;
+        objectRigidbody.isKinematic = false;
         if (state.Value == 1) {
             objectRigidbody.useGravity = false;
             objectRigidbody.constraints = RigidbodyConstraints.None;
@@ -43,11 +44,7 @@ public class ObjectGrabable : NetworkBehaviour {
         else {
             objectRigidbody.useGravity = true;
         }
-    }
-    
-    [ServerRpc(RequireOwnership = false)]
-    private void SetLerpPositionServerRpc(Vector3 objectGrabPointTransformPosition) {
-        lerpPosition.Value = Vector3.Lerp(transform.position, objectGrabPointTransformPosition, Time.deltaTime * lerpSpeed);
+        Debug.Log("state change successful");
     }
 
     public void SetPlayerCamera(Transform cameraTransform) {
@@ -82,16 +79,12 @@ public class ObjectGrabable : NetworkBehaviour {
         if (state.Value == 1 && Input.GetKeyDown(KeyCode.P)) {
             Debug.Log(IsOwner);
         }
-        // if (objectGrabPointTransform != null && state.Value < 2) {
-        //     SetLerpPositionServerRpc(objectGrabPointTransform.position);
-        // }
-        // if (IsServer && lerpPosition.Value != Vector3.zero && state.Value < 2) {
-        //     objectRigidbody.MovePosition(lerpPosition.Value);
-        //     Debug.Log("SERVER || " + objectRigidbody.name + " lerped to " + objectRigidbody.position + "; client objectgrabpointtransform: " + lerpPosition.Value);
-        // }
-        // else {
-        //     objectRigidbody.AddForce(Physics.gravity * (3 / 2), ForceMode.Acceleration);
-        // }
+        if (objectGrabPointTransform != null && state.Value < 2) {
+            objectRigidbody.MovePosition(Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed));
+        }
+        else {
+            objectRigidbody.AddForce(Physics.gravity * (3 / 2), ForceMode.Acceleration);
+        }
     }
 
     public bool GetActivateCollider() {
