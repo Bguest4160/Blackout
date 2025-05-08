@@ -55,7 +55,7 @@ public class ScoreManager : NetworkBehaviour
             Debug.Log(p.GetName());
         }
         Debug.Log("done");
-        //AddToScoreBoard();
+        AddToScoreBoard();
 
         
     }
