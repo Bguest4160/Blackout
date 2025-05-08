@@ -10,7 +10,6 @@ public class ObjectGrabable : NetworkBehaviour {
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
     private NetworkVariable<byte> state = new NetworkVariable<byte>(); // 0 = static, 1 = held, 2 = thrown
-    private NetworkVariable<Vector3> lerpPosition = new NetworkVariable<Vector3>(Vector3.zero, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     public bool activateCollider;
     private float lerpSpeed = 15f;
 
