@@ -485,7 +485,6 @@ public class LobbyManager : NetworkBehaviour
     {
         if (!IsLobbyHost()) return;
 
-        scoreManager.AddToScoreBoard();
 
         try
         {
