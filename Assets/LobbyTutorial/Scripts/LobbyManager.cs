@@ -322,6 +322,7 @@ public class LobbyManager : NetworkBehaviour
         Player player = GetPlayer();
         PlayerInfo player1 = new PlayerInfo();
         player1.SetName(playerName);
+        Debug.Log(player1.GetName() + " create lobby area");
         scoreManager.AddPlayer(player1);
 
         Lobby lobby = await LobbyService.Instance.JoinLobbyByCodeAsync(lobbyCode, new JoinLobbyByCodeOptions
@@ -339,6 +340,7 @@ public class LobbyManager : NetworkBehaviour
         Player player = GetPlayer();
         PlayerInfo player1 = new PlayerInfo();
         player1.SetName(playerName);
+        Debug.Log(player1.GetName() + " create lobby area");
         scoreManager.AddPlayer(player1);
 
         joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id, new JoinLobbyByIdOptions
@@ -523,7 +525,7 @@ public class LobbyManager : NetworkBehaviour
                 });
 
                 //while (!playersReady.Value.Equals(1))
-                while(num<5000)
+                while(num<7000)
                 {
                     //Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
                     //await Task.Delay(3000);
