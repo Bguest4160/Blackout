@@ -80,9 +80,13 @@ public class ScoreManager : NetworkBehaviour
     }
 
     [ServerRpc]
-    public void SendPlayerServerRpc(PlayerInfo player)
+    public void SendPlayerServerRpc(string name)
     {
-        AddPlayer(player);
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(name);
+        player1.ResetWins();
+        Debug.Log(player1.GetName() + " create lobby area");
+        AddPlayer(player1);
     }
 
 }
