@@ -15,6 +15,7 @@ using UnityEngine.SceneManagement;
 public class RelayTest : MonoBehaviour
 {
     public LobbyManager lobbyManager;
+    public ScoreManager scoreManager;
 
     // Singleton Instance
     public static RelayTest Instance { get; private set; }
@@ -95,7 +96,7 @@ public class RelayTest : MonoBehaviour
             NetworkManager.Singleton.StartClient();
 
             Debug.Log("Successfully joined relay, waiting for host to load scene...");
-            lobbyManager.SetPlayersReadyServerRpc(1);
+            scoreManager.SendPlayerServerRpc("this is a test");
             Debug.Log("runs server rpc method");
         }
         catch (Exception e)
