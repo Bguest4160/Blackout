@@ -47,14 +47,17 @@ public class ScoreManager : NetworkBehaviour
 
     public void AddPlayer(PlayerInfo player)
     {
-        Debug.Log(player.GetName()); ;
-        nameList.Add(player);
-        Debug.Log("player added to list");
+        bool alrExists = false;
         foreach (PlayerInfo p in nameList)
         {
-            Debug.Log(p.GetName());
+            if (player == p){
+                alrExists = true;
+            }
         }
-        Debug.Log("done");
+        if (alrExists == false)
+        {
+            nameList.Add(player);
+        }
         AddToScoreBoard();
 
         
