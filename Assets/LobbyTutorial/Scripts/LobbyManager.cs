@@ -263,6 +263,9 @@ public class LobbyManager : NetworkBehaviour
     public async void CreateLobby(string lobbyName, int maxPlayers, bool isPrivate, GameMode gameMode)
     {
         Player player = GetPlayer();
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(this.playerName);
+        scoreManager.AddPlayer(player1);
 
         CreateLobbyOptions options = new CreateLobbyOptions
         {
@@ -492,10 +495,6 @@ public class LobbyManager : NetworkBehaviour
     public async void StartGame()
     {
         if (!IsLobbyHost()) return;
-
-        PlayerInfo player1 = new PlayerInfo();
-        player1.SetName(this.playerName);
-        scoreManager.AddPlayer(player1);
 
         try
         {

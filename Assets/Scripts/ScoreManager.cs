@@ -50,8 +50,10 @@ public class ScoreManager : NetworkBehaviour
         bool alrExists = false;
         foreach (PlayerInfo p in nameList)
         {
-            if (player.Equals(p)){
+            if (player.GetName().Equals(p.GetName()))
+            {
                 alrExists = true;
+                Debug.Log("name already found");
             }
         }
         if (alrExists == false)
