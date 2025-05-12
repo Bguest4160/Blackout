@@ -59,6 +59,8 @@ public class ScoreManager : NetworkBehaviour
         if (alrExists == false)
         {
             nameList.Add(player);
+            Debug.Log("askedtoPingPong");
+            SendPlayerServerRpc(player.GetName(), player.GetWins());
         }
         AddToScoreBoard();
 
@@ -84,9 +86,10 @@ public class ScoreManager : NetworkBehaviour
         Debug.Log(player.GetName() + "intancinating");
     }
 
-    [ServerRpc]
+    [ServerRpc (RequireOwnership = false)]
     public void SendPlayerServerRpc(string name, int wins)
     {
+        Debug.Log("I am pinging");
         PlayerInfo player1 = new PlayerInfo();
         player1.SetName(name);
         player1.SetWins(wins);
@@ -97,6 +100,7 @@ public class ScoreManager : NetworkBehaviour
     [ClientRpc]
     public void SendPlayerClientRpc(string name, int wins)
     {
+        Debug.Log("I am ponging");
         PlayerInfo player1 = new PlayerInfo();
         player1.SetName(name);
         player1.SetWins(wins);
