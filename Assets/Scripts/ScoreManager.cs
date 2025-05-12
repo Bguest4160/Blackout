@@ -79,11 +79,15 @@ public class ScoreManager : NetworkBehaviour
         Debug.Log(player.GetName() + "intancinating");
     }
 
-    /*[ServerRpc]
-    public void SendNameServerRpc(string name)
+    [ServerRpc]
+    public void SendPlayerServerRpc(string name)
     {
-        AddPlayer(name);
-    }*/
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(name);
+        player1.ResetWins();
+        Debug.Log(player1.GetName() + " create lobby area");
+        AddPlayer(player1);
+    }
 
 }
 
