@@ -324,6 +324,7 @@ public class LobbyManager : NetworkBehaviour
         player1.SetName(playerName);
         Debug.Log(player1.GetName() + " create lobby area");
         //scoreManager.AddPlayer(player1);
+        scoreManager.SendPlayerServerRpc(player1);
 
         Lobby lobby = await LobbyService.Instance.JoinLobbyByCodeAsync(lobbyCode, new JoinLobbyByCodeOptions
         {
@@ -342,6 +343,7 @@ public class LobbyManager : NetworkBehaviour
         player1.SetName(playerName);
         Debug.Log(player1.GetName() + " create lobby area");
         //scoreManager.AddPlayer(player1);
+        scoreManager.SendPlayerServerRpc(player1);
 
         joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id, new JoinLobbyByIdOptions
         {
