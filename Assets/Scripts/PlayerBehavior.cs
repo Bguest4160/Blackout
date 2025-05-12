@@ -99,6 +99,7 @@ public class PlayerBehavior : NetworkBehaviour {
 
         if (PlayerHealth.Value <= 0){
             Debug.Log("You are dead");
+            this.gameObject.SetActive(false);
         }
     }
     
