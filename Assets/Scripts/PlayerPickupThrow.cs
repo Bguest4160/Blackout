@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerPickupThrow : NetworkBehaviour
 {
     [SerializeField] private Transform playerCameraTransform;
     [SerializeField] private LayerMask pickUpLayerMask;
-    [SerializeField] private Transform objectGrabPointTranform;
+    [SerializeField] private Transform objectGrabPointTransform;
     private ObjectGrabable objectGrabable;
     public bool holding = false;
 
@@ -27,12 +28,14 @@ public class PlayerPickupThrow : NetworkBehaviour
             if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
             {
 
-                if (raycastHit.transform.TryGetComponent(out objectGrabable))
-                {
+                if (raycastHit.transform.TryGetComponent(out objectGrabable)) {
+                    Debug.Log("object detected for grab");
+                    objectGrabable.RequestOwnershipServerRpc(OwnerClientId);
                     objectGrabable.SetPlayerCamera(playerCameraTransform); // Set the camera transform here
                     objectGrabable.SetPlayerTransform(transform);
-                    objectGrabable.Grab(objectGrabPointTranform);
+                    objectGrabable.Grab(objectGrabPointTransform);
                     holding = true;
+                    Debug.Log("holding variable set to true");
                 }
 
             }
@@ -57,6 +60,4 @@ public class PlayerPickupThrow : NetworkBehaviour
     {
         holding = o;
     }
-
- 
 }

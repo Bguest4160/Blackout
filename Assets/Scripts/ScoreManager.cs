@@ -55,7 +55,7 @@ public class ScoreManager : NetworkBehaviour
             Debug.Log(p.GetName());
         }
         Debug.Log("done");
-        //AddToScoreBoard();
+        AddToScoreBoard();
 
         
     }
@@ -79,18 +79,18 @@ public class ScoreManager : NetworkBehaviour
         Debug.Log(player.GetName() + "intancinating");
     }
 
-    /*[ServerRpc]
-    public void SendNameServerRpc(string name)
+    [ServerRpc]
+    public void SendPlayerServerRpc(PlayerInfo player)
     {
-        AddPlayer(name);
-    }*/
+        AddPlayer(player);
+    }
 
 }
 
 public class PlayerInfo
 {
     private string name;
-    private int wins;
+    private int wins = 0;
 
     public void SetName(string n)
     {

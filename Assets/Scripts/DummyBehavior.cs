@@ -4,7 +4,6 @@ using Unity.Netcode;
 public class DummyBehavior : NetworkBehaviour {
     // Fields
     private static bool _initCooldownUsed = false;
-    private float CubeCooldown = 0.8f;
     private float ProjectileDamageCooldown = 0.1f;
     private float MeleeDamageCooldown = 0.5f;
     
