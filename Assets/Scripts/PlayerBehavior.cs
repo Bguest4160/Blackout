@@ -2,6 +2,7 @@
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.Serialization;
+using UnityEngine.iOS;
 
 
 public class PlayerBehavior : NetworkBehaviour {
@@ -95,6 +96,10 @@ public class PlayerBehavior : NetworkBehaviour {
         }
         
         PlayerHealth.ChipHealth();
+
+        if (PlayerHealth.Value <= 0){
+            Debug.Log("You are dead");
+        }
     }
     
     IEnumerator RightHandPunch() {
