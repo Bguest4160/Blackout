@@ -325,6 +325,12 @@ public class LobbyManager : NetworkBehaviour
         joinedLobby = lobby;
 
         OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
+
+        if (IsHost) { return; }
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(this.playerName);
+        player1.ResetWins();
+        scoreManager.AddPlayer(player1);
     }
 
     public async Task JoinLobby(Lobby lobby)
@@ -339,6 +345,12 @@ public class LobbyManager : NetworkBehaviour
         Debug.Log("Joined Lobby: " + (joinedLobby != null ? joinedLobby.Id : "null"));
 
         OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
+
+        if (IsHost) { return; }
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(this.playerName);
+        player1.ResetWins();
+        scoreManager.AddPlayer(player1);
     }
 
     public async void UpdatePlayerName(string playerName)
@@ -482,7 +494,7 @@ public class LobbyManager : NetworkBehaviour
         if (!IsLobbyHost()) return;
 
         PlayerInfo player1 = new PlayerInfo();
-        player1.SetName(playerName);
+        player1.SetName(this.playerName);
         scoreManager.AddPlayer(player1);
 
         try

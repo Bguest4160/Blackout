@@ -47,14 +47,17 @@ public class ScoreManager : NetworkBehaviour
 
     public void AddPlayer(PlayerInfo player)
     {
-        Debug.Log(player.GetName()); ;
-        nameList.Add(player);
-        Debug.Log("player added to list");
+        bool alrExists = false;
         foreach (PlayerInfo p in nameList)
         {
-            Debug.Log(p.GetName());
+            if (player.Equals(p)){
+                alrExists = true;
+            }
         }
-        Debug.Log("done");
+        if (alrExists == false)
+        {
+            nameList.Add(player);
+        }
         AddToScoreBoard();
 
         
@@ -80,13 +83,23 @@ public class ScoreManager : NetworkBehaviour
     }
 
     [ServerRpc]
-    public void SendPlayerServerRpc(string name)
+    public void SendPlayerServerRpc(string name, int wins)
     {
         PlayerInfo player1 = new PlayerInfo();
         player1.SetName(name);
-        player1.ResetWins();
-        Debug.Log(player1.GetName() + " create lobby area");
-        AddPlayer(player1);
+        player1.SetWins(wins);
+        nameList.Add(player1);
+        SendPlayerClientRpc(name, wins);
+    }
+
+    [ClientRpc]
+    public void SendPlayerClientRpc(string name, int wins)
+    {
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(name);
+        player1.SetWins(wins);
+        nameList.Add(player1);
+        SendPlayerServerRpc(name, wins);
     }
 
 }
@@ -104,6 +117,11 @@ public class PlayerInfo
     public void AddWin()
     {
         wins += 1;
+    }
+
+    public void SetWins(int w)
+    {
+        wins = w;
     }
 
     public void ResetWins()
