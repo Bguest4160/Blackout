@@ -62,10 +62,18 @@ public class ScoreManager : NetworkBehaviour
             Debug.Log("askedtoPingPong");
             SendPlayerServerRpc(player.GetName(), player.GetWins());
         }
-        AddToScoreBoard();
-
-        
+        AddToScoreBoard();   
     }
+
+    public void NewAddPlayerMethod(ArrayList players)
+    {
+        foreach(PlayerInfo player in players)
+        {
+            AddScoreBoardItem(player);
+        }
+    }
+
+
 
     public void AddToScoreBoard()
     {

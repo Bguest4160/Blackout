@@ -43,6 +43,8 @@ public class LobbyManager : NetworkBehaviour
     public ScoreManager scoreManager;
     public Scoreboard scoreboard;
 
+    public ArrayList players = new ArrayList();
+
     public enum GameMode
     {
         CaptureTheFlag,
@@ -265,7 +267,8 @@ public class LobbyManager : NetworkBehaviour
         Player player = GetPlayer();
         PlayerInfo player1 = new PlayerInfo();
         player1.SetName(this.playerName);
-        scoreManager.AddPlayer(player1);
+        //scoreManager.AddPlayer(player1);
+        players.Add(player1);
 
         CreateLobbyOptions options = new CreateLobbyOptions
         {
@@ -330,10 +333,11 @@ public class LobbyManager : NetworkBehaviour
         OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
 
         if (IsHost) { return; }
-        PlayerInfo player1 = new PlayerInfo();
-        player1.SetName(this.playerName);
-        player1.ResetWins();
-        scoreManager.AddPlayer(player1);
+        PlayerInfo player3 = new PlayerInfo();
+        player3.SetName(this.playerName);
+        player3.ResetWins();
+        //scoreManager.AddPlayer(player1);
+        players.Add(player3);
     }
 
     public async Task JoinLobby(Lobby lobby)
@@ -350,10 +354,11 @@ public class LobbyManager : NetworkBehaviour
         OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
 
         if (IsHost) { return; }
-        PlayerInfo player1 = new PlayerInfo();
-        player1.SetName(this.playerName);
-        player1.ResetWins();
-        scoreManager.AddPlayer(player1);
+        PlayerInfo player2 = new PlayerInfo();
+        player2.SetName(this.playerName);
+        player2.ResetWins();
+        //scoreManager.AddPlayer(player1);
+        players.Add(player2);
     }
 
     public async void UpdatePlayerName(string playerName)
@@ -494,6 +499,12 @@ public class LobbyManager : NetworkBehaviour
 
     public async void StartGame()
     {
+        Debug.Log("startGameMethod");
+        foreach (PlayerInfo player in players)
+        {
+            Debug.Log(player.GetName() + " printing from new arraylist");
+        }
+        scoreManager.NewAddPlayerMethod(players);
         if (!IsLobbyHost()) return;
 
         try
