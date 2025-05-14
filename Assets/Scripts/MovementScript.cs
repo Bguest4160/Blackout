@@ -65,6 +65,7 @@ public class MovementScript : NetworkBehaviour
         UpdateMouse();
         UpdateMove();
         UpdateCamera();
+        Debug.Log(transform.position);
 
     }
 
@@ -168,4 +169,13 @@ public class MovementScript : NetworkBehaviour
     {
         PlayerBehavior.PlayerHeal(300);
     }
+
+    private Vector3? initialPosition = null;
+
+    public void SetInitialPosition(Vector3 position)
+    {
+        initialPosition = position;
+    }
+
+    
 }
