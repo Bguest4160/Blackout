@@ -26,6 +26,7 @@ public class ScoreManager : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         scoreBoard.SetActive(true);
         scoreboardCanBeActive = true;
     }
@@ -64,15 +65,6 @@ public class ScoreManager : NetworkBehaviour
         }
         AddToScoreBoard();   
     }
-
-    public void NewAddPlayerMethod(ArrayList players)
-    {
-        foreach(PlayerInfo player in players)
-        {
-            AddScoreBoardItem(player);
-        }
-    }
-
 
 
     public void AddToScoreBoard()
