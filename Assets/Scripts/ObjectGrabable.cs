@@ -76,13 +76,18 @@ public class ObjectGrabable : NetworkBehaviour {
 
     private void FixedUpdate() {
         if (state.Value == 1 && Input.GetKeyDown(KeyCode.P)) {
-            Debug.Log(IsOwner);
+            Debug.Log("own held object?: " + IsOwner + "; object state: " + state.Value + "; gravity: " + objectRigidbody.useGravity + "; constraints: " + objectRigidbody.constraints + "; isKinematic: " + objectRigidbody.isKinematic);
         }
-        if (objectGrabPointTransform != null && state.Value < 2) {
-            objectRigidbody.MovePosition(Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed));
-        }
-        else {
-            objectRigidbody.AddForce(Physics.gravity * (3 / 2), ForceMode.Acceleration);
+        if (IsOwner) {
+            if (objectGrabPointTransform != null && state.Value < 2) {
+                Vector3 lerpPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.fixedDeltaTime * lerpSpeed);
+                objectRigidbody.MovePosition(lerpPosition);
+                Debug.DrawLine(transform.position, lerpPosition, color: Color.red);
+                Debug.DrawLine(lerpPosition, objectGrabPointTransform.position, color: Color.green);
+            }
+            else {
+                objectRigidbody.AddForce(Physics.gravity * (3 / 2), ForceMode.Acceleration);
+            }
         }
     }
 
