@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,11 @@ public class PlayerMovement : MonoBehaviour
             }
             else return playerSpeed;
         }
+    }
+
+    internal void MoveToPosition(Vector3 targetPosition)
+    {
+        throw new NotImplementedException();
     }
 
 
