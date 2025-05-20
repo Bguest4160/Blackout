@@ -26,6 +26,7 @@ public class ScoreManager : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         scoreBoard.SetActive(true);
         scoreboardCanBeActive = true;
     }
@@ -50,18 +51,21 @@ public class ScoreManager : NetworkBehaviour
         bool alrExists = false;
         foreach (PlayerInfo p in nameList)
         {
-            if (player == p){
+            if (player.GetName().Equals(p.GetName()))
+            {
                 alrExists = true;
+                Debug.Log("name already found");
             }
         }
         if (alrExists == false)
         {
             nameList.Add(player);
+            Debug.Log("askedtoPingPong");
+            SendPlayerServerRpc(player.GetName(), player.GetWins());
         }
-        AddToScoreBoard();
-
-        
+        AddToScoreBoard();   
     }
+
 
     public void AddToScoreBoard()
     {
@@ -82,14 +86,26 @@ public class ScoreManager : NetworkBehaviour
         Debug.Log(player.GetName() + "intancinating");
     }
 
-    [ServerRpc]
-    public void SendPlayerServerRpc(string name)
+    [ServerRpc (RequireOwnership = false)]
+    public void SendPlayerServerRpc(string name, int wins)
     {
+        Debug.Log("I am pinging");
         PlayerInfo player1 = new PlayerInfo();
         player1.SetName(name);
-        player1.ResetWins();
-        Debug.Log(player1.GetName() + " create lobby area");
-        AddPlayer(player1);
+        player1.SetWins(wins);
+        nameList.Add(player1);
+        SendPlayerClientRpc(name, wins);
+    }
+
+    [ClientRpc]
+    public void SendPlayerClientRpc(string name, int wins)
+    {
+        Debug.Log("I am ponging");
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(name);
+        player1.SetWins(wins);
+        nameList.Add(player1);
+        SendPlayerServerRpc(name, wins);
     }
 
 }
@@ -107,6 +123,11 @@ public class PlayerInfo
     public void AddWin()
     {
         wins += 1;
+    }
+
+    public void SetWins(int w)
+    {
+        wins = w;
     }
 
     public void ResetWins()

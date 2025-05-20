@@ -96,7 +96,7 @@ public class RelayTest : MonoBehaviour
             NetworkManager.Singleton.StartClient();
 
             Debug.Log("Successfully joined relay, waiting for host to load scene...");
-            scoreManager.SendPlayerServerRpc("this is a test");
+            scoreManager.SendPlayerServerRpc("this is a test", 1);
             Debug.Log("runs server rpc method");
         }
         catch (Exception e)

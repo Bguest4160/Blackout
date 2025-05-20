@@ -20,6 +20,7 @@ public class LobbyUI : MonoBehaviour
     [SerializeField] private Button leaveLobbyButton;
     [SerializeField] private Button changeGameModeButton;
     [SerializeField] private Button startGameButton;
+    [SerializeField] private GameObject nameChange;
 
     private void Awake()
     {
@@ -121,6 +122,7 @@ public class LobbyUI : MonoBehaviour
     private void Show()
     {
         gameObject.SetActive(true);
+        nameChange.SetActive(false);
     }
 
    
