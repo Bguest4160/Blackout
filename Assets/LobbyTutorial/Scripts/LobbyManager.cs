@@ -548,7 +548,6 @@ public class LobbyManager : NetworkBehaviour
                 Debug.Log("Host started, now loading scene...");
                 NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
 
-                Debug.Log("start game is running for me");
 
             }
             else
