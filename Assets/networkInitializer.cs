@@ -5,20 +5,19 @@ public class NetworkInitializer : MonoBehaviour
 {
     private void Awake()
     {
-        // Make sure this runs before starting the server/host
-        NetworkManager.Singleton.OnServerStarted += () =>
-        {
-            NetworkManager.Singleton.ConnectionApprovalCallback += ApproveConnection;
-        };
+        // Register approval callback BEFORE starting host/server
+        NetworkManager.Singleton.ConnectionApprovalCallback = ApproveConnection;
 
-        // Optional: Start server/host from here if this is your entry point
-        // NetworkManager.Singleton.StartHost(); 
+        // Optionally start the host here
+        // NetworkManager.Singleton.StartHost();
     }
 
     private void ApproveConnection(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
     {
+        Debug.Log("ApproveConnection called");
+
         response.Approved = true;
-        response.CreatePlayerObject = false; //  Prevent automatic player spawn
+        response.CreatePlayerObject = false; // Prevent auto-spawn
         response.Position = Vector3.zero;
         response.Rotation = Quaternion.identity;
     }
