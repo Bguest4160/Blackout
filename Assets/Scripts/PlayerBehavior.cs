@@ -42,7 +42,7 @@ public class PlayerBehavior : NetworkBehaviour {
     private Collider blockingCollider;
     private Canvas UICanvas;
 
-    deathScreenManager deathScreenManager;
+    public GameObject deathScreen;
     
     // Methods
     
@@ -103,8 +103,8 @@ public class PlayerBehavior : NetworkBehaviour {
 
         if (PlayerHealth.Value <= 0){
             Debug.Log("You are dead");
+            deathScreen.GetComponent<deathScreenManager>().SetDeathScreen();
             DeathTpServerRpc();
-            deathScreenManager.SetDeathScreen();
             Destroy(transform.root);
             
         }
