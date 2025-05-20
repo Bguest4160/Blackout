@@ -19,6 +19,6 @@ public class deathScreenManager : MonoBehaviour
     public void SetDeathScreen()
     {
         gameObject.SetActive(true);
-        
     }
+
 }

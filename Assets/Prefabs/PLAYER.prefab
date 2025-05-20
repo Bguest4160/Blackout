@@ -3432,6 +3432,7 @@ MonoBehaviour:
   leftFistHitbox: {fileID: 3271157716524061919}
   blockingHitbox: {fileID: 7345175385239174223}
   playerHitbox: {fileID: 2676300115775448773}
+  deathScreen: {fileID: 20919438999602714, guid: 9180aaef5226c472b8459778702bb1da, type: 3}
 --- !u!114 &8455604976825904261
 MonoBehaviour:
   m_ObjectHideFlags: 0
