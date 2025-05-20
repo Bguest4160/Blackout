@@ -104,7 +104,7 @@ public class PlayerBehavior : NetworkBehaviour {
             Debug.Log("You are dead");
             deathScreen.GetComponent<deathScreenManager>().SetDeathScreen();
             DeathTpServerRpc();
-            Destroy(gameObject);
+            Destroy(gameObject,1000);
             
         }
     }
