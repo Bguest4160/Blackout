@@ -35,6 +35,6 @@ public class PlayerAutoTeleport : NetworkBehaviour
     private void TeleportRequestServerRpc(Vector3 position, Quaternion rotation)
     {
         // Use TrySetPositionAndRotation to force-update the ClientNetworkTransform
-        NetworkObject.TrySetPositionAndRotation(position, rotation);
+//        NetworkObject.TrySetPositionAndRotation(position, rotation);
     }
 }

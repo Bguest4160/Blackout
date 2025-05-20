@@ -62,7 +62,7 @@ public class SpawnManager : NetworkBehaviour
 
         if (netTransform != null)
         {
-            netTransform.Teleport(spawnPoint.position, spawnPoint.rotation);
+//            netTransform.Teleport(spawnPoint.position, spawnPoint.rotation);
         }
         else
         {

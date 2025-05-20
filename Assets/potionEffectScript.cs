@@ -48,11 +48,11 @@ public class PotionEffectScript : NetworkBehaviour
             {
                 if (c.GetComponent<MovementScript>())
                 {
-                    if (potName.Equals("speed"))
+                    if (potName.Equals("Speed"))
                     {
                         c.GetComponent<MovementScript>().ChangeSpeedStats();
                     }
-                    else if (potName.Equals("heal")) {
+                    else if (potName.Equals("Heal")) {
                         c.GetComponent<PlayerBehavior>().PlayerHeal(300);
                     }
 
