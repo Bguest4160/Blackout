@@ -43,7 +43,6 @@ public class PlayerBehavior : NetworkBehaviour {
     private Canvas UICanvas;
 
     public GameObject deathScreen;
-    
     // Methods
     
     void Start() {
@@ -105,7 +104,7 @@ public class PlayerBehavior : NetworkBehaviour {
             Debug.Log("You are dead");
             deathScreen.GetComponent<deathScreenManager>().SetDeathScreen();
             DeathTpServerRpc();
-            Destroy(transform.root);
+            Destroy(gameObject,1f);
             
         }
     }
