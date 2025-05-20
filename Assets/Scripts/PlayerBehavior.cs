@@ -103,10 +103,8 @@ public class PlayerBehavior : NetworkBehaviour {
         if (PlayerHealth.Value <= 0){
             Debug.Log("You are dead");
             deathScreen.GetComponent<deathScreenManager>().SetDeathScreen();
-            //GameObject deathScreen = GameObject.Find("Death Screen");
-            //deathScreen.GetComponent<deathScreenManager>().SetDeathScreen();
             DeathTpServerRpc();
-            Destroy(transform.root);
+            Destroy(gameObject);
             
         }
     }
