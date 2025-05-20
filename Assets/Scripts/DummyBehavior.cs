@@ -28,7 +28,7 @@ public class DummyBehavior : NetworkBehaviour {
             DummyHeal(100);
         }
         
-        DummyHealth.ChipHealth();
+//        DummyHealth.ChipHealth();
     }
 
     void OnCollisionEnter(Collision other) {
