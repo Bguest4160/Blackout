@@ -1,4 +1,6 @@
+using Unity.Multiplayer.Samples.Utilities.ClientAuthority;
 using Unity.Netcode;
+using Unity.Netcode.Components;
 using UnityEngine;
 
 public class ObjectGrabable : NetworkBehaviour {
@@ -12,11 +14,13 @@ public class ObjectGrabable : NetworkBehaviour {
     private NetworkVariable<byte> state = new NetworkVariable<byte>(); // 0 = static, 1 = held, 2 = thrown
     public bool activateCollider;
     private float lerpSpeed = 15f;
+    private ClientNetworkTransform CNT;
 
 
     private void Awake() {
         objectRigidbody = GetComponent<Rigidbody>();
         objectRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        CNT = GetComponent<ClientNetworkTransform>();
     }
 
     public float GetDamageForce() {
@@ -77,6 +81,7 @@ public class ObjectGrabable : NetworkBehaviour {
     private void FixedUpdate() {
         if (state.Value == 1 && Input.GetKeyDown(KeyCode.P)) {
             Debug.Log("own held object?: " + IsOwner + "; object state: " + state.Value + "; gravity: " + objectRigidbody.useGravity + "; constraints: " + objectRigidbody.constraints + "; isKinematic: " + objectRigidbody.isKinematic);
+            Debug.Log(CNT.IsServerAuthoritative());
         }
         if (IsOwner) {
             if (objectGrabPointTransform != null && state.Value < 2) {
