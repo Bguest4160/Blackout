@@ -3,6 +3,8 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.Serialization;
 using UnityEngine.iOS;
+using Unity.VisualScripting;
+using Unity.Services.Lobbies.Models;
 
 
 public class PlayerBehavior : NetworkBehaviour {
@@ -99,8 +101,19 @@ public class PlayerBehavior : NetworkBehaviour {
 
         if (PlayerHealth.Value <= 0){
             Debug.Log("You are dead");
-            this.gameObject.SetActive(false);
+            DeathTpServerRpc();
         }
+    }
+    
+    [ServerRpc]
+    private void DeathTpServerRpc() {
+        transform.position = new Vector3(-70f, 185f, -15f);
+        DeathTpClientRpc();
+    }
+
+    [ClientRpc]
+    private void DeathTpClientRpc() {
+        transform.position = new Vector3(-70f, 185f, -15f);
     }
     
     IEnumerator RightHandPunch() {
@@ -150,4 +163,5 @@ public class PlayerBehavior : NetworkBehaviour {
             Debug.Log("Healed " + amount);
         }
     }
+
 }
