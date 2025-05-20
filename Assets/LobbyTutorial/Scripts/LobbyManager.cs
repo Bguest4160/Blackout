@@ -263,6 +263,9 @@ public class LobbyManager : NetworkBehaviour
     public async void CreateLobby(string lobbyName, int maxPlayers, bool isPrivate, GameMode gameMode)
     {
         Player player = GetPlayer();
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(this.playerName);
+        scoreManager.AddPlayer(player1);
 
         CreateLobbyOptions options = new CreateLobbyOptions
         {
@@ -281,10 +284,6 @@ public class LobbyManager : NetworkBehaviour
         OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
 
         Debug.Log("Created Lobby " + lobby.Name);
-        PlayerInfo player1 = new PlayerInfo();
-        player1.SetName(playerName);
-        Debug.Log(player1.GetName() + "create lobby area");
-        scoreManager.AddPlayer(player1);
     }
 
     public async void RefreshLobbyList()
@@ -329,6 +328,12 @@ public class LobbyManager : NetworkBehaviour
         joinedLobby = lobby;
 
         OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
+
+        if (IsHost) { return; }
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(this.playerName);
+        player1.ResetWins();
+        scoreManager.AddPlayer(player1);
     }
 
     public async Task JoinLobby(Lobby lobby)
@@ -343,6 +348,12 @@ public class LobbyManager : NetworkBehaviour
         Debug.Log("Joined Lobby: " + (joinedLobby != null ? joinedLobby.Id : "null"));
 
         OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
+
+        if (IsHost) { return; }
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(this.playerName);
+        player1.ResetWins();
+        scoreManager.AddPlayer(player1);
     }
 
     public async void UpdatePlayerName(string playerName)
@@ -485,7 +496,6 @@ public class LobbyManager : NetworkBehaviour
     {
         if (!IsLobbyHost()) return;
 
-
         try
         {
             Debug.Log("Starting game...");
@@ -517,7 +527,7 @@ public class LobbyManager : NetworkBehaviour
                 });
 
                 //while (!playersReady.Value.Equals(1))
-                while(num<5000)
+                while(num<7000)
                 {
                     //Debug.Log("waiting for ready up, " + playersReady.Value + " players ready");
                     //await Task.Delay(3000);
@@ -531,12 +541,12 @@ public class LobbyManager : NetworkBehaviour
                 // Start the host and load the game scene
                 NetworkManager.Singleton.StartHost();
 
+
                 // Add a short delay before loading the scene (sometimes network initialization can take time)
                 await Task.Delay(1000); // Adjust as needed, can be a short delay to let the host start
 
                 Debug.Log("Host started, now loading scene...");
                 NetworkManager.Singleton.SceneManager.LoadScene("Actual merge scene", LoadSceneMode.Single);
-
 
 
             }

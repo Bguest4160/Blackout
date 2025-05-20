@@ -26,6 +26,7 @@ public class ScoreManager : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         scoreBoard.SetActive(true);
         scoreboardCanBeActive = true;
     }
@@ -36,7 +37,7 @@ public class ScoreManager : NetworkBehaviour
 
         if(scoreboardCanBeActive && Input.GetKey(KeyCode.Tab))
         {
-            scoreBoard.SetActive(true);
+            //scoreBoard.SetActive(true);
         }
 
         if (scoreboardCanBeActive == false || !Input.GetKey(KeyCode.Tab))
@@ -47,18 +48,24 @@ public class ScoreManager : NetworkBehaviour
 
     public void AddPlayer(PlayerInfo player)
     {
-        Debug.Log(player.GetName()); ;
-        nameList.Add(player);
-        Debug.Log("player added to list");
+        bool alrExists = false;
         foreach (PlayerInfo p in nameList)
         {
-            Debug.Log(p.GetName());
+            if (player.GetName().Equals(p.GetName()))
+            {
+                alrExists = true;
+                Debug.Log("name already found");
+            }
         }
-        Debug.Log("done");
-        AddToScoreBoard();
-
-        
+        if (alrExists == false)
+        {
+            nameList.Add(player);
+            Debug.Log("askedtoPingPong");
+            SendPlayerServerRpc(player.GetName(), player.GetWins());
+        }
+        AddToScoreBoard();   
     }
+
 
     public void AddToScoreBoard()
     {
@@ -79,18 +86,34 @@ public class ScoreManager : NetworkBehaviour
         Debug.Log(player.GetName() + "intancinating");
     }
 
-    /*[ServerRpc]
-    public void SendNameServerRpc(string name)
+    [ServerRpc (RequireOwnership = false)]
+    public void SendPlayerServerRpc(string name, int wins)
     {
-        AddPlayer(name);
-    }*/
+        Debug.Log("I am pinging");
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(name);
+        player1.SetWins(wins);
+        nameList.Add(player1);
+        SendPlayerClientRpc(name, wins);
+    }
+
+    [ClientRpc]
+    public void SendPlayerClientRpc(string name, int wins)
+    {
+        Debug.Log("I am ponging");
+        PlayerInfo player1 = new PlayerInfo();
+        player1.SetName(name);
+        player1.SetWins(wins);
+        nameList.Add(player1);
+        SendPlayerServerRpc(name, wins);
+    }
 
 }
 
 public class PlayerInfo
 {
     private string name;
-    private int wins;
+    private int wins = 0;
 
     public void SetName(string n)
     {
@@ -100,6 +123,11 @@ public class PlayerInfo
     public void AddWin()
     {
         wins += 1;
+    }
+
+    public void SetWins(int w)
+    {
+        wins = w;
     }
 
     public void ResetWins()

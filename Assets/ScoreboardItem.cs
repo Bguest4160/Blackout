@@ -11,5 +11,6 @@ public class scoreBoardItem : MonoBehaviour
     public void Initialize(PlayerInfo player)
     {
         nameText.text = player.GetName();
+        winsText.text = player.GetWins().ToString();
     }
 }
