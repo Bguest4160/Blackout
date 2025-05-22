@@ -124,13 +124,13 @@ public class MovementScript : NetworkBehaviour
     public void ChangeSpeedStats()
     {
         Speed = 50f;
-        Invoke("ResetSpeedStats", 5f);
+        Invoke("ResetSpeedStats", 10f);
     }
 
     public void ChangeJumpStats()
     {
         jumpHeight = 50f;
-        Invoke("ResetJumpStats", 5f);
+        Invoke("ResetJumpStats", 10f);
     }
 
     public void ResetSpeedStats()
