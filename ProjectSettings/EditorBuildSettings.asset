@@ -35,7 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levi.unity
     guid: 0873dd45c72f44376936dfe1b28a57ed
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/backup scene.unity
     guid: 474c6db4bc10e4c4293738afa1bc0fb3
   m_configObjects: {}
