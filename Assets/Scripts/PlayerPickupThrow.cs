@@ -43,8 +43,8 @@ public class PlayerPickupThrow : NetworkBehaviour
 
         if (Input.GetMouseButtonUp(0) && holding)
         {
-            objectGrabable.ThrowServerRpc();
-            objectGrabable.ThrowServerRpc();
+            objectGrabable.Throw();
+            objectGrabable.Throw();
             
             objectGrabable = null;
             holding = false;
